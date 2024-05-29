@@ -89,13 +89,13 @@ class CategoryService implements CategoryServiceInterface
      */
     public function delete(Category $category): void
     {
-        if (!$this->canBeDeleted($category)) {
-            throw new \Exception('Category cannot be deleted because it has associated tasks.');
-        }
-
         $this->categoryRepository->delete($category);
     }
 
+    /**
+     * @param Category $category
+     * @return bool
+     */
     public function canBeDeleted(Category $category): bool
     {
         try {

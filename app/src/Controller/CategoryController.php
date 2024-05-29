@@ -153,25 +153,34 @@ class CategoryController extends AbstractController
     #[Route('/{id}/delete', name: 'category_delete', requirements: ['id' => '[1-9]\\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Category $category): Response
     {
-        $form = $this->createForm(FormType::class, $category, [
-            'method' => 'DELETE',
-            'action' => $this->generateUrl('category_delete', ['id' => $category->getId()]),
-        ]);
+        if (!$this->categoryService->canBeDeleted($category)) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.category_contains_tasks')
+            );
+
+            return $this->redirectToRoute('category_index');
+        }
+
+        $form = $this->createForm(
+            FormType::class,
+            $category,
+            [
+                'method' => 'DELETE',
+                'action' => $this->generateUrl('category_delete', ['id' => $category->getId()]),
+            ]
+        );
         $form->handleRequest($request);
 
+        $referer = $request->headers->get('referer');
+
         if ($form->isSubmitted() && $form->isValid()) {
-            try {
-                $this->categoryService->delete($category);
-                $this->addFlash(
-                    'success',
-                    $this->translator->trans('message.deleted_successfully')
-                );
-            } catch (\Exception $e) {
-                $this->addFlash(
-                    'error',
-                    $this->translator->trans('message.delete_failed') . ': ' . $e->getMessage()
-                );
-            }
+            $this->categoryService->delete($category);
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.deleted_successfully')
+            );
 
             return $this->redirectToRoute('category_index');
         }
@@ -181,6 +190,7 @@ class CategoryController extends AbstractController
             [
                 'form' => $form->createView(),
                 'category' => $category,
+                'referer' => $referer,
             ]
         );
     }
