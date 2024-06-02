@@ -14,7 +14,17 @@
 </head>
 <body>
 <main role="main" class="container-fluid">
-    {# ... #}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div>{{ app.user.email }}</div>
+        <div>
+            <a href="{{ url('app_logout') }}" class="btn btn-primary">{{ 'Logout'|trans }}</a>
+            <a href="{{ url('app_change_password') }}" class="btn btn-primary">{{ 'Change Password'|trans }}</a>
+        </div>
+    {% else %}
+        <div>
+            <a href="{{ url('app_login') }}" class="btn btn-primary">{{ 'Login'|trans }}</a>
+        </div>
+    {% endif %}
     {% for type, messages in app.session.flashBag.all %}
         {% for message in messages %}
             <div class="alert alert-{{ type }}" role="alert">
@@ -22,11 +32,9 @@
             </div>
         {% endfor %}
     {% endfor %}
-    {# ... #}
     {% block body %}{% endblock %}
 </main>
 {% block javascripts %}
-    {# {% block importmap %}{{ importmap('app') }}{% endblock %}#}
     <script
             src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
             integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="

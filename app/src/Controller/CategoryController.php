@@ -15,12 +15,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class CategoryController.
  */
 #[Route('/category')]
+#[IsGranted('ROLE_ADMIN')]
 class CategoryController extends AbstractController
 {
     private $TaskRepository;
@@ -150,10 +152,10 @@ class CategoryController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/delete', name: 'category_delete', requirements: ['id' => '[1-9]\\d*'], methods: 'GET|DELETE')]
+    #[Route('/{id}/delete', name: 'category_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Category $category): Response
     {
-        if (!$this->categoryService->canBeDeleted($category)) {
+        if(!$this->categoryService->canBeDeleted($category)) {
             $this->addFlash(
                 'warning',
                 $this->translator->trans('message.category_contains_tasks')
@@ -172,8 +174,6 @@ class CategoryController extends AbstractController
         );
         $form->handleRequest($request);
 
-        $referer = $request->headers->get('referer');
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->categoryService->delete($category);
 
@@ -190,7 +190,6 @@ class CategoryController extends AbstractController
             [
                 'form' => $form->createView(),
                 'category' => $category,
-                'referer' => $referer,
             ]
         );
     }

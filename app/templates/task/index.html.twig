@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.task_list'|trans }}
+    {{ 'Lista zadan'|trans }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.task_list'|trans }}</h1>
+    <h1>{{ 'Lista zadań'|trans }}</h1>
+    <a href="{{ path('task_create') }}" class="btn btn-primary">Create New Task</a>
     {% if pagination is defined and pagination.items|length %}
 
         <div class="navigation text-center">
@@ -15,12 +16,13 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(pagination, 'label_category'|trans, 'category.title') }}</th>
+                {#  <th>{{ knp_pagination_sortable(pagination, 'label_category'|trans, 'category.title') }}</th> #}
                 <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'task.id') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 'task.createdAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.updated_at'|trans, 'task.updatedAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'task.title') }}</th>
                 <th>{{ 'label.category'|trans }}</th>
+                <th>{{ 'label.author'|trans }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
@@ -32,10 +34,23 @@
                     <td>{{ task.updatedAt|format_date('long') }}</td>
                     <td>{{ task.title }}</td>
                     <td>{{ task.category.title }}</td>
+                    <td>{{ task.author.username }}</td>
                     <td>
-                        <a href="{{ url('task_show', {id: task.id}) }}" title="{{ 'action.show'|trans }}">
-                            {{ 'action.show'|trans }}
-                        </a>
+                        {% if is_granted('VIEW', task) %}
+                            <a class="btn btn-outline-primary" href="{{ url('task_show', {id: task.id}) }}" title="{{ 'Show'|trans }}">
+                                {{ 'Show'|trans }}
+                            </a>
+                        {% endif %}
+                        {% if is_granted('EDIT', task) %}
+                            <a class="btn btn-outline-success" href="{{ url('task_edit', {id: task.id}) }}" title="{{ 'Edit'|trans }}">
+                                {{ 'Edit'|trans }}
+                            </a>
+                        {% endif %}
+                        {% if is_granted('DELETE', task) %}
+                            <a class="btn btn-outline-danger" href="{{ url('task_delete', {id: task.id}) }}" title="{{ 'Delete'|trans }}">
+                                {{ 'Delete'|trans }}
+                            </a>
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}
