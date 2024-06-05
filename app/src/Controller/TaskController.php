@@ -115,7 +115,9 @@ class TaskController extends AbstractController
     #[IsGranted('EDIT', subject: 'task')]
     public function edit(Request $request, Task $task): Response
     {
-        if ($task->getAuthor() !== $this->getUser()) {
+        $user = $this->getUser();
+
+        if ($task->getAuthor() !== $user && !in_array('ROLE_ADMIN', $user->getRoles())) {
             $this->addFlash(
                 'warning',
                 $this->translator->trans('message.record_not_found')
@@ -166,7 +168,9 @@ class TaskController extends AbstractController
     #[IsGranted('DELETE', subject: 'task')]
     public function delete(Request $request, Task $task): Response
     {
-        if ($task->getAuthor() !== $this->getUser()) {
+        $user = $this->getUser();
+
+        if ($task->getAuthor() !== $user && !in_array('ROLE_ADMIN', $user->getRoles())) {
             $this->addFlash(
                 'warning',
                 $this->translator->trans('message.record_not_found')

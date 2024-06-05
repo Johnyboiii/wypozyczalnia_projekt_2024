@@ -19,13 +19,15 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.roles|join(', ') }}</td>
                 <td>
-                    <a href="{{ path('user_edit', {'id': user.id}) }}">Edit</a>
-                    <a href="{{ path('user_delete', {'id': user.id}) }}">Delete</a>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-primary">Edit</a>
+                </td>
+                <td>
+                    <a href="{{ path('user_edit_role', {'id': user.id}) }}" class="btn btn-secondary">Edit Role</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('user_new') }}">Create new User</a>
+    <a href="{{ path('user_new') }}" class="btn btn-primary">Create new User</a>
 {% endblock %}

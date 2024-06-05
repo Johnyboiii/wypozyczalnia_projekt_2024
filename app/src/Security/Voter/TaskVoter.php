@@ -88,7 +88,7 @@ class TaskVoter extends Voter
      */
     private function canEdit(Task $task, UserInterface $user): bool
     {
-        return $task->getAuthor() === $user;
+        return $task->getAuthor() === $user || in_array('ROLE_ADMIN', $user->getRoles());
     }
 
     /**
@@ -101,7 +101,7 @@ class TaskVoter extends Voter
      */
     private function canView(Task $task, UserInterface $user): bool
     {
-        return $task->getAuthor() === $user;
+        return $task->getAuthor() === $user || in_array('ROLE_ADMIN', $user->getRoles());
     }
 
     /**
@@ -114,6 +114,6 @@ class TaskVoter extends Voter
      */
     private function canDelete(Task $task, UserInterface $user): bool
     {
-        return $task->getAuthor() === $user;
+        return $task->getAuthor() === $user || in_array('ROLE_ADMIN', $user->getRoles());
     }
 }

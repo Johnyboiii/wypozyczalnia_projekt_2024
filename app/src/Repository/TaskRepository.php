@@ -130,8 +130,11 @@ class TaskRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->queryAll();
 
-        $queryBuilder->andWhere('task.author = :author')
-            ->setParameter('author', $user);
+        // Jeśli użytkownik nie jest administratorem, dodaj warunek na autora
+        if (!in_array('ROLE_ADMIN', $user->getRoles())) {
+            $queryBuilder->andWhere('task.author = :author')
+                ->setParameter('author', $user);
+        }
 
         return $queryBuilder;
     }

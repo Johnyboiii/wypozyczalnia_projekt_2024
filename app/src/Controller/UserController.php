@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\Type\User\UserEditType;
+use App\Form\Type\User\UserRoleType;
 use App\Form\Type\UserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -66,7 +68,7 @@ class UserController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserEditType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -79,38 +81,21 @@ class UserController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
-    #[Route('/users/{id}/delete', name: 'user_delete', methods: ['GET', 'DELETE'])]
-    public function delete(Request $request, User $user): Response
+    #[Route('/users/{id}/edit-role', name: 'user_edit_role', methods: ['GET', 'POST'])]
+    public function editRole(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        $tasks = $user->getTasks();
-        foreach ($tasks as $task) {
-            $this->entityManager->remove($task);
-        }
-
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
-        $form = $this->createFormBuilder()
-            ->setAction($this->generateUrl('user_delete', ['id' => $user->getId()]))
-            ->setMethod('DELETE')
-            ->getForm();
-
+        $form = $this->createForm(UserRoleType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->entityManager->remove($user);
-            $this->entityManager->flush();
-
-            $this->addFlash(
-                'success',
-                'User deleted successfully'
-            );
+            $entityManager->flush();
 
             return $this->redirectToRoute('user_index');
         }
 
-        return $this->render('user/delete.html.twig', [
-            'user' => $user,
+        return $this->render('user/edit_role.html.twig', [
             'form' => $form->createView(),
         ]);
     }
