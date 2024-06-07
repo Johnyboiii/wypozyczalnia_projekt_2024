@@ -6,6 +6,7 @@
 namespace App\Form\Type;
 
 use App\Entity\Category;
+use App\Entity\Tag;
 use App\Entity\Task;
 use App\Form\DataTransformer\TagsDataTransformer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -14,6 +15,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class TaskType.
@@ -42,50 +45,32 @@ class TaskType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add(
-            'title',
-            TextType::class,
-            [
+        $builder
+            ->add('title', TextType::class, [
                 'label' => 'label.title',
-                'required' => true,
                 'attr' => ['max_length' => 255],
-            ]);
-        $builder->add(
-            'category',
-            EntityType::class,
-            [
+            ])
+            ->add('category', EntityType::class, [
                 'class' => Category::class,
-                'choice_label' => function ($category): string {
-                    return $category->getTitle();
-                },
+                'choice_label' => fn($category): string => $category->getTitle(),
                 'label' => 'label.category',
                 'placeholder' => 'label.none',
-                'required' => true,
-            ]
-        );
-        $builder->add(
-            'tags',
-            TextType::class,
-            [
+            ])
+            ->add('tags', TextType::class, [
                 'label' => 'label.tags',
-                'required' => false,
                 'attr' => ['max_length' => 128],
-            ]
-        );
+            ])
+            ->add('comment', TextType::class, [
+                'constraints' => [
+                    new NotBlank(['message' => 'Comment should not be blank.']),
+                    new Length([
+                        'max' => 500,
+                        'maxMessage' => 'Comment cannot be longer than {{ limit }} characters',
+                    ]),
+                ],
+            ]);
 
-        $builder->get('tags')->addModelTransformer(
-            $this->tagsDataTransformer
-        );
-        $builder->add('comment', TextType::class, [
-            'required' => true,
-            'constraints' => [
-                new Assert\NotBlank(['message' => 'Comment should not be blank.']),
-                new Assert\Length([
-                    'max' => 500,
-                    'maxMessage' => 'Comment cannot be longer than {{ limit }} characters',
-                ]),
-            ],
-        ]);
+        $builder->get('tags')->addModelTransformer($this->tagsDataTransformer);
     }
 
     /**

@@ -6,7 +6,6 @@
 
 {% block body %}
     <h1>{{ 'Lista zadań'|trans }}</h1>
-    <a href="{{ path('task_create') }}" class="btn btn-primary">Create New Task</a>
     {% if pagination is defined and pagination.items|length %}
 
         <div class="navigation text-center">
@@ -42,21 +41,14 @@
                         {% endfor %}
                     </td>
                     <td>
-                        {% if is_granted('VIEW', task) %}
-                            <a class="btn btn-outline-primary" href="{{ url('task_show', {id: task.id}) }}" title="{{ 'Show'|trans }}">
+
+                            <a class="btn btn-outline-primary" href="{{ url('public_task_show', {id: task.id}) }}" title="{{ 'Show'|trans }}">
                                 {{ 'Show'|trans }}
                             </a>
-                        {% endif %}
-                        {% if is_granted('EDIT', task) %}
-                            <a class="btn btn-outline-success" href="{{ url('task_edit', {id: task.id}) }}" title="{{ 'Edit'|trans }}">
-                                {{ 'Edit'|trans }}
-                            </a>
-                        {% endif %}
-                        {% if is_granted('DELETE', task) %}
-                            <a class="btn btn-outline-danger" href="{{ url('task_delete', {id: task.id}) }}" title="{{ 'Delete'|trans }}">
-                                {{ 'Delete'|trans }}
-                            </a>
-                        {% endif %}
+                        <a class="btn btn-outline-primary" href="{{ url('public_task_reserve', {id: task.id}) }}" title="{{ 'Reserve'|trans }}">
+                            {{ 'Reserve'|trans }}
+                        </a>
+
                     </td>
                 </tr>
             {% endfor %}

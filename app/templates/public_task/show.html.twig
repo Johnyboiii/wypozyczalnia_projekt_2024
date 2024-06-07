@@ -32,15 +32,8 @@
             <dd>{{ task.comment|markdown_to_html }}</dd>
         </dl>
         <p>
-            <a href="{{ url('task_index') }}" title="{{ 'action.back_to_list'|trans }}" class="btn btn-primary">
+            <a href="{{ url('public_task_index') }}" title="{{ 'action.back_to_list'|trans }}" class="btn btn-primary">
                 {{ 'Back'|trans }}
-            </a>
-            <a href="{{ url('task_edit', {id: task.id}) }}" title="{{ 'action.edit'|trans }}" class="btn btn-secondary">
-                {{ 'Edit'|trans }}
-            </a>
-            <a href="{{ url('task_delete', {id: task.id}) }}" title="{{ 'action.delete'|trans }}" class="btn btn-danger">
-                {{ 'Delete'|trans }}
-            </a>
         </p>
     {% else %}
         <p>

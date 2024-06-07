@@ -8,6 +8,7 @@ namespace App\Controller;
 use App\Entity\Task;
 use App\Form\Type\TaskType;
 use App\Service\TaskServiceInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -85,7 +86,6 @@ class TaskController extends AbstractController
             ['action' => $this->generateUrl('task_create')]
         );
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->taskService->save($task);
 

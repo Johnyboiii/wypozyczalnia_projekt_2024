@@ -6,6 +6,7 @@
 namespace App\Security\Voter;
 
 use App\Entity\Task;
+//use False\True;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -101,7 +102,8 @@ class TaskVoter extends Voter
      */
     private function canView(Task $task, UserInterface $user): bool
     {
-        return $task->getAuthor() === $user || in_array('ROLE_ADMIN', $user->getRoles());
+        //return $task->getAuthor() === $user || in_array('ROLE_ADMIN', $user->getRoles());
+        return true;
     }
 
     /**

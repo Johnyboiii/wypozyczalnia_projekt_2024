@@ -19,6 +19,7 @@
         <div>
             <a href="{{ url('app_logout') }}" class="btn btn-primary">{{ 'Logout'|trans }}</a>
             <a href="{{ url('app_change_password') }}" class="btn btn-primary">{{ 'Change Password'|trans }}</a>
+            <a href="{{ path('public_task_index') }}" class="btn btn-secondary">Browse tasks</a>
         </div>
     {% else %}
         <div>
