@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Moje rezerwacje{% endblock %}
+
+{% block body %}
+    <h1>Moje rezerwacje</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Tytuł</th>
+            <th>Status rezerwacji</th>
+            <th>Komentarz</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.title }}</td>
+                <td>{{ task.reservationStatus }}</td>
+                <td>{{ task.reservationComment }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Brak rezerwacji</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

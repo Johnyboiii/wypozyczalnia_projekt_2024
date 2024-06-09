@@ -269,4 +269,101 @@ class Task
 
         return $this;
     }
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    #[ORM\Column(type: 'string', length: 255, nullable: false, options: ["default" => "Dostępne"])]
+    private ?string $reservationStatus = 'Dostępne';
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class)
+     */
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    private ?User $reservedBy;
+
+    // ...
+
+    public function getReservationStatus(): ?string
+    {
+        return $this->reservationStatus;
+    }
+
+    public function setReservationStatus(?string $reservationStatus): self
+    {
+        $this->reservationStatus = $reservationStatus;
+
+        return $this;
+    }
+
+    public function getReservedBy(): ?User
+    {
+        return $this->reservedBy;
+    }
+
+    public function setReservedBy(?User $reservedBy): self
+    {
+        $this->reservedBy = $reservedBy;
+
+        return $this;
+    }
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $reservedByEmail;
+
+    public function getReservedByEmail(): ?string
+    {
+        return $this->reservedByEmail;
+    }
+
+    public function setReservedByEmail(?string $reservedByEmail): self
+    {
+        $this->reservedByEmail = $reservedByEmail;
+
+        return $this;
+    }
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $nickname = null;
+
+    // ...
+
+    public function getNickname(): ?string
+    {
+        return $this->nickname;
+    }
+
+    public function setNickname(?string $nickname): self
+    {
+        $this->nickname = $nickname;
+
+        return $this;
+    }
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     * @Assert\NotBlank
+     */
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $reservationComment = null;
+
+    // ...
+
+    public function getReservationComment(): ?string
+    {
+        return $this->reservationComment;
+    }
+
+    public function setReservationComment(?string $reservationComment): self
+    {
+        $this->reservationComment = $reservationComment;
+
+        return $this;
+    }
 }

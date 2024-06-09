@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista zasobów{% endblock %}
+
+{% block body %}
+    <h1>Lista zasobów</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Tytuł</th>
+            <th>Status rezerwacji</th>
+            <th>Zarezerwowane przez konto</th>
+            <th>Email rezerwującego</th>
+            <th>Formularz rezerwacji</th>
+            <th>Akcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.title }}</td>
+                <td>{{ task.reservationStatus }}</td>
+                <td>{{ task.reservedBy ? task.reservedBy.username : 'Brak' }}</td>
+                <td>{{ task.reservedByEmail ? task.reservedByEmail : 'Brak' }}</td>
+                <td>
+                    <a class="btn btn-outline-primary" href="{{ path('admin_task_details', {'id': task.id}) }}">Szczegóły rezerwacji</a>
+                </td>
+                <td>
+                    <form method="post" action="{{ path('admin_task_approve', {'id': task.id}) }}">
+                        <button type="submit" class="btn btn-success">Zatwierdź</button>
+                    </form>
+                    <form method="post" action="{{ path('admin_task_reject', {'id': task.id}) }}">
+                        <button type="submit" class="btn btn-danger">Odrzuć</button>
+                    </form>
+                    <form method="post" action="{{ path('admin_task_lend', {'id': task.id}) }}">
+                        <button type="submit" class="btn btn-primary">Wypożycz</button>
+                    </form>
+                    <form method="post" action="{{ path('admin_task_return', {'id': task.id}) }}">
+                        <button type="submit" class="btn btn-secondary">Zwróć</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

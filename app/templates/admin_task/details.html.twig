@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Szczegóły rezerwacji{% endblock %}
+
+{% block body %}
+    <h1>Szczegóły rezerwacji</h1>
+
+    <p><strong>Nazwa zadania:</strong> {{ task.title }}</p>
+    <p><strong>Status rezerwacji:</strong> {{ task.reservationStatus }}</p>
+    <p><strong>Zarezerwowane przez konto:</strong> {{ task.reservedBy ? task.reservedBy.username : 'Brak' }}</p>
+    <p><strong>Email rezerwującego:</strong> {{ task.reservedByEmail ? task.reservedByEmail : 'Brak' }}</p>
+    <p><strong>Nick rezerwującego:</strong> {{ task.nickname ? task.nickname : 'Brak' }}</p>
+    <p><strong>Komentarz:</strong> {{ task.reservationComment ? task.reservationComment : 'Brak' }}</p>
+
+    <a href="{{ path('admin_task_index') }}">Powrót do listy</a>
+{% endblock %}
