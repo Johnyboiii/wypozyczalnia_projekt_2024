@@ -138,4 +138,21 @@ class TaskRepository extends ServiceEntityRepository
 
         return $queryBuilder;
     }
+
+    public function queryByAuthorAndStatus(?User $user, ?int $status): QueryBuilder
+    {
+        $queryBuilder = $this->queryAll();
+
+        if ($user && !in_array('ROLE_ADMIN', $user->getRoles())) {
+            $queryBuilder->andWhere('task.author = :author')
+                ->setParameter('author', $user);
+        }
+
+        if ($status !== null) {
+            $queryBuilder->andWhere('task.status = :status')
+                ->setParameter('status', $status);
+        }
+
+        return $queryBuilder;
+    }
 }

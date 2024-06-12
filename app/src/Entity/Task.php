@@ -107,6 +107,7 @@ class Task
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+        $this->status = TaskStatus::STATUS_1;//formularz dodawania task działa
     }
 
     /**

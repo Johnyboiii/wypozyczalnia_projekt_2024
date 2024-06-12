@@ -5,6 +5,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Enum\TaskStatus;
+use App\Entity\Tag;
 use App\Entity\Task;
 use App\Form\Type\ReservationType;
 use App\Service\TaskServiceInterface;
@@ -44,7 +46,7 @@ class PublicTaskController extends AbstractController
     #[Route(name: 'public_task_index', methods: 'GET')]
     public function index(#[MapQueryParameter] int $page = 1): Response
     {
-        $pagination = $this->taskService->getPaginatedList($page, null);
+        $pagination = $this->taskService->getPaginatedList($page, null, TaskStatus::STATUS_1);
 
         return $this->render('public_task/index.html.twig', ['pagination' => $pagination]);
     }

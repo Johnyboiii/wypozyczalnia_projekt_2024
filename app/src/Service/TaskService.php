@@ -45,10 +45,10 @@ class TaskService implements TaskServiceInterface
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page, User $author = null): PaginationInterface
+    public function getPaginatedList(int $page, User $author = null, int $status = null): PaginationInterface
     {
         return $this->paginator->paginate(
-            $this->taskRepository->queryByAuthor($author),
+            $this->taskRepository->queryByAuthorAndStatus($author, $status),
             $page,
             self::PAGINATOR_ITEMS_PER_PAGE
         );

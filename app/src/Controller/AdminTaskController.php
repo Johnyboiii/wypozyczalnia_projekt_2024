@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Enum\TaskStatus;
 use App\Entity\Task;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -56,6 +57,7 @@ class AdminTaskController extends AbstractController
     public function lend(Task $task): Response
     {
         $task->setReservationStatus('Wypożyczone');
+        $task->setStatus(TaskStatus::STATUS_2);
         $this->entityManager->flush();
 
         return $this->redirectToRoute('admin_task_index');
@@ -65,6 +67,7 @@ class AdminTaskController extends AbstractController
     public function return(Task $task): Response
     {
         $task->setReservationStatus('Zwrócone');
+        $task->setStatus(TaskStatus::STATUS_1);
         $this->entityManager->flush();
 
         return $this->redirectToRoute('admin_task_index');

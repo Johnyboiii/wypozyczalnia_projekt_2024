@@ -5,8 +5,11 @@
 
 namespace App\Controller;
 
+use App\Dto\TaskListInputFiltersDto;
 use App\Entity\Task;
+use App\Entity\User;
 use App\Form\Type\TaskType;
+use App\Resolver\TaskListInputFiltersDtoResolver;
 use App\Service\TaskServiceInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
+use Symfony\Component\HttpKernel\Attribute\MapQueryString;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
