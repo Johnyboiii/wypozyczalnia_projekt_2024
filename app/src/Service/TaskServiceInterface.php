@@ -5,6 +5,7 @@
 
 namespace App\Service;
 
+use App\Dto\TaskListInputFiltersDto;
 use App\Entity\Task;
 use App\Entity\User;
 use Knp\Component\Pager\Pagination\PaginationInterface;
@@ -21,7 +22,7 @@ interface TaskServiceInterface
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page, User $author = null): PaginationInterface;
+    public function getPaginatedList(int $page, User $author = null, TaskListInputFiltersDto $filtersDto): PaginationInterface;
 
     /**
      * Save entity.

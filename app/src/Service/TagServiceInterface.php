@@ -60,4 +60,13 @@ interface TagServiceInterface
 
     public function save(Tag $tag);
 
+    /**
+     * Find by id.
+     *
+     * @param int $id Tag id
+     *
+     * @return Tag|null Tag entity
+     */
+    public function findOneById(int $id): ?Tag;
+
 }

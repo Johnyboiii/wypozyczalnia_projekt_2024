@@ -5,6 +5,7 @@ namespace App\Service;
 use App\Entity\Tag;
 use App\Repository\TagRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\NonUniqueResultException;
 
 /**
  * Class TagService
@@ -119,5 +120,17 @@ class TagService implements TagServiceInterface
         } else {
             return $this->createTag($tag);
         }
+    }
+    /**
+     * Find by id.
+     *
+     * @param int $id Tag id
+     *
+     * @return Tag|null Tag entity
+     *
+     */
+    public function findOneById(int $id): ?Tag
+    {
+        return $this->tagRepository->findOneById($id);
     }
 }

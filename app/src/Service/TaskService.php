@@ -5,6 +5,11 @@
 
 namespace App\Service;
 
+use App\Dto\TaskListFiltersDto;
+use App\Dto\TaskListInputFiltersDto;
+use App\Entity\Category;
+use App\Entity\Enum\TaskStatus;
+use App\Entity\Tag;
 use App\Entity\Task;
 use App\Entity\User;
 use App\Repository\TaskRepository;
@@ -33,8 +38,12 @@ class TaskService implements TaskServiceInterface
      * @param TaskRepository     $taskRepository Task repository
      * @param PaginatorInterface $paginator      Paginator
      */
-    public function __construct(private readonly TaskRepository $taskRepository, private readonly PaginatorInterface $paginator)
-    {
+    public function __construct(
+        private readonly CategoryServiceInterface $categoryService,
+        private readonly PaginatorInterface $paginator,
+        private readonly TagServiceInterface $tagService,
+        private readonly TaskRepository $taskRepository
+    ) {
     }
 
     /**
@@ -45,10 +54,12 @@ class TaskService implements TaskServiceInterface
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page, User $author = null, int $status = null): PaginationInterface
+    public function getPaginatedList(int $page, User $author = null, TaskListInputFiltersDto $filtersDto): PaginationInterface
     {
+        $filters = $this->prepareFilters($filtersDto);
+
         return $this->paginator->paginate(
-            $this->taskRepository->queryByAuthorAndStatus($author, $status),
+            $this->taskRepository->queryByAuthor($author, $filters),
             $page,
             self::PAGINATOR_ITEMS_PER_PAGE
         );
@@ -72,6 +83,25 @@ class TaskService implements TaskServiceInterface
     public function delete(Task $task): void
     {
         $this->taskRepository->delete($task);
+    }
+
+    public function getTasksByCategory(Category $category): array
+    {
+        return $this->taskRepository->findByCategory($category);
+    }
+
+    public function getTasksByTag(Tag $tag): array
+    {
+        return $this->taskRepository->findByTag($tag);
+    }
+
+    private function prepareFilters(TaskListInputFiltersDto $filters): TaskListFiltersDto
+    {
+        return new TaskListFiltersDto(
+            null !== $filters->categoryId ? $this->categoryService->findOneById($filters->categoryId) : null,
+            null !== $filters->tagId ? $this->tagService->findOneById($filters->tagId) : null,
+            new TaskStatus($filters->statusId)
+        );
     }
 
 

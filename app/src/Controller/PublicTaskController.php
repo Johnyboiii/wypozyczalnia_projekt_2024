@@ -5,6 +5,7 @@
 
 namespace App\Controller;
 
+use App\Dto\TaskListInputFiltersDto;
 use App\Entity\Enum\TaskStatus;
 use App\Entity\Tag;
 use App\Entity\Task;
@@ -44,9 +45,17 @@ class PublicTaskController extends AbstractController
      * @return Response HTTP response
      */
     #[Route(name: 'public_task_index', methods: 'GET')]
-    public function index(#[MapQueryParameter] int $page = 1): Response
+    public function index(Request $request, #[MapQueryParameter] int $page = 1): Response
     {
-        $pagination = $this->taskService->getPaginatedList($page, null, TaskStatus::STATUS_1);
+        // Create a new TaskListInputFiltersDto instance and set statusId to TaskStatus::STATUS_1
+        $filtersDto = new TaskListInputFiltersDto(
+            categoryId: $request->query->getInt('categoryId'),
+            tagId: $request->query->getInt('tagId'),
+            statusId: TaskStatus::STATUS_1
+        );
+
+        // Pass the TaskListInputFiltersDto instance as the third argument
+        $pagination = $this->taskService->getPaginatedList($page, null, $filtersDto);
 
         return $this->render('public_task/index.html.twig', ['pagination' => $pagination]);
     }

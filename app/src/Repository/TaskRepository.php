@@ -5,10 +5,14 @@
 
 namespace App\Repository;
 
+use App\Dto\TaskListFiltersDto;
 use App\Entity\Category;
+use App\Entity\Enum\TaskStatus;
+use App\Entity\Tag;
 use App\Entity\Task;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
@@ -16,6 +20,7 @@ use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class TaskRepository.
@@ -45,15 +50,32 @@ class TaskRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    public function queryAll(): QueryBuilder
+    public function queryAll(TaskListFiltersDto $filters): QueryBuilder
     {
-        return $this->getOrCreateQueryBuilder()
+        $queryBuilder = $this->createQueryBuilder('task')
             ->select(
                 'partial task.{id, createdAt, updatedAt, title}',
                 'partial category.{id, title}'
             )
             ->join('task.category', 'category')
             ->orderBy('task.updatedAt', 'DESC');
+
+        if ($filters->category) {
+            $queryBuilder->andWhere('task.category = :category')
+                ->setParameter('category', $filters->category);
+        }
+
+        if ($filters->tag) {
+            $queryBuilder->andWhere(':tag MEMBER OF task.tags')
+                ->setParameter('tag', $filters->tag);
+        }
+
+        if ($filters->taskStatus) {
+            $queryBuilder->andWhere('task.status = :status')
+                ->setParameter('status', $filters->taskStatus->getStatus());
+        }
+
+        return $queryBuilder;
     }
 
     /**
@@ -126,12 +148,12 @@ class TaskRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    public function queryByAuthor(?User $user = null): QueryBuilder
+    public function queryByAuthor(?UserInterface $user, TaskListFiltersDto $filters): QueryBuilder
     {
-        $queryBuilder = $this->queryAll();
+        $queryBuilder = $this->queryAll($filters);
 
-        // Jeśli użytkownik nie jest administratorem, dodaj warunek na autora
-        if ($user && !in_array('ROLE_ADMIN', $user->getRoles())) {
+        // Jeśli użytkownik nie jest null i nie jest administratorem, dodaj warunek na autora
+        if ($user !== null && !in_array('ROLE_ADMIN', $user->getRoles())) {
             $queryBuilder->andWhere('task.author = :author')
                 ->setParameter('author', $user);
         }
@@ -151,6 +173,34 @@ class TaskRepository extends ServiceEntityRepository
         if ($status !== null) {
             $queryBuilder->andWhere('task.status = :status')
                 ->setParameter('status', $status);
+        }
+
+        return $queryBuilder;
+    }
+
+    /**
+     * Apply filters to paginated list.
+     *
+     * @param QueryBuilder       $queryBuilder Query builder
+     * @param TaskListFiltersDto $filters      Filters
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function applyFiltersToList(QueryBuilder $queryBuilder, TaskListFiltersDto $filters): QueryBuilder
+    {
+        if ($filters->category instanceof Category) {
+            $queryBuilder->andWhere('category = :category')
+                ->setParameter('category', $filters->category);
+        }
+
+        if ($filters->tag instanceof Tag) {
+            $queryBuilder->andWhere('tags IN (:tag)')
+                ->setParameter('tag', $filters->tag);
+        }
+
+        if ($filters->taskStatus instanceof TaskStatus) {
+            $queryBuilder->andWhere('task.status = :status')
+                    ->setParameter('status', $filters->taskStatus->getStatus(), Types::INTEGER);
         }
 
         return $queryBuilder;

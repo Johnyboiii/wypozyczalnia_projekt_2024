@@ -73,6 +73,15 @@ class TagRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
+    public function findOneById(int $id)
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     /**
      * Base query builder for reusable queries.
      *
