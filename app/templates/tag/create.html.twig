@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.tag_create'|trans }}
+    {{ 'Add Tag'|trans }}
 {% endblock %}
 
 {% block body %}
     {% include 'default/_form.html.twig' with {
-        page_title: 'title.tag_create'|trans,
+        page_title: 'Add Tag'|trans,
         form: form,
-        submit_label: 'action.save'|trans,
+        submit_label: 'Save'|trans,
         back_to_list_path: 'tag_index',
     } %}
 {% endblock %}

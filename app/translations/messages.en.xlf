@@ -38,6 +38,34 @@
         <source>title.record_view</source>
         <target>Record view #%id%</target>
       </trans-unit>
+      <trans-unit id="Created At">
+          <source>Created At</source>
+          <target>Created At</target>
+      </trans-unit>
+      <trans-unit id="Updated At">
+                <source>Updated At</source>
+                <target>Updated At</target>
+      </trans-unit>
+      <trans-unit id="Category">
+                <source>Category</source>
+                <target>Category</target>
+      </trans-unit>
+      <trans-unit id="Author">
+                <source>Author</source>
+                <target>Author</target>
+      </trans-unit>
+      <trans-unit id="Previous">
+          <source>Previous</source>
+          <target>Previous</target>
+      </trans-unit>
+      <trans-unit id="Next">
+          <source>Next</source>
+          <target>Next</target>
+      </trans-unit>
+      <trans-unit id="action.back_to_list">
+          <source>action.back_to_list</source>
+          <target>Go Back</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

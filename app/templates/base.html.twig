@@ -17,20 +17,22 @@
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <div>{{ app.user.email }}</div>
         <div>
-            <a href="{{ url('app_logout') }}" class="btn btn-primary">{{ 'Logout'|trans }}</a>
+            <a href="{{ url('app_logout') }}" class="btn btn-primary">{{ 'Log out'|trans }}</a>
             <a href="{{ url('app_change_password') }}" class="btn btn-primary">{{ 'Change Password'|trans }}</a>
-            <a href="{{ path('task_index') }}" class="btn btn-secondary">My tasks</a>
-            <a href="{{ path('public_task_index') }}" class="btn btn-secondary">Browse tasks</a>
+            <a href="{{ path('task_index') }}" class="btn btn-secondary">My Assets</a>
+            <a href="{{ path('public_task_index') }}" class="btn btn-secondary">Browse Assets</a>
             <a href="{{ path('user_reservations_index') }}" class="btn btn-secondary">My Reservations</a>
             {% if is_granted('ROLE_ADMIN') %}
                 <!-- Add your admin buttons here -->
                 <a href="{{ path('admin_task_index') }}" class="btn btn-primary">Admin Reservation Dashboard</a>
                 <a href="{{ path('user_index') }}" class="btn btn-primary">Admin User Dashboard</a>
+                <a href="{{ path('category_index') }}" class="btn btn-secondary">Categories</a>
+                <a href="{{ path('tag_index') }}" class="btn btn-secondary">Tags</a>
             {% endif %}
         </div>
     {% else %}
         <div>
-            <a href="{{ url('app_login') }}" class="btn btn-primary">{{ 'Login'|trans }}</a>
+            <a href="{{ url('app_login') }}" class="btn btn-primary">{{ 'Log in'|trans }}</a>
         </div>
     {% endif %}
     {% for type, messages in app.session.flashBag.all %}

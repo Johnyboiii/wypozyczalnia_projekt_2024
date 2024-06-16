@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.category_list'|trans }}
+    {{ 'Category'|trans }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'Lista kategorii'|trans }}</h1>
+    <h1>{{ 'Category List'|trans }}</h1>
     {% if pagination is defined and pagination.items|length %}
 
         <div class="create-category-link">
-            <a href="{{ path('category_create') }}" class="btn btn-primary">Stwórz kategorię</a>
+            <a href="{{ path('category_create') }}" class="btn btn-primary">Add Category</a>
         </div>
         <br>
         <div class="navigation text-center">
@@ -20,9 +20,9 @@
             <thead>
             <tr>
                 <th>{{ knp_pagination_sortable(pagination, 'ID'|trans, 'category.id') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Tytuł'|trans, 'category.title') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Data Utworzenia'|trans, 'category.createdAt') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Data Aktualizacji'|trans, 'category.updatedAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Title'|trans, 'category.title') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Created At'|trans, 'category.createdAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Updated At'|trans, 'category.updatedAt') }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
@@ -34,12 +34,12 @@
                     <td>{{ category.createdAt|format_date('long') }}</td>
                     <td>{{ category.updatedAt|format_date('long') }}</td>
                     <td>
-                        <a href="{{ path('category_show', {'id': category.id}) }}" class="btn btn-primary">{{ 'Pokaż'|trans }}</a>
-                        <a href="{{ path('category_edit', {'id': category.id}) }}" class="btn btn-secondary">{{ 'Edytuj'|trans }}</a>
+                        <a href="{{ path('category_show', {'id': category.id}) }}" class="btn btn-primary">{{ 'Show'|trans }}</a>
+                        <a href="{{ path('category_edit', {'id': category.id}) }}" class="btn btn-secondary">{{ 'Edit'|trans }}</a>
                         <form method="post" action="{{ path('category_delete', {'id': category.id}) }}" style="display:inline-block;" onsubmit="return confirm('{{ 'Czy napewno chcesz usunąć ?'|trans }}');">
                             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ category.id) }}">
                             <input type="hidden" name="_method" value="DELETE">
-                            <button class="btn btn-danger">{{ 'Usuń'|trans }}</button>
+                            <button class="btn btn-danger">{{ 'Delete'|trans }}</button>
                         </form>
                     </td>
                 </tr>
@@ -48,7 +48,7 @@
         </table>
     {% else %}
         <p>
-            {{ 'Lista pusta'|trans }}
+            {{ 'List is empty'|trans }}
         </p>
     {% endif %}
 {% endblock %}

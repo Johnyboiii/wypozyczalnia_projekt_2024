@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Lista zasobów{% endblock %}
+{% block title %}Reservations{% endblock %}
 
 {% block body %}
-    <h1>Lista zasobów</h1>
+    <h1>Reservations List and Status</h1>
 
     <table class="table">
         <thead>
         <tr>
-            <th>Tytuł</th>
-            <th>Status rezerwacji</th>
-            <th>Zarezerwowane przez konto</th>
-            <th>Email rezerwującego</th>
-            <th>Formularz rezerwacji</th>
-            <th>Akcje</th>
+            <th>Title</th>
+            <th>Reservation Status</th>
+            <th>Reserved from account</th>
+            <th>Email</th>
+            <th>Reservation Form</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -21,23 +21,23 @@
             <tr>
                 <td>{{ task.title }}</td>
                 <td>{{ task.reservationStatus }}</td>
-                <td>{{ task.reservedBy ? task.reservedBy.username : 'Brak' }}</td>
-                <td>{{ task.reservedByEmail ? task.reservedByEmail : 'Brak' }}</td>
+                <td>{{ task.reservedBy ? task.reservedBy.username : 'None' }}</td>
+                <td>{{ task.reservedByEmail ? task.reservedByEmail : 'None' }}</td>
                 <td>
-                    <a class="btn btn-outline-primary" href="{{ path('admin_task_details', {'id': task.id}) }}">Szczegóły rezerwacji</a>
+                    <a class="btn btn-outline-primary" href="{{ path('admin_task_details', {'id': task.id}) }}">Reservation Details</a>
                 </td>
                 <td>
                     <form method="post" action="{{ path('admin_task_approve', {'id': task.id}) }}">
-                        <button type="submit" class="btn btn-success">Zatwierdź</button>
+                        <button type="submit" class="btn btn-success">Accept</button>
                     </form>
                     <form method="post" action="{{ path('admin_task_reject', {'id': task.id}) }}">
-                        <button type="submit" class="btn btn-danger">Odrzuć</button>
+                        <button type="submit" class="btn btn-danger">Reject</button>
                     </form>
                     <form method="post" action="{{ path('admin_task_lend', {'id': task.id}) }}">
-                        <button type="submit" class="btn btn-primary">Wypożycz</button>
+                        <button type="submit" class="btn btn-primary">Lend</button>
                     </form>
                     <form method="post" action="{{ path('admin_task_return', {'id': task.id}) }}">
-                        <button type="submit" class="btn btn-secondary">Zwróć</button>
+                        <button type="submit" class="btn btn-secondary">Return</button>
                     </form>
                 </td>
             </tr>

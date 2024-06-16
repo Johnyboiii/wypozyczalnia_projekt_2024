@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.category_details'|trans({'%id%': category.id|default('')}) }}
+    {{ 'Category Info'|trans({'%id%': category.id|default('')}) }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'Informacje o kategorii'|trans({'%id%': category.id|default('')}) }}</h1>
+    <h1>{{ 'Category Info'|trans({'%id%': category.id|default('')}) }}</h1>
     {% if category is defined and category|length %}
         <dl>
             <dt>{{ 'ID'|trans }}</dt>
             <dd>{{ category.id }}</dd>
-            <dt>{{ 'Stworzono :'|trans }}</dt>
+            <dt>{{ 'Created At :'|trans }}</dt>
             <dd>{{ category.createdAt|format_date('long') }}</dd>
-            <dt>{{ 'Zaktualizowano :'|trans }}</dt>
+            <dt>{{ 'Updated At :'|trans }}</dt>
             <dd>{{ category.updatedAt|format_date('long') }}</dd>
-            <dt>{{ 'Tytuł :'|trans }}</dt>
+            <dt>{{ 'Title :'|trans }}</dt>
             <dd>{{ category.title }}</dd>
         </dl>
         {% if tasks is defined and tasks|length %}
@@ -39,11 +39,11 @@
                 </tbody>
             </table>
         {% else %}
-            {{ 'Lista pusta'|trans }}
+            {{ ''|trans }}
         {% endif %}
         <p>
-            <a href="{{ url('category_index') }}" title="{{ 'action.back_to_list'|trans }}">
-                {{ 'Powrót'|trans }}
+            <a href="{{ url('category_index') }}" title="{{ 'action.back_to_list'|trans }}" class="btn btn-secondary">
+                {{ 'Go Back'|trans }}
             </a>
         </p>
     {% else %}

@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.tag_details'|trans({'%id%': tag.id|default('')}) }}
+    {{ 'Tag Inf'|trans({'%id%': tag.id|default('')}) }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'Informacje o tagu'|trans({'%id%': tag.id|default('')}) }}</h1>
+    <h1>{{ 'Tag Information'|trans({'%id%': tag.id|default('')}) }}</h1>
     {% if tag is defined %}
         <dl>
             <dt>{{ 'ID'|trans }}</dt>
             <dd>{{ tag.id }}</dd>
-            <dt>{{ 'Stworzono :'|trans }}</dt>
+            <dt>{{ 'Created At :'|trans }}</dt>
             <dd>{{ tag.createdAt|format_date('long') }}</dd>
-            <dt>{{ 'Zaktualizowano :'|trans }}</dt>
+            <dt>{{ 'Edited At :'|trans }}</dt>
             <dd>{{ tag.updatedAt|format_date('long') }}</dd>
-            <dt>{{ 'Tytuł :'|trans }}</dt>
+            <dt>{{ 'Title :'|trans }}</dt>
             <dd>{{ tag.title }}</dd>
         </dl>
         {% if tasks is defined and tasks|length %}
@@ -39,16 +39,16 @@
                 </tbody>
             </table>
         {% else %}
-            {{ 'Lista pusta'|trans }}
+            {{ ''|trans }}
         {% endif %}
         <p>
-            <a href="{{ url('tag_index') }}" title="{{ 'action.back_to_list'|trans }}">
-                {{ 'Powrót'|trans }}
+            <a href="{{ url('tag_index') }}" title="{{ 'action.back_to_list'|trans }} " class="btn btn-secondary">
+                {{ 'Go Back'|trans }}
             </a>
         </p>
     {% else %}
         <p>
-            {{ 'Nie odnaleziono rekordu'|trans }}
+            {{ 'Not Found'|trans }}
         </p>
     {% endif %}
 {% endblock %}

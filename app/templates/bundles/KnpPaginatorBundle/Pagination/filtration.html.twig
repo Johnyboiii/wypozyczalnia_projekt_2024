@@ -1,0 +1,10 @@
+{% if pagination.previous is defined %}
+    <a href="{{ path(route, query|merge({(pagination.pageParameterName): pagination.previous})) }}" rel="prev">
+        {{ 'Previous'|trans }}
+    </a>
+{% endif %}
+{% if pagination.next is defined %}
+    <a href="{{ path(route, query|merge({(pagination.pageParameterName): pagination.next})) }}" rel="next">
+        {{ 'Next'|trans }}
+    </a>
+{% endif %}

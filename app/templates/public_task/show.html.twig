@@ -1,22 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.task_details'|trans({'%id%': task.id|default('')}) }}
+    {{ 'Asset Details'|trans({'%id%': task.id|default('')}) }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'Task details'|trans({'%id%': task.id|default('')}) }}</h1>
+    <h1>{{ 'Asset Details'|trans({'%id%': task.id|default('')}) }}</h1>
     {% if task is defined and task|length %}
         <dl class="dl-horizontal">
             <dt>{{ 'label.id'|trans }}</dt>
             <dd>{{ task.id }}</dd>
-            <dt>{{ 'label.created_at'|trans }}</dt>
+            <dt>{{ 'Created At'|trans }}</dt>
             <dd>{{ task.createdAt|format_date('long') }}</dd>
-            <dt>{{ 'label.updated_at'|trans }}</dt>
+            <dt>{{ 'Updated At'|trans }}</dt>
             <dd>{{ task.updatedAt|format_date('long') }}</dd>
             <dt>{{ 'label.title'|trans }}</dt>
             <dd>{{  task.title }}</dd>
-            <dt>{{ 'label.category'|trans }}</dt>
+            <dt>{{ 'Category'|trans }}</dt>
             <dd>{{  task.category.title }}</dd>
             <dt>{{ 'label.tags'|trans }}</dt>
             <dd>
@@ -26,7 +26,7 @@
                     {{ 'label.none'|trans }}
                 {% endfor %}
             </dd>
-            <dt>{{ 'label.author'|trans }}</dt>
+            <dt>{{ 'Author'|trans }}</dt>
             <dd>{{ task.author.username }}</dd>
             <dt>{{ 'Comment:'|trans }}</dt>
             <dd>{{ task.comment|markdown_to_html }}</dd>
@@ -34,7 +34,9 @@
         <p>
             <a href="{{ url('public_task_index') }}" title="{{ 'action.back_to_list'|trans }}" class="btn btn-primary">
                 {{ 'Back'|trans }}
+            </a>
         </p>
+
     {% else %}
         <p>
             {{ 'message.record_not_found'|trans }}

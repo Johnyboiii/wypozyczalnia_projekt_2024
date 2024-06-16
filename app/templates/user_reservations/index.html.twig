@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Moje rezerwacje{% endblock %}
+{% block title %}My Reservations{% endblock %}
 
 {% block body %}
-    <h1>Moje rezerwacje</h1>
+    <h1>My Reservations</h1>
 
     <table class="table">
         <thead>
         <tr>
-            <th>Tytuł</th>
-            <th>Status rezerwacji</th>
-            <th>Komentarz</th>
+            <th>Title</th>
+            <th>Reservation status</th>
+            <th>Comment</th>
         </tr>
         </thead>
         <tbody>
@@ -22,7 +22,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">Brak rezerwacji</td>
+                <td colspan="3">No Reservations ;(</td>
             </tr>
         {% endfor %}
         </tbody>
