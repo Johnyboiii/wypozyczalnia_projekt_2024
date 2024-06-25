@@ -3,7 +3,6 @@
 namespace App\Form\Type\User;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -12,8 +11,17 @@ use App\Entity\User;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
+/**
+ * User edit form type.
+ */
 class UserEditType extends AbstractType
 {
+    /**
+     * Build the form.
+     *
+     * @param FormBuilderInterface $builder The form builder
+     * @param array<string, mixed> $options The options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -37,6 +45,11 @@ class UserEditType extends AbstractType
             ]);
     }
 
+    /**
+     * Configure the form options.
+     *
+     * @param OptionsResolver $resolver The resolver
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

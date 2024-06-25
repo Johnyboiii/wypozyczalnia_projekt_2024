@@ -10,14 +10,28 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Security;
 
+/**
+ * Reservation form type.
+ */
 class ReservationType extends AbstractType
 {
     private Security $security;
 
+    /**
+     * Constructor.
+     *
+     * @param Security $security The security
+     */
     public function __construct(Security $security)
     {
         $this->security = $security;
     }
+    /**
+     * Build the form.
+     *
+     * @param FormBuilderInterface $builder The form builder
+     * @param array<string, mixed> $options The options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -28,6 +42,11 @@ class ReservationType extends AbstractType
             ->add('reservationComment', TextareaType::class);
     }
 
+    /**
+     * Configure the form options.
+     *
+     * @param OptionsResolver $resolver The resolver
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([]);

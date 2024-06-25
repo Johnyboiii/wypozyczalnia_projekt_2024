@@ -1,4 +1,5 @@
 <?php
+
 /**
  * User entity.
  */
@@ -163,6 +164,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
      *
      * @see UserInterface
+     *
+     * @return string|null The salt
      */
     public function getSalt(): ?string
     {
@@ -179,5 +182,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
-
 }

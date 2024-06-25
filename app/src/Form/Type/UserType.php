@@ -1,4 +1,5 @@
 <?php
+
 #NOT USED IN THIS PROJECT
 namespace App\Form\Type;
 
@@ -12,8 +13,17 @@ use App\Entity\User;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
+/**
+ * User form type.
+ */
 class UserType extends AbstractType
 {
+    /**
+     * Build the form.
+     *
+     * @param FormBuilderInterface $builder The form builder
+     * @param array<string, mixed> $options The options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -44,6 +54,11 @@ class UserType extends AbstractType
             ]);
     }
 
+    /**
+     * Configure the form options.
+     *
+     * @param OptionsResolver $resolver The resolver
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

@@ -6,7 +6,6 @@ use App\Entity\User;
 use App\Form\Type\RegistrationFormType;
 use App\Security\LoginFormAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
-use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,8 +13,21 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
+/**
+ * Controller for user registration.
+ */
 class RegistrationController extends AbstractController
 {
+    /**
+     * Handles user registration.
+     *
+     * @param Request $request The current request
+     * @param UserPasswordHasherInterface $userPasswordHasher The password hasher
+     * @param Security $security The security component
+     * @param EntityManagerInterface $entityManager The entity manager
+     *
+     * @return Response The response
+     */
     #[Route('/register', name: 'app_register', methods: ['GET', 'POST'])]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, Security $security, EntityManagerInterface $entityManager): Response
     {

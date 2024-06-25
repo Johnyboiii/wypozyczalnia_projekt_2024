@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tags data transformer.
  */
@@ -40,7 +41,6 @@ class TagsDataTransformer implements DataTransformerInterface
         }
 
         $tagTitles = [];
-
         foreach ($value as $tag) {
             $tagTitles[] = $tag->getTitle();
         }
@@ -58,9 +58,7 @@ class TagsDataTransformer implements DataTransformerInterface
     public function reverseTransform($value): array
     {
         $tagTitles = explode(',', $value);
-
         $tags = [];
-
         foreach ($tagTitles as $tagTitle) {
             $tagTitle = trim($tagTitle);
             if ('' !== $tagTitle) {
@@ -68,7 +66,6 @@ class TagsDataTransformer implements DataTransformerInterface
                 if (null === $tag) {
                     $tag = new Tag();
                     $tag->setTitle($tagTitle);
-
                     $this->tagService->save($tag);
                 }
                 $tags[] = $tag;

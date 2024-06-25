@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Category controller.
  */
@@ -25,7 +26,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[IsGranted('ROLE_ADMIN')]
 class CategoryController extends AbstractController
 {
-    private $TaskRepository;
 
     /**
      * Constructor.
@@ -155,7 +155,7 @@ class CategoryController extends AbstractController
     #[Route('/{id}/delete', name: 'category_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Category $category): Response
     {
-        if(!$this->categoryService->canBeDeleted($category)) {
+        if (!$this->categoryService->canBeDeleted($category)) {
             $this->addFlash(
                 'warning',
                 $this->translator->trans('message.category_contains_tasks')
@@ -193,7 +193,4 @@ class CategoryController extends AbstractController
             ]
         );
     }
-
-
-
 }

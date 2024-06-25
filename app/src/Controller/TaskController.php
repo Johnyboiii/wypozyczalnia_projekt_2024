@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Task controller.
  */
@@ -11,7 +12,6 @@ use App\Entity\User;
 use App\Form\Type\TaskType;
 use App\Resolver\TaskListInputFiltersDtoResolver;
 use App\Service\TaskServiceInterface;
-use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,6 +42,7 @@ class TaskController extends AbstractController
      * Index action.
      *
      * @param int $page Page number
+     * @param TaskListInputFiltersDto $filters Input filters DTO
      *
      * @return Response HTTP response
      */
@@ -69,7 +70,7 @@ class TaskController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}', name: 'task_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET', )]
+    #[Route('/{id}', name: 'task_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET',)]
     #[IsGranted('VIEW', subject: 'task')]
     public function show(Task $task): Response
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Task repository.
  */
@@ -161,6 +162,14 @@ class TaskRepository extends ServiceEntityRepository
         return $queryBuilder;
     }
 
+    /**
+     * Query tasks by author and status.
+     *
+     * @param User|null $user User entity
+     * @param int|null  $status Task status
+     *
+     * @return QueryBuilder Query builder
+     */
     public function queryByAuthorAndStatus(?User $user, ?int $status): QueryBuilder
     {
         $queryBuilder = $this->queryAll();

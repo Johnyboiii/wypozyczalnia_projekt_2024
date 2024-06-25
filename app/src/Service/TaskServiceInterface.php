@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Task service interface.
  */
@@ -19,6 +20,8 @@ interface TaskServiceInterface
      * Get paginated list.
      *
      * @param int $page Page number
+     * @param User|null $author Author
+     * @param TaskListInputFiltersDto $filtersDto
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */

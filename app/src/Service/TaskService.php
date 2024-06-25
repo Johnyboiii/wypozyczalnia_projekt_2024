@@ -1,7 +1,4 @@
 <?php
-/**
- * Task service.
- */
 
 namespace App\Service;
 
@@ -13,30 +10,25 @@ use App\Entity\Tag;
 use App\Entity\Task;
 use App\Entity\User;
 use App\Repository\TaskRepository;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
- * Class TaskService.
+ * Task service.
  */
 class TaskService implements TaskServiceInterface
 {
-    /**
-     * Items per page.
-     *
-     * Use constants to define configuration options that rarely change instead
-     * of specifying them in app/config/config.yml.
-     * See https://symfony.com/doc/current/best_practices.html#configuration
-     *
-     * @constant int
-     */
     private const PAGINATOR_ITEMS_PER_PAGE = 10;
 
     /**
-     * Constructor.
+     * TaskService constructor.
      *
-     * @param TaskRepository     $taskRepository Task repository
-     * @param PaginatorInterface $paginator      Paginator
+     * @param CategoryServiceInterface $categoryService Category service
+     * @param PaginatorInterface $paginator Paginator
+     * @param TagServiceInterface $tagService Tag service
+     * @param TaskRepository $taskRepository Task repository
      */
     public function __construct(
         private readonly CategoryServiceInterface $categoryService,
@@ -47,12 +39,12 @@ class TaskService implements TaskServiceInterface
     }
 
     /**
-     * Get paginated list.
+     * Find all tasks.
      *
-     * @param int  $page   Page number
-     * @param User $author Author
-     *
-     * @return PaginationInterface<string, mixed> Paginated list
+     * @param int $page
+     * @param User|null $author
+     * @param TaskListInputFiltersDto $filtersDto
+     * @return PaginationInterface Task entities
      */
     public function getPaginatedList(int $page, User $author = null, TaskListInputFiltersDto $filtersDto): PaginationInterface
     {
@@ -69,6 +61,9 @@ class TaskService implements TaskServiceInterface
      * Save entity.
      *
      * @param Task $task Task entity
+     *
+     * @throws ORMException
+     * @throws OptimisticLockException
      */
     public function save(Task $task): void
     {
@@ -79,6 +74,9 @@ class TaskService implements TaskServiceInterface
      * Delete entity.
      *
      * @param Task $task Task entity
+     *
+     * @throws ORMException
+     * @throws OptimisticLockException
      */
     public function delete(Task $task): void
     {
@@ -103,7 +101,4 @@ class TaskService implements TaskServiceInterface
             new TaskStatus($filters->statusId)
         );
     }
-
-
-
 }

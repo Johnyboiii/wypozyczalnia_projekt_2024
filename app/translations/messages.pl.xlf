@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="pl" datatype="plaintext" original="file.ext">
+    <body>
+    <!--
+      <trans-unit id="label.actions">
+        <source>label.actions</source>
+        <target>Akcje</target>
+      </trans-unit>
+      <trans-unit id="label.id">
+        <source>label.id</source>
+        <target>Id</target>
+      </trans-unit>
+      <trans-unit id="label.title">
+        <source>label.title</source>
+        <target>Tytuł</target>
+      </trans-unit>
+      <trans-unit id="label.content">
+        <source>label.content</source>
+        <target>Zawartość</target>
+      </trans-unit>
+      <trans-unit id="label.tags">
+        <source>label.tags</source>
+        <target>Tagi</target>
+      </trans-unit>
+      <trans-unit id="message.empty_list">
+        <source>message.empty_list</source>
+        <target>Lista jest pusta.</target>
+      </trans-unit>
+      <trans-unit id="message.record_not_found">
+        <source>message.record_not_found</source>
+        <target>Nie znaleziono rekordu.</target>
+      </trans-unit>
+      <trans-unit id="title.record_list">
+        <source>title.record_list</source>
+        <target>Lista rekordów</target>
+      </trans-unit>
+      <trans-unit id="title.record_view">
+        <source>title.record_view</source>
+        <target>Widok rekordu #%id%</target>
+      </trans-unit>
+      <trans-unit id="Created At">
+          <source>Created At</source>
+          <target>Utworzono</target>
+      </trans-unit>
+      <trans-unit id="Updated At">
+                <source>Updated At</source>
+                <target>Zaktualizowano</target>
+      </trans-unit>
+      <trans-unit id="Category">
+                <source>Category</source>
+                <target>Kategoria</target>
+      </trans-unit>
+      <trans-unit id="Author">
+                <source>Author</source>
+                <target>Autor</target>
+      </trans-unit>
+      <trans-unit id="Previous">
+          <source>Previous</source>
+          <target>Poprzedni</target>
+      </trans-unit>
+      <trans-unit id="Next">
+          <source>Next</source>
+          <target>Następny</target>
+      </trans-unit>
+      <trans-unit id="action.back_to_list">
+          <source>action.back_to_list</source>
+          <target>Powrót</target>
+      </trans-unit>
+      <trans-unit id="Please enter a comment">
+          <source>Please enter a comment</source>
+          <target>Proszę wprowadzić komentarz</target>
+      </trans-unit>
+      <trans-unit id="This value is too long. It should have {{ limit }} characters or less.">
+          <source>This value is too long. It should have {{ limit }} characters or less.</source>
+          <target>Ta wartość jest za długa. Powinna mieć {{ limit }} znaków lub mniej.</target>
+      </trans-unit>
+      <trans-unit id="There is already an account with this email">
+          <source>There is already an account with this email</source>
+          <target>Już istnieje konto z tym adresem e-mail</target>
+      </trans-unit>
+      <trans-unit id="You should agree to our terms.">
+          <source>You should agree to our terms.</source>
+          <target>Powinieneś zgodzić się na nasze warunki.</target>
+      </trans-unit>
+      <trans-unit id="Please enter a password">
+          <source>Please enter a password</source>
+          <target>Proszę wprowadzić hasło</target>
+      </trans-unit>
+      <trans-unit id="Your password should be at least {{ limit }} characters">
+          <source>Your password should be at least {{ limit }} characters</source>
+          <target>Twoje hasło powinno mieć co najmniej {{ limit }} znaków</target>
+      </trans-unit>
+      <trans-unit id="Comment should not be blank.">
+          <source>Comment should not be blank.</source>
+          <target>Komentarz nie powinien być pusty.</target>
+      </trans-unit>
+      <trans-unit id="Comment cannot be longer than {{ limit }} characters">
+          <source>Comment cannot be longer than {{ limit }} characters</source>
+          <target>Komentarz nie może być dłuższy niż {{ limit }} znaków</target>
+      </trans-unit>
+      <trans-unit id="message.created_successfully">
+          <source>message.created_successfully</source>
+          <target>Wiadomość utworzona pomyślnie</target>
+      </trans-unit>
+      <trans-unit id="message.updated_successfully">
+          <source>message.updated_successfully</source>
+          <target>Wiadomość zaktualizowana pomyślnie</target>
+      </trans-unit>
+      <trans-unit id="message.category_contains_tasks">
+          <source>message.category_contains_tasks</source>
+          <target>Kategoria zawiera zadania</target>
+      </trans-unit>
+      <trans-unit id="message.deleted_successfully">
+          <source>message.deleted_successfully</source>
+          <target>Wiadomość usunięta pomyślnie</target>
+      </trans-unit>
+      <trans-unit id="message.edited_successfully">
+          <source>message.edited_successfully</source>
+          <target>Wiadomość edytowana pomyślnie</target>
+      </trans-unit>
+      <trans-unit id="Log out">
+          <source>Log out</source>
+          <target>Wyloguj</target>
+      </trans-unit>
+      <trans-unit id="Change Password">
+          <source>Change Password</source>
+          <target>Zmień hasło</target>
+      </trans-unit>
+      <trans-unit id="Log in">
+          <source>Log in</source>
+          <target>Zaloguj się</target>
+      </trans-unit>
+      <trans-unit id="Add Category">
+          <source>Add Category</source>
+          <target>Dodaj kategorię</target>
+      </trans-unit>
+      <trans-unit id="Save">
+          <source>Save</source>
+          <target>Zapisz</target>
+      </trans-unit>
+      <trans-unit id="Delete Category">
+          <source>Delete Category</source>
+          <target>Usuń kategorię</target>
+      </trans-unit>
+      <trans-unit id="Delete">
+          <source>Delete</source>
+          <target>Usuń</target>
+      </trans-unit>
+      <trans-unit id="Edit Category">
+          <source>Edit Category</source>
+          <target>Edytuj kategorię</target>
+      </trans-unit>
+      <trans-unit id="Edit">
+          <source>Edit</source>
+          <target>Edytuj</target>
+      </trans-unit>
+      <trans-unit id="Category List">
+          <source>Category List</source>
+          <target>Lista kategorii</target>
+      </trans-unit>
+      <trans-unit id="ID">
+          <source>ID</source>
+          <target>ID</target>
+      </trans-unit>
+    -->
+    </body>
+  </file>
+</xliff>

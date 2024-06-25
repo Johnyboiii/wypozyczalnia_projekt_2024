@@ -66,6 +66,231 @@
           <source>action.back_to_list</source>
           <target>Go Back</target>
       </trans-unit>
+      <!-- Add these lines to your messages.en.xlf file -->
+      <trans-unit id="Please enter a comment">
+          <source>Please enter a comment</source>
+          <target>Please enter a comment</target>
+      </trans-unit>
+      <trans-unit id="This value is too long. It should have {{ limit }} characters or less.">
+          <source>This value is too long. It should have {{ limit }} characters or less.</source>
+          <target>This value is too long. It should have {{ limit }} characters or less.</target>
+      </trans-unit>
+      <trans-unit id="There is already an account with this email">
+          <source>There is already an account with this email</source>
+          <target>There is already an account with this email</target>
+      </trans-unit>
+      <trans-unit id="You should agree to our terms.">
+          <source>You should agree to our terms.</source>
+          <target>You should agree to our terms.</target>
+      </trans-unit>
+      <trans-unit id="Please enter a password">
+          <source>Please enter a password</source>
+          <target>Please enter a password</target>
+      </trans-unit>
+      <trans-unit id="Your password should be at least {{ limit }} characters">
+          <source>Your password should be at least {{ limit }} characters</source>
+          <target>Your password should be at least {{ limit }} characters</target>
+      </trans-unit>
+      <trans-unit id="Comment should not be blank.">
+          <source>Comment should not be blank.</source>
+          <target>Comment should not be blank.</target>
+      </trans-unit>
+      <trans-unit id="Comment cannot be longer than {{ limit }} characters">
+          <source>Comment cannot be longer than {{ limit }} characters</source>
+          <target>Comment cannot be longer than {{ limit }} characters</target>
+      </trans-unit>
+      <trans-unit id="message.created_successfully">
+          <source>message.created_successfully</source>
+          <target>message.created_successfully</target>
+      </trans-unit>
+      <trans-unit id="message.updated_successfully">
+          <source>message.updated_successfully</source>
+          <target>message.updated_successfully</target>
+      </trans-unit>
+      <trans-unit id="message.category_contains_tasks">
+          <source>message.category_contains_tasks</source>
+          <target>message.category_contains_tasks</target>
+      </trans-unit>
+      <trans-unit id="message.deleted_successfully">
+          <source>message.deleted_successfully</source>
+          <target>message.deleted_successfully</target>
+      </trans-unit>
+      <trans-unit id="message.edited_successfully">
+          <source>message.edited_successfully</source>
+          <target>message.edited_successfully</target>
+      </trans-unit>
+      <trans-unit id="Log out">
+          <source>Log out</source>
+          <target>Log out</target>
+      </trans-unit>
+      <trans-unit id="Change Password">
+          <source>Change Password</source>
+          <target>Change Password</target>
+      </trans-unit>
+      <trans-unit id="Log in">
+          <source>Log in</source>
+          <target>Log in</target>
+      </trans-unit>
+      <trans-unit id="Add Category">
+          <source>Add Category</source>
+          <target>Add Category</target>
+      </trans-unit>
+      <trans-unit id="Save">
+          <source>Save</source>
+          <target>Save</target>
+      </trans-unit>
+      <trans-unit id="Delete Category">
+          <source>Delete Category</source>
+          <target>Delete Category</target>
+      </trans-unit>
+      <trans-unit id="Delete">
+          <source>Delete</source>
+          <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="Edit Category">
+          <source>Edit Category</source>
+          <target>Edit Category</target>
+      </trans-unit>
+      <trans-unit id="Edit">
+          <source>Edit</source>
+          <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="Category List">
+          <source>Category List</source>
+          <target>Category List</target>
+      </trans-unit>
+      <trans-unit id="ID">
+          <source>ID</source>
+          <target>ID</target>
+      </trans-unit>
+      <trans-unit id="Title">
+          <source>Title</source>
+          <target>Title</target>
+      </trans-unit>
+      <trans-unit id="Show">
+          <source>Show</source>
+          <target>Show</target>
+      </trans-unit>
+      <trans-unit id="Czy napewno chcesz usunąć ?">
+          <source>Czy napewno chcesz usunąć ?</source>
+          <target>Czy napewno chcesz usunąć ?</target>
+      </trans-unit>
+      <trans-unit id="List is empty">
+          <source>List is empty</source>
+          <target>List is empty</target>
+      </trans-unit>
+      <trans-unit id="Category Info">
+          <source>Category Info</source>
+          <target>Category Info</target>
+      </trans-unit>
+      <trans-unit id="Created At :">
+          <source>Created At :</source>
+          <target>Created At :</target>
+      </trans-unit>
+      <trans-unit id="Updated At :">
+          <source>Updated At :</source>
+          <target>Updated At :</target>
+      </trans-unit>
+      <trans-unit id="Title :">
+          <source>Title :</source>
+          <target>Title :</target>
+      </trans-unit>
+      <trans-unit id="label.created_at">
+          <source>label.created_at</source>
+          <target>label.created_at</target>
+      </trans-unit>
+      <trans-unit id="label.updated_at">
+          <source>label.updated_at</source>
+          <target>label.updated_at</target>
+      </trans-unit>
+      <trans-unit id="Go Back">
+          <source>Go Back</source>
+          <target>Go Back</target>
+      </trans-unit>
+      <trans-unit id="Nie odnaleziono rekordu">
+          <source>Nie odnaleziono rekordu</source>
+          <target>Nie odnaleziono rekordu</target>
+      </trans-unit>
+      <trans-unit id="message.form_error">
+          <source>message.form_error</source>
+          <target>message.form_error</target>
+      </trans-unit>
+      <trans-unit id="Assets">
+          <source>Assets</source>
+          <target>Assets</target>
+      </trans-unit>
+      <trans-unit id="Available Assets">
+          <source>Available Assets</source>
+          <target>Available Assets</target>
+      </trans-unit>
+      <trans-unit id="Reserve">
+          <source>Reserve</source>
+          <target>Reserve</target>
+      </trans-unit>
+      <trans-unit id="Asset Details">
+          <source>Asset Details</source>
+          <target>Asset Details</target>
+      </trans-unit>
+      <trans-unit id="label.none">
+          <source>label.none</source>
+          <target>label.none</target>
+      </trans-unit>
+      <trans-unit id="Comment:">
+          <source>Comment:</source>
+          <target>Comment:</target>
+      </trans-unit>
+      <trans-unit id="Back">
+          <source>Back</source>
+          <target>Back</target>
+      </trans-unit>
+      <trans-unit id="Add Tag">
+          <source>Add Tag</source>
+          <target>Add Tag</target>
+      </trans-unit>
+      <trans-unit id="Delete Tag">
+          <source>Delete Tag</source>
+          <target>Delete Tag</target>
+      </trans-unit>
+      <trans-unit id="Edit Tag">
+          <source>Edit Tag</source>
+          <target>Edit Tag</target>
+      </trans-unit>
+      <trans-unit id="Tags">
+          <source>Tags</source>
+          <target>Tags</target>
+      </trans-unit>
+      <trans-unit id="Lista pusta">
+          <source>Lista pusta</source>
+          <target>Lista pusta</target>
+      </trans-unit>
+      <trans-unit id="Tag Inf">
+          <source>Tag Inf</source>
+          <target>Tag Inf</target>
+      </trans-unit>
+      <trans-unit id="Tag Information">
+          <source>Tag Information</source>
+          <target>Tag Information</target>
+      </trans-unit>
+      <trans-unit id="Edited At :">
+          <source>Edited At :</source>
+          <target>Edited At :</target>
+      </trans-unit>
+      <trans-unit id="Not Found">
+          <source>Not Found</source>
+          <target>Not Found</target>
+      </trans-unit>
+      <trans-unit id="My Assets">
+          <source>My Assets</source>
+          <target>My Assets</target>
+      </trans-unit>
+      <trans-unit id="action.edit">
+          <source>action.edit</source>
+          <target>action.edit</target>
+      </trans-unit>
+      <trans-unit id="action.delete">
+          <source>action.delete</source>
+          <target>action.delete</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

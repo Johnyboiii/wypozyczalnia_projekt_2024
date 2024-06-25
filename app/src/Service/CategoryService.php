@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Category service.
  */
@@ -33,7 +34,6 @@ class CategoryService implements CategoryServiceInterface
      * Transaction repository.
      */
     private TaskRepository $taskRepository;
-    private $TaskService;
 
     /**
      * Constructor.
@@ -69,6 +69,7 @@ class CategoryService implements CategoryServiceInterface
      * Save entity.
      *
      * @param Category $category Category entity
+     *
      * @throws ORMException
      */
     public function save(Category $category): void
@@ -81,6 +82,7 @@ class CategoryService implements CategoryServiceInterface
      * Delete entity.
      *
      * @param Category $category Category
+     *
      * @throws ORMException
      */
     public function delete(Category $category): void
@@ -90,6 +92,7 @@ class CategoryService implements CategoryServiceInterface
 
     /**
      * @param Category $category
+     *
      * @return bool
      */
     public function canBeDeleted(Category $category): bool
@@ -98,7 +101,7 @@ class CategoryService implements CategoryServiceInterface
             $result = $this->taskRepository->countByCategory($category);
 
             return !($result > 0);
-        } catch (NoResultException|NonUniqueResultException) {
+        } catch (NoResultException | NonUniqueResultException) {
             return false;
         }
     }

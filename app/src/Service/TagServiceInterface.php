@@ -14,6 +14,7 @@ interface TagServiceInterface
      * Create a new tag.
      *
      * @param Tag $tag
+     *
      * @return Tag
      */
     public function createTag(Tag $tag): Tag;
@@ -22,6 +23,7 @@ interface TagServiceInterface
      * Update an existing tag.
      *
      * @param Tag $tag
+     *
      * @return Tag
      */
     public function updateTag(Tag $tag): Tag;
@@ -30,6 +32,7 @@ interface TagServiceInterface
      * Delete a tag.
      *
      * @param Tag $tag
+     *
      * @return void
      */
     public function deleteTag(Tag $tag): void;
@@ -38,6 +41,7 @@ interface TagServiceInterface
      * Get a tag by its ID.
      *
      * @param int $id
+     *
      * @return Tag|null
      */
     public function getTagById(int $id): ?Tag;
@@ -58,6 +62,13 @@ interface TagServiceInterface
      */
     public function findOneByTitle(string $title): ?Tag;
 
+    /**
+     * Find tags by title.
+     *
+     * @param Tag $tag
+     *
+     * @return Tag[]
+     */
     public function save(Tag $tag);
 
     /**
@@ -68,5 +79,4 @@ interface TagServiceInterface
      * @return Tag|null Tag entity
      */
     public function findOneById(int $id): ?Tag;
-
 }

@@ -1,0 +1,479 @@
+   1) src/Controller/AdminTaskController.php (no_superfluous_phpdoc_tags, single_line_comment_spacing, phpdoc_trim, blank_line_before_statement)
+   2) src/Controller/CategoryController.php (class_attributes_separation, no_unused_imports)
+   3) src/Controller/ChangePasswordController.php (class_attributes_separation, no_superfluous_phpdoc_tags, phpdoc_separation, phpdoc_trim, no_unused_imports, blank_lines_before_namespace)
+   4) src/Controller/PublicTaskController.php (class_attributes_separation, method_argument_space, no_superfluous_phpdoc_tags, no_empty_phpdoc, statement_indentation, blank_line_before_statement, phpdoc_trim_consecutive_blank_line_separation)
+   5) src/Controller/RegistrationController.php (phpdoc_align)
+   6) src/Controller/SecurityController.php (global_namespace_import, no_unused_imports)
+   7) src/Controller/TagController.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+   8) src/Controller/TaskController.php (method_argument_space, phpdoc_align)
+   9) src/Controller/UserController.php (no_superfluous_phpdoc_tags, no_blank_lines_after_class_opening, phpdoc_trim, phpdoc_align)
+  10) src/Controller/UserReservationsController.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  11) src/DataFixtures/AbstractBaseFixtures.php (concat_space, global_namespace_import, no_unused_imports)
+  12) src/DataFixtures/CategoryFixtures.php (global_namespace_import, no_unused_imports)
+  13) src/DataFixtures/TagFixtures.php (global_namespace_import, no_unused_imports, no_extra_blank_lines)
+  14) src/DataFixtures/TaskFixtures.php (global_namespace_import, no_unused_imports)
+  15) src/DataFixtures/UserFixtures.php (no_extra_blank_lines)
+  16) src/Entity/Category.php (fully_qualified_strict_types, no_superfluous_phpdoc_tags, global_namespace_import, no_unused_imports)
+  17) src/Entity/Enum/TaskStatus.php (visibility_required, no_superfluous_phpdoc_tags, single_line_comment_spacing, global_namespace_import, phpdoc_trim, no_unused_imports, no_extra_blank_lines, phpdoc_trim_consecutive_blank_line_separation)
+  18) src/Entity/Enum/UserRole.php (class_attributes_separation, align_multiline_comment, phpdoc_indent)
+  19) src/Entity/Tag.php (fully_qualified_strict_types, no_superfluous_phpdoc_tags, global_namespace_import, phpdoc_summary, yoda_style, phpdoc_separation, phpdoc_trim, no_unused_imports)
+  20) src/Entity/Task.php (single_quote, fully_qualified_strict_types, no_superfluous_phpdoc_tags, no_empty_phpdoc, single_line_comment_spacing, global_namespace_import, space_after_semicolon, phpdoc_trim, no_unused_imports)
+  21) src/Entity/User.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  22) src/Form/Type/RegistrationFormType.php (array_indentation)
+  23) src/Form/Type/ReservationType.php (class_attributes_separation)
+  24) src/Form/Type/TagType.php (no_superfluous_phpdoc_tags, phpdoc_trim)
+  25) src/Form/Type/TaskType.php (function_declaration)
+  26) src/Form/Type/UserType.php (single_line_comment_spacing, single_line_comment_style, blank_lines_before_namespace)
+  27) src/Repository/TagRepository.php (phpdoc_no_package, no_superfluous_phpdoc_tags, concat_space, global_namespace_import, phpdoc_summary, phpdoc_trim, no_unused_imports, phpdoc_trim_consecutive_blank_line_separation)
+  28) src/Repository/TaskRepository.php (class_attributes_separation, nullable_type_declaration_for_default_null_value, yoda_style, phpdoc_align)
+  29) src/Repository/UserRepository.php (no_superfluous_phpdoc_tags, phpdoc_trim, phpdoc_align)
+  30) src/Security/Voter/TaskVoter.php (single_line_comment_spacing)
+  31) src/Service/CategoryService.php (no_superfluous_phpdoc_tags, no_empty_phpdoc, types_spaces)
+  32) src/Service/TagService.php (phpdoc_no_package, no_superfluous_phpdoc_tags, no_empty_phpdoc, phpdoc_summary, phpdoc_trim)
+  33) src/Service/TagServiceInterface.php (phpdoc_no_package, no_superfluous_phpdoc_tags, phpdoc_summary, phpdoc_trim, phpdoc_trim_consecutive_blank_line_separation)
+  34) src/Service/TaskService.php (no_superfluous_phpdoc_tags, nullable_type_declaration_for_default_null_value, phpdoc_align, single_blank_line_at_eof)
+  35) src/Service/TaskServiceInterface.php (no_superfluous_phpdoc_tags, nullable_type_declaration_for_default_null_value, phpdoc_align)
+
+Found 35 of 50 files that can be fixed in 2.741 seconds, 18.00 MB memory used
+
+FILE: /home/wwwroot/app/src/Controller/AdminTaskController.php
+-----------------------------------------------------------------------
+FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
+-----------------------------------------------------------------------
+ 3 | WARNING | The license block has to be present at the top
+   |         |                 of every PHP file, before the namespace
+-----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/ChangePasswordController.php
+--------------------------------------------------------------------------------------------------------------
+FOUND 3 ERRORS AFFECTING 3 LINES
+--------------------------------------------------------------------------------------------------------------
+ 41 | ERROR | [x] Expected 21 spaces after parameter type; 1 found
+ 43 | ERROR | [x] Expected 6 spaces after parameter type; 1 found
+ 75 | ERROR | [ ] Do not use else, elseif, break after if and case conditions which return or throw something
+--------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+--------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/PublicTaskController.php
+----------------------------------------------------------------------
+FOUND 4 ERRORS AFFECTING 4 LINES
+----------------------------------------------------------------------
+ 37 | ERROR | [ ] Doc comment for parameter "$entityManager" missing
+ 52 | ERROR | [x] Expected 5 spaces after parameter type; 1 found
+ 74 | ERROR | [x] Add a single space after each comma delimiter
+ 84 | ERROR | [x] Expected 4 spaces after parameter type; 1 found
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 3 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/RegistrationController.php
+----------------------------------------------------------------------------
+FOUND 6 ERRORS AND 1 WARNING AFFECTING 4 LINES
+----------------------------------------------------------------------------
+  3 | WARNING | [ ] The license block has to be present at the top
+    |         |                     of every PHP file, before the namespace
+ 24 | ERROR   | [x] Expected 21 spaces after parameter type; 1 found
+ 24 | ERROR   | [x] Expected 12 spaces after parameter name; 1 found
+ 26 | ERROR   | [x] Expected 20 spaces after parameter type; 1 found
+ 26 | ERROR   | [x] Expected 11 spaces after parameter name; 1 found
+ 27 | ERROR   | [x] Expected 6 spaces after parameter type; 1 found
+ 27 | ERROR   | [x] Expected 6 spaces after parameter name; 1 found
+----------------------------------------------------------------------------
+PHPCBF CAN FIX THE 6 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/SecurityController.php
+-----------------------------------------------------------------------
+FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
+-----------------------------------------------------------------------
+ 3 | WARNING | The license block has to be present at the top
+   |         |                 of every PHP file, before the namespace
+-----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/TagController.php
+-------------------------------------------------------------------------------------------------
+FOUND 14 ERRORS AND 1 WARNING AFFECTING 13 LINES
+-------------------------------------------------------------------------------------------------
+   3 | WARNING | [ ] The license block has to be present at the top
+     |         |                     of every PHP file, before the namespace
+  24 | ERROR   | [ ] Member variable "TagService" is not in valid camel caps format
+  33 | ERROR   | [ ] Variable "TagService" is not in valid camel caps format
+  35 | ERROR   | [ ] Variable "TagService" is not in valid camel caps format
+  35 | ERROR   | [ ] Variable "TagService" is not in valid camel caps format
+  47 | ERROR   | [ ] Variable "TagRepository" is not in valid camel caps format
+  50 | ERROR   | [ ] Variable "TagRepository" is not in valid camel caps format
+  69 | ERROR   | [ ] Variable "TagService" is not in valid camel caps format
+  99 | ERROR   | [x] Expected 5 spaces after parameter type; 1 found
+ 110 | ERROR   | [ ] Variable "TagService" is not in valid camel caps format
+ 124 | ERROR   | [x] Expected 5 spaces after parameter type; 1 found
+ 124 | ERROR   | [ ] Doc comment for parameter $tag does not match actual variable name $request
+ 125 | ERROR   | [ ] Doc comment for parameter $request does not match actual variable name $tag
+ 151 | ERROR   | [x] Expected 5 spaces after parameter type; 1 found
+ 169 | ERROR   | [ ] Variable "TagService" is not in valid camel caps format
+-------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 3 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/TaskController.php
+-----------------------------------------------------------------------------------------------
+FOUND 5 ERRORS AFFECTING 3 LINES
+-----------------------------------------------------------------------------------------------
+ 44 | ERROR | [x] Expected 21 spaces after parameter type; 1 found
+ 44 | ERROR | [ ] Doc comment for parameter $page does not match actual variable name $filters
+ 44 | ERROR | [x] Expected 4 spaces after parameter name; 1 found
+ 45 | ERROR | [ ] Doc comment for parameter $filters does not match actual variable name $page
+ 73 | ERROR | [x] Add a single space after each comma delimiter
+-----------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 3 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/UserController.php
+-----------------------------------------------------------------------------
+FOUND 6 ERRORS AND 1 WARNING AFFECTING 5 LINES
+-----------------------------------------------------------------------------
+   3 | WARNING | [ ] The license block has to be present at the top
+     |         |                     of every PHP file, before the namespace
+  65 | ERROR   | [x] Expected 21 spaces after parameter type; 1 found
+  65 | ERROR   | [x] Expected 12 spaces after parameter name; 1 found
+  67 | ERROR   | [x] Expected 6 spaces after parameter type; 1 found
+  67 | ERROR   | [x] Expected 6 spaces after parameter name; 1 found
+  98 | ERROR   | [ ] Doc comment for parameter "$entityManager" missing
+ 127 | ERROR   | [ ] Doc comment for parameter "$entityManager" missing
+-----------------------------------------------------------------------------
+PHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/UserReservationsController.php
+-----------------------------------------------------------------------
+FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
+-----------------------------------------------------------------------
+ 3 | WARNING | The license block has to be present at the top
+   |         |                 of every PHP file, before the namespace
+-----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/DataFixtures/AbstractBaseFixtures.php
+----------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 108 | ERROR | [x] Concat operator must not be surrounded by spaces
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/DataFixtures/AppFixtures.php
+-----------------------------------------------------------------------
+FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
+-----------------------------------------------------------------------
+ 3 | WARNING | The license block has to be present at the top
+   |         |                 of every PHP file, before the namespace
+-----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Entity/Enum/TaskStatus.php
+-----------------------------------------------------------------------
+FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
+-----------------------------------------------------------------------
+ 3 | WARNING | The license block has to be present at the top
+   |         |                 of every PHP file, before the namespace
+-----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Entity/Tag.php
+-----------------------------------------------------------------------
+FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
+-----------------------------------------------------------------------
+ 3 | WARNING | The license block has to be present at the top
+   |         |                 of every PHP file, before the namespace
+-----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Entity/Task.php
+-----------------------------------------------------------------------------
+FOUND 6 ERRORS AFFECTING 5 LINES
+-----------------------------------------------------------------------------
+  67 | ERROR | Member variable "ManyToOne" is not in valid camel caps format
+ 193 | ERROR | Variable "ManyToOne" is not in valid camel caps format
+ 199 | ERROR | Variable "ManyToOne" is not in valid camel caps format
+ 201 | ERROR | Variable "ManyToOne" is not in valid camel caps format
+ 201 | ERROR | Variable "ManyToOne" is not in valid camel caps format
+ 338 | ERROR | Missing @return tag in function comment
+-----------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Form/Type/RegistrationFormType.php
+-----------------------------------------------------------------------
+FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
+-----------------------------------------------------------------------
+ 3 | WARNING | The license block has to be present at the top
+   |         |                 of every PHP file, before the namespace
+-----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Form/Type/ReservationType.php
+-----------------------------------------------------------------------
+FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
+-----------------------------------------------------------------------
+ 3 | WARNING | The license block has to be present at the top
+   |         |                 of every PHP file, before the namespace
+-----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Form/Type/TagType.php
+----------------------------------------------------------------------------
+FOUND 1 ERROR AND 1 WARNING AFFECTING 2 LINES
+----------------------------------------------------------------------------
+  3 | WARNING | [ ] The license block has to be present at the top
+    |         |                     of every PHP file, before the namespace
+ 20 | ERROR   | [x] Expected 16 spaces after parameter type; 1 found
+----------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Form/Type/User/UserEditType.php
+-----------------------------------------------------------------------
+FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
+-----------------------------------------------------------------------
+ 3 | WARNING | The license block has to be present at the top
+   |         |                 of every PHP file, before the namespace
+-----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Form/Type/User/UserRoleType.php
+-----------------------------------------------------------------------
+FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
+-----------------------------------------------------------------------
+ 3 | WARNING | The license block has to be present at the top
+   |         |                 of every PHP file, before the namespace
+-----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Form/Type/UserType.php
+----------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------------------------------------
+ 3 | ERROR | [x] Perl-style comments are not allowed. Use "// Comment." or "/* comment */" instead.
+----------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Repository/TagRepository.php
+----------------------------------------------------------------------------
+FOUND 3 ERRORS AND 1 WARNING AFFECTING 3 LINES
+----------------------------------------------------------------------------
+  3 | WARNING | [ ] The license block has to be present at the top
+    |         |                     of every PHP file, before the namespace
+ 14 | ERROR   | [ ] The @package tag is not allowed.
+ 44 | ERROR   | [x] Concat operator must not be surrounded by spaces
+ 44 | ERROR   | [x] Concat operator must not be surrounded by spaces
+----------------------------------------------------------------------------
+PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Repository/TaskRepository.php
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+FOUND 6 ERRORS AFFECTING 6 LINES
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+  49 | ERROR | [ ] Doc comment for parameter "$filters" missing
+ 145 | ERROR | [ ] Doc comment for parameter "$filters" missing
+ 152 | ERROR | [ ] Declare public methods first,then protected ones and finally private ones
+ 157 | ERROR | [ ] Use Yoda conditions when checking a variable against an expression to avoid an accidental assignment inside the condition statement.
+ 168 | ERROR | [x] Expected 3 spaces after parameter name; 1 found
+ 182 | ERROR | [ ] Use Yoda conditions when checking a variable against an expression to avoid an accidental assignment inside the condition statement.
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Repository/UserRepository.php
+----------------------------------------------------------------------------
+FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
+----------------------------------------------------------------------------
+  3 | WARNING | [ ] The license block has to be present at the top
+    |         |                     of every PHP file, before the namespace
+ 30 | ERROR   | [x] Expected 14 spaces after parameter name; 1 found
+ 31 | ERROR   | [x] Expected 29 spaces after parameter type; 1 found
+----------------------------------------------------------------------------
+PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Service/TagService.php
+-----------------------------------------------------------------------------------------------------------------
+FOUND 3 ERRORS AND 1 WARNING AFFECTING 4 LINES
+-----------------------------------------------------------------------------------------------------------------
+   3 | WARNING | [ ] The license block has to be present at the top
+     |         |                     of every PHP file, before the namespace
+  12 | ERROR   | [ ] The @package tag is not allowed.
+  30 | ERROR   | [x] Expected 10 spaces after parameter type; 1 found
+ 124 | ERROR   | [ ] Do not use else, elseif, break after if and case conditions which return or throw something
+-----------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Service/TagServiceInterface.php
+-----------------------------------------------------------------------
+FOUND 1 ERROR AND 1 WARNING AFFECTING 2 LINES
+-----------------------------------------------------------------------
+ 3 | WARNING | The license block has to be present at the top
+   |         |                 of every PHP file, before the namespace
+ 9 | ERROR   | The @package tag is not allowed.
+-----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Service/TaskService.php
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+FOUND 14 ERRORS AND 1 WARNING AFFECTING 12 LINES
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+   3 | WARNING | [ ] The license block has to be present at the top
+     |         |                     of every PHP file, before the namespace
+  29 | ERROR   | [x] Expected 7 spaces after parameter type; 1 found
+  29 | ERROR   | [x] Expected 7 spaces after parameter name; 1 found
+  30 | ERROR   | [x] Expected 6 spaces after parameter type; 1 found
+  30 | ERROR   | [x] Expected 6 spaces after parameter name; 1 found
+  31 | ERROR   | [x] Expected 11 spaces after parameter type; 1 found
+  31 | ERROR   | [x] Expected 2 spaces after parameter name; 1 found
+  33 | ERROR   | [ ] Declare all the arguments on the same line as the method/function name, no matter how many arguments there are.
+  44 | ERROR   | [x] Expected 21 spaces after parameter type; 1 found
+  45 | ERROR   | [x] Expected 15 spaces after parameter type; 1 found
+  46 | ERROR   | [x] Group annotations together so that annotations of the same type immediately follow each other, and annotations of a different type are
+     |         |     separated by a single blank line
+  86 | ERROR   | [ ] Missing doc comment for function getTasksByCategory()
+  91 | ERROR   | [ ] Missing doc comment for function getTasksByTag()
+  96 | ERROR   | [ ] Missing doc comment for function prepareFilters()
+ 104 | ERROR   | [x] Expected 1 newline at end of file; 0 found
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 10 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Service/TaskServiceInterface.php
+----------------------------------------------------------------------
+FOUND 4 ERRORS AFFECTING 2 LINES
+----------------------------------------------------------------------
+ 22 | ERROR | [x] Expected 21 spaces after parameter type; 1 found
+ 22 | ERROR | [x] Expected 7 spaces after parameter name; 1 found
+ 23 | ERROR | [x] Expected 15 spaces after parameter type; 1 found
+ 23 | ERROR | [x] Expected 5 spaces after parameter name; 1 found
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+Time: 4.1 secs; Memory: 10MB
+
+ ----------- ------------ ------------------------------------------------------------------------ ------------------------------------------ 
+  State       Domain       Id                                                                       Message Preview (en)                      
+ ----------- ------------ ------------------------------------------------------------------------ ------------------------------------------ 
+   missing    validators   Please enter a comment                                                   Please enter a comment                    
+   missing    validators   This value is too long. It should have {{ limit }} characters or less.   This value is too long. It should hav...  
+   missing    validators   There is already an account with this email                              There is already an account with this...  
+   missing    validators   You should agree to our terms.                                           You should agree to our terms.            
+   missing    validators   Please enter a password                                                  Please enter a password                   
+   missing    validators   Your password should be at least {{ limit }} characters                  Your password should be at least {{ l...  
+   missing    validators   Comment should not be blank.                                             Comment should not be blank.              
+   missing    validators   Comment cannot be longer than {{ limit }} characters                     Comment cannot be longer than {{ limi...  
+   missing    messages                                                                                                                        
+ ----------- ------------ ------------------------------------------------------------------------ ------------------------------------------ 
+
+ ---------------------- ------------ ------------------------------------------------------------------------ ------------------------------------------ ------------------------------------------ 
+  State                  Domain       Id                                                                       Message Preview (pl)                       Fallback Message Preview (en)             
+ ---------------------- ------------ ------------------------------------------------------------------------ ------------------------------------------ ------------------------------------------ 
+   missing               validators   Please enter a comment                                                   Please enter a comment                     Please enter a comment                    
+   missing               validators   This value is too long. It should have {{ limit }} characters or less.   This value is too long. It should hav...   This value is too long. It should hav...  
+   missing               validators   There is already an account with this email                              There is already an account with this...   There is already an account with this...  
+   missing               validators   You should agree to our terms.                                           You should agree to our terms.             You should agree to our terms.            
+   missing               validators   Please enter a password                                                  Please enter a password                    Please enter a password                   
+   missing               validators   Your password should be at least {{ limit }} characters                  Your password should be at least {{ l...   Your password should be at least {{ l...  
+   missing               validators   Comment should not be blank.                                             Comment should not be blank.               Comment should not be blank.              
+   missing               validators   Comment cannot be longer than {{ limit }} characters                     Comment cannot be longer than {{ limi...   Comment cannot be longer than {{ limi...  
+   missing   fallback    messages     message.created_successfully                                             message.created_successfully               message.created_successfully              
+   missing   fallback    messages     message.updated_successfully                                             message.updated_successfully               message.updated_successfully              
+   missing   fallback    messages     message.category_contains_tasks                                          message.category_contains_tasks            message.category_contains_tasks           
+   missing   fallback    messages     message.deleted_successfully                                             message.deleted_successfully               message.deleted_successfully              
+   missing               messages     message.record_not_found                                                 message.record_not_found                   Record not found.                         
+   missing   fallback    messages     message.edited_successfully                                              message.edited_successfully                message.edited_successfully               
+   missing   fallback    messages     Log out                                                                  Log out                                    Log out                                   
+   missing   fallback    messages     Change Password                                                          Change Password                            Change Password                           
+   missing   fallback    messages     Log in                                                                   Log in                                     Log in                                    
+   missing   fallback    messages     Previous                                                                 Previous                                   Previous                                  
+   missing   fallback    messages     Next                                                                     Next                                       Next                                      
+   missing   fallback    messages     Add Category                                                             Add Category                               Add Category                              
+   missing   fallback    messages     Save                                                                     Save                                       Save                                      
+   missing   fallback    messages     Delete Category                                                          Delete Category                            Delete Category                           
+   missing   fallback    messages     Delete                                                                   Delete                                     Delete                                    
+   missing   fallback    messages     Edit Category                                                            Edit Category                              Edit Category                             
+   missing   fallback    messages     Edit                                                                     Edit                                       Edit                                      
+   missing   fallback    messages     Category                                                                 Category                                   Category                                  
+   missing   fallback    messages     Category List                                                            Category List                              Category List                             
+   missing   fallback    messages     ID                                                                       ID                                         ID                                        
+   missing   fallback    messages     Title                                                                    Title                                      Title                                     
+   missing   fallback    messages     Created At                                                               Created At                                 Created At                                
+   missing   fallback    messages     Updated At                                                               Updated At                                 Updated At                                
+   missing               messages     label.actions                                                            label.actions                              Actions                                   
+   missing   fallback    messages     Show                                                                     Show                                       Show                                      
+   missing   fallback    messages     Czy napewno chcesz usunąć ?                                              Czy napewno chcesz usunąć ?                Czy napewno chcesz usunąć ?               
+   missing   fallback    messages     List is empty                                                            List is empty                              List is empty                             
+   missing   fallback    messages     Category Info                                                            Category Info                              Category Info                             
+   missing   fallback    messages     Created At :                                                             Created At :                               Created At :                              
+   missing   fallback    messages     Updated At :                                                             Updated At :                               Updated At :                              
+   missing   fallback    messages     Title :                                                                  Title :                                    Title :                                   
+   missing               messages     label.id                                                                 label.id                                   Id                                        
+   missing               messages     label.title                                                              label.title                                Title                                     
+   missing   fallback    messages     label.created_at                                                         label.created_at                           label.created_at                          
+   missing   fallback    messages     label.updated_at                                                         label.updated_at                           label.updated_at                          
+   missing               messages                                                                                                                                                                   
+   missing               messages     action.back_to_list                                                      action.back_to_list                        Go Back                                   
+   missing   fallback    messages     Go Back                                                                  Go Back                                    Go Back                                   
+   missing   fallback    messages     Nie odnaleziono rekordu                                                  Nie odnaleziono rekordu                    Nie odnaleziono rekordu                   
+   missing   fallback    messages     message.form_error                                                       message.form_error                         message.form_error                        
+   missing   fallback    messages     Assets                                                                   Assets                                     Assets                                    
+   missing   fallback    messages     Available Assets                                                         Available Assets                           Available Assets                          
+   missing   fallback    messages     Author                                                                   Author                                     Author                                    
+   missing               messages     label.tags                                                               label.tags                                 Tags                                      
+   missing   fallback    messages     Reserve                                                                  Reserve                                    Reserve                                   
+   missing               messages     message.empty_list                                                       message.empty_list                         List is empty.                            
+   missing   fallback    messages     Asset Details                                                            Asset Details                              Asset Details                             
+   missing   fallback    messages     label.none                                                               label.none                                 label.none                                
+   missing   fallback    messages     Comment:                                                                 Comment:                                   Comment:                                  
+   missing   fallback    messages     Back                                                                     Back                                       Back                                      
+   missing   fallback    messages     Add Tag                                                                  Add Tag                                    Add Tag                                   
+   missing   fallback    messages     Delete Tag                                                               Delete Tag                                 Delete Tag                                
+   missing   fallback    messages     Edit Tag                                                                 Edit Tag                                   Edit Tag                                  
+   missing   fallback    messages     Tags                                                                     Tags                                       Tags                                      
+   missing   fallback    messages     Lista pusta                                                              Lista pusta                                Lista pusta                               
+   missing   fallback    messages     Tag Inf                                                                  Tag Inf                                    Tag Inf                                   
+   missing   fallback    messages     Tag Information                                                          Tag Information                            Tag Information                           
+   missing   fallback    messages     Edited At :                                                              Edited At :                                Edited At :                               
+   missing   fallback    messages     Not Found                                                                Not Found                                  Not Found                                 
+   missing   fallback    messages     My Assets                                                                My Assets                                  My Assets                                 
+   missing   fallback    messages     action.edit                                                              action.edit                                action.edit                               
+   missing   fallback    messages     action.delete                                                            action.delete                              action.delete                             
+ ---------------------- ------------ ------------------------------------------------------------------------ ------------------------------------------ ------------------------------------------ 
+
+[notice] Migrating up to DoctrineMigrations\Version20240608101043
+[warning] Migration DoctrineMigrations\Version20240529080810 was executed but did not result in any SQL statements.
+[notice] finished in 1233ms, used 26M memory, 12 migrations executed, 25 sql queries
+
+ [OK] Successfully migrated to version: DoctrineMigrations\Version20240608101043                                        
+
+
+   > purging database
+   > loading App\DataFixtures\AppFixtures
+   > loading App\DataFixtures\CategoryFixtures
+   > loading App\DataFixtures\TagFixtures
+   > loading App\DataFixtures\UserFixtures
+   > loading App\DataFixtures\TaskFixtures

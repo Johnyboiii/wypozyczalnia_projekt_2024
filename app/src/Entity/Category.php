@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Category entity.
  */
@@ -136,11 +137,23 @@ class Category
         $this->title = $title;
     }
 
+    /**
+     * Getter for slug.
+     *
+     * @return string|null Slug
+     */
     public function getSlug(): ?string
     {
         return $this->slug;
     }
 
+    /**
+     * Setter for slug.
+     *
+     * @param string|null $slug Slug
+     *
+     * @return Category
+     */
     public function setSlug(?string $slug): static
     {
         $this->slug = $slug;

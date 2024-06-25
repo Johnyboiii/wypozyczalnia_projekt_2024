@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Tag;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
 
@@ -32,6 +34,7 @@ class TagRepository extends ServiceEntityRepository
      * Find tags by title.
      *
      * @param string $title
+     *
      * @return Tag[]
      */
     public function findByTitle(string $title): array
@@ -47,10 +50,11 @@ class TagRepository extends ServiceEntityRepository
     /**
      * Find tags created after a specific date.
      *
-     * @param \DateTime $date
+     * @param DateTime $date
+     *
      * @return Tag[]
      */
-    public function findByCreatedAfter(\DateTime $date): array
+    public function findByCreatedAfter(DateTime $date): array
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.createdAt > :date')
@@ -73,7 +77,16 @@ class TagRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
-    public function findOneById(int $id)
+    /**
+     * Find one by id.
+     *
+     * @param int $id
+     *
+     * @return Tag|null
+     *
+     * @throws NonUniqueResultException
+     */
+    public function findOneById(int $id): ?Tag
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.id = :id')

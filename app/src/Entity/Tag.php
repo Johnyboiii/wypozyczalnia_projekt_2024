@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\TagRepository;
 use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -33,24 +34,24 @@ class Tag
     private $id;
 
     /**
-     * @var \DateTimeInterface
+     * @var DateTimeInterface
      *
      * @ORM\Column(type="datetime")
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Assert\Type(DateTimeImmutable::class)]
     #[Gedmo\Timestampable(on: 'create')]
-    private \DateTimeInterface $createdAt;
+    private DateTimeInterface $createdAt;
 
     /**
-     * @var \DateTimeInterface
+     * @var DateTimeInterface
      *
      * @ORM\Column(type="datetime")
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Assert\Type(DateTimeImmutable::class)]
     #[Gedmo\Timestampable(on: 'update')]
-    private \DateTimeInterface $updatedAt;
+    private DateTimeInterface $updatedAt;
 
     /**
      * @var string
@@ -87,9 +88,9 @@ class Tag
     /**
      * Get the value of createdAt
      *
-     * @return \DateTimeInterface|null
+     * @return DateTimeInterface|null
      */
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?DateTimeInterface
     {
         return $this->createdAt;
     }
@@ -97,10 +98,11 @@ class Tag
     /**
      * Set the value of createdAt
      *
-     * @param \DateTimeInterface $createdAt
+     * @param DateTimeInterface $createdAt
+     *
      * @return self
      */
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    public function setCreatedAt(DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
 
@@ -110,9 +112,9 @@ class Tag
     /**
      * Get the value of updatedAt
      *
-     * @return \DateTimeInterface|null
+     * @return DateTimeInterface|null
      */
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?DateTimeInterface
     {
         return $this->updatedAt;
     }
@@ -120,10 +122,11 @@ class Tag
     /**
      * Set the value of updatedAt
      *
-     * @param \DateTimeInterface $updatedAt
+     * @param DateTimeInterface $updatedAt
+     *
      * @return self
      */
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    public function setUpdatedAt(DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
@@ -144,6 +147,7 @@ class Tag
      * Set the value of slug
      *
      * @param string $slug
+     *
      * @return self
      */
     public function setSlug(string $slug): self
@@ -167,6 +171,7 @@ class Tag
      * Set the value of title
      *
      * @param string $title
+     *
      * @return self
      */
     public function setTitle(string $title): self
@@ -197,6 +202,7 @@ class Tag
      * Generate slug from title
      *
      * @param string $title
+     *
      * @return string
      */
     private function generateSlug(string $title): string

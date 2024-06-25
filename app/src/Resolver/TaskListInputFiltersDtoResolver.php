@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TaskListInputFiltersDto resolver.
  */
@@ -27,7 +28,6 @@ class TaskListInputFiltersDtoResolver implements ValueResolverInterface
     public function resolve(Request $request, ArgumentMetadata $argument): iterable
     {
         $argumentType = $argument->getType();
-
         if (!$argumentType || !is_a($argumentType, TaskListInputFiltersDto::class, true)) {
             return [];
         }

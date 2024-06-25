@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Task entity.
  */
@@ -13,6 +14,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -104,6 +106,9 @@ class Task
     #[Assert\Length(max: 500, maxMessage: 'This value is too long. It should have {{ limit }} characters or less.')]
     private ?string $comment = null;
 
+    /**
+     * Task constructor.
+     */
     public function __construct()
     {
         $this->tags = new ArrayCollection();
@@ -180,21 +185,37 @@ class Task
         $this->title = $title;
     }
 
+    /**
+     * @return string
+     */
     public function getManyToOne(): string
     {
         return $this->ManyToOne;
     }
 
+    /**
+     * @param string $ManyToOne
+     */
     public function setManyToOne(string $ManyToOne): void
     {
         $this->ManyToOne = $ManyToOne;
     }
 
+    /**
+     * Getter for category.
+     *
+     * @return Category|null Category
+     */
     public function getCategory(): ?Category
     {
         return $this->category;
     }
 
+    /**
+     * Setter for category.
+     *
+     * @param Category|null $category Category
+     */
     public function setCategory(?Category $category): void
     {
         $this->category = $category;
@@ -208,6 +229,11 @@ class Task
         return $this->tags;
     }
 
+    /**
+     * @param Tag $tag
+     *
+     * @return $this
+     */
     public function addTag(Tag $tag): static
     {
         if (!$this->tags->contains($tag)) {
@@ -217,6 +243,11 @@ class Task
         return $this;
     }
 
+    /**
+     * @param Tag $tag
+     *
+     * @return $this
+     */
     public function removeTag(Tag $tag): static
     {
         $this->tags->removeElement($tag);
@@ -224,11 +255,19 @@ class Task
         return $this;
     }
 
+    /**
+     * @return User|null
+     */
     public function getAuthor(): ?User
     {
         return $this->author;
     }
 
+    /**
+     * @param User|null $author
+     *
+     * @return $this
+     */
     public function setAuthor(?User $author): static
     {
         $this->author = $author;
@@ -236,15 +275,23 @@ class Task
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getStatus(): int
     {
         return $this->status;
     }
 
+    /**
+     * @param int $status
+     *
+     * @return $this
+     */
     public function setStatus(int $status): self
     {
         if (!in_array($status, [TaskStatus::STATUS_1, TaskStatus::STATUS_2])) {
-            throw new \InvalidArgumentException('Invalid task status');
+            throw new InvalidArgumentException('Invalid task status');
         }
 
         $this->status = $status;
@@ -262,6 +309,7 @@ class Task
 
     /**
      * @param string|null $comment
+     *
      * @return $this
      */
     public function setComment(?string $comment): self
@@ -285,11 +333,19 @@ class Task
 
     // ...
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     public function getReservationStatus(): ?string
     {
         return $this->reservationStatus;
     }
 
+    /**
+     * @param string|null $reservationStatus
+     *
+     * @return $this
+     */
     public function setReservationStatus(?string $reservationStatus): self
     {
         $this->reservationStatus = $reservationStatus;
@@ -297,11 +353,19 @@ class Task
         return $this;
     }
 
+    /**
+     * @return User|null
+     */
     public function getReservedBy(): ?User
     {
         return $this->reservedBy;
     }
 
+    /**
+     * @param User|null $reservedBy
+     *
+     * @return $this
+     */
     public function setReservedBy(?User $reservedBy): self
     {
         $this->reservedBy = $reservedBy;
@@ -315,11 +379,19 @@ class Task
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $reservedByEmail;
 
+    /**
+     * @return string|null
+     */
     public function getReservedByEmail(): ?string
     {
         return $this->reservedByEmail;
     }
 
+    /**
+     * @param string|null $reservedByEmail
+     *
+     * @return $this
+     */
     public function setReservedByEmail(?string $reservedByEmail): self
     {
         $this->reservedByEmail = $reservedByEmail;
@@ -335,11 +407,19 @@ class Task
 
     // ...
 
+    /**
+     * @return string|null
+     */
     public function getNickname(): ?string
     {
         return $this->nickname;
     }
 
+    /**
+     * @param string|null $nickname
+     *
+     * @return $this
+     */
     public function setNickname(?string $nickname): self
     {
         $this->nickname = $nickname;
@@ -349,6 +429,7 @@ class Task
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     *
      * @Assert\NotBlank
      */
     #[ORM\Column(type: 'text', nullable: true)]
@@ -356,11 +437,19 @@ class Task
 
     // ...
 
+    /**
+     * @return string|null
+     */
     public function getReservationComment(): ?string
     {
         return $this->reservationComment;
     }
 
+    /**
+     * @param string|null $reservationComment
+     *
+     * @return $this
+     */
     public function setReservationComment(?string $reservationComment): self
     {
         $this->reservationComment = $reservationComment;

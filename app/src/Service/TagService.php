@@ -39,6 +39,7 @@ class TagService implements TagServiceInterface
      * Create a new tag.
      *
      * @param Tag $tag
+     *
      * @return Tag
      */
     public function createTag(Tag $tag): Tag
@@ -53,6 +54,7 @@ class TagService implements TagServiceInterface
      * Update an existing tag.
      *
      * @param Tag $tag
+     *
      * @return Tag
      */
     public function updateTag(Tag $tag): Tag
@@ -66,6 +68,7 @@ class TagService implements TagServiceInterface
      * Delete a tag.
      *
      * @param Tag $tag
+     *
      * @return void
      */
     public function deleteTag(Tag $tag): void
@@ -78,6 +81,7 @@ class TagService implements TagServiceInterface
      * Get a tag by its ID.
      *
      * @param int $id
+     *
      * @return Tag|null
      */
     public function getTagById(int $id): ?Tag
@@ -111,6 +115,7 @@ class TagService implements TagServiceInterface
      * Save a tag.
      *
      * @param Tag $tag
+     *
      * @return Tag
      */
     public function save(Tag $tag): Tag
@@ -121,6 +126,7 @@ class TagService implements TagServiceInterface
             return $this->createTag($tag);
         }
     }
+
     /**
      * Find by id.
      *
@@ -128,6 +134,7 @@ class TagService implements TagServiceInterface
      *
      * @return Tag|null Tag entity
      *
+     * @throws NonUniqueResultException
      */
     public function findOneById(int $id): ?Tag
     {

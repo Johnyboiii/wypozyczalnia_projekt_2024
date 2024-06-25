@@ -1,4 +1,5 @@
 <?php
+
 // src/Form/Type/ChangePasswordType.php
 
 namespace App\Form\Type;
@@ -8,10 +9,18 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\EqualTo;
 
+/**
+ * Change password form type.
+ */
 class ChangePasswordType extends AbstractType
 {
+    /**
+     * Build the form.
+     *
+     * @param FormBuilderInterface $builder The form builder
+     * @param array<string, mixed> $options The options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -25,6 +34,11 @@ class ChangePasswordType extends AbstractType
             ]);
     }
 
+    /**
+     * Configure the form options.
+     *
+     * @param OptionsResolver $resolver The resolver
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([]);
