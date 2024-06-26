@@ -335,6 +335,8 @@ class Task
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @return string|null Reservation status
      */
     public function getReservationStatus(): ?string
     {

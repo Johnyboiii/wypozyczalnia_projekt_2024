@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * TaskService
+ */
+
 namespace App\Service;
 
 use App\Dto\TaskListFiltersDto;
@@ -26,24 +30,21 @@ class TaskService implements TaskServiceInterface
      * TaskService constructor.
      *
      * @param CategoryServiceInterface $categoryService Category service
-     * @param PaginatorInterface $paginator Paginator
-     * @param TagServiceInterface $tagService Tag service
-     * @param TaskRepository $taskRepository Task repository
+     * @param PaginatorInterface       $paginator       Paginator
+     * @param TagServiceInterface      $tagService      Tag service
+     * @param TaskRepository           $taskRepository  Task repository
      */
-    public function __construct(
-        private readonly CategoryServiceInterface $categoryService,
-        private readonly PaginatorInterface $paginator,
-        private readonly TagServiceInterface $tagService,
-        private readonly TaskRepository $taskRepository
-    ) {
+    public function __construct(private readonly CategoryServiceInterface $categoryService, private readonly PaginatorInterface $paginator, private readonly TagServiceInterface $tagService, private readonly TaskRepository $taskRepository)
+    {
     }
 
     /**
      * Find all tasks.
      *
-     * @param int $page
-     * @param User|null $author
+     * @param int                     $page
+     * @param User|null               $author
      * @param TaskListInputFiltersDto $filtersDto
+     *
      * @return PaginationInterface Task entities
      */
     public function getPaginatedList(int $page, User $author = null, TaskListInputFiltersDto $filtersDto): PaginationInterface
@@ -83,16 +84,37 @@ class TaskService implements TaskServiceInterface
         $this->taskRepository->delete($task);
     }
 
+    /**
+     * Get tasks by category.
+     *
+     * @param Category $category The category to filter tasks by
+     *
+     * @return array An array of Task objects belonging to the specified category
+     */
     public function getTasksByCategory(Category $category): array
     {
         return $this->taskRepository->findByCategory($category);
     }
 
+    /**
+     * Get a task by its ID.
+     *
+     * @param Tag $tag
+     *
+     * @return array
+     */
     public function getTasksByTag(Tag $tag): array
     {
         return $this->taskRepository->findByTag($tag);
     }
 
+    /**
+     * Get the number of tasks.
+     *
+     * @param TaskListInputFiltersDto $filters
+     *
+     * @return TaskListFiltersDto
+     */
     private function prepareFilters(TaskListInputFiltersDto $filters): TaskListFiltersDto
     {
         return new TaskListFiltersDto(

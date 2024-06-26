@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * TagRepository
+ */
+
 namespace App\Repository;
 
 use App\Entity\Tag;
@@ -11,7 +15,6 @@ use Doctrine\ORM\QueryBuilder;
 
 /**
  * Class TagRepository
- * @package App\Repository
  *
  * @method Tag|null find($id, $lockMode = null, $lockVersion = null)
  * @method Tag|null findOneBy(array $criteria, array $orderBy = null)
@@ -41,7 +44,7 @@ class TagRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.title LIKE :title')
-            ->setParameter('title', '%' . $title . '%')
+            ->setParameter('title', '%'.$title.'%')
             ->orderBy('t.title', 'ASC')
             ->getQuery()
             ->getResult();

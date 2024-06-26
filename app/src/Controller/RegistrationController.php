@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * RegistrationController
+ */
+
 namespace App\Controller;
 
 use App\Entity\User;
@@ -21,10 +25,10 @@ class RegistrationController extends AbstractController
     /**
      * Handles user registration.
      *
-     * @param Request $request The current request
+     * @param Request                     $request            The current request
      * @param UserPasswordHasherInterface $userPasswordHasher The password hasher
-     * @param Security $security The security component
-     * @param EntityManagerInterface $entityManager The entity manager
+     * @param Security                    $security           The security component
+     * @param EntityManagerInterface      $entityManager      The entity manager
      *
      * @return Response The response
      */

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * UserEditType
+ */
+
 namespace App\Form\Type\User;
 
 use Symfony\Component\Form\AbstractType;

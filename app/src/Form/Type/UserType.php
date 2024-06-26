@@ -1,6 +1,6 @@
 <?php
 
-#NOT USED IN THIS PROJECT
+/*NOT USED IN THIS PROJECT*/
 namespace App\Form\Type;
 
 use Symfony\Component\Form\AbstractType;

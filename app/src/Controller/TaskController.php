@@ -41,8 +41,8 @@ class TaskController extends AbstractController
     /**
      * Index action.
      *
-     * @param int $page Page number
      * @param TaskListInputFiltersDto $filters Input filters DTO
+     * @param int                     $page    Page number
      *
      * @return Response HTTP response
      */
@@ -70,7 +70,7 @@ class TaskController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}', name: 'task_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET',)]
+    #[Route('/{id}', name: 'task_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
     #[IsGranted('VIEW', subject: 'task')]
     public function show(Task $task): Response
     {

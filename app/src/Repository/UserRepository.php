@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * UserRepository
+ */
+
 namespace App\Repository;
 
 use App\Entity\User;
@@ -27,8 +31,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     /**
      * Upgrade the given user's password with a new encoded password.
      *
-     * @param PasswordAuthenticatedUserInterface $user The user whose password is to be upgraded
-     * @param string $newHashedPassword The new hashed password
+     * @param PasswordAuthenticatedUserInterface $user              The user whose password is to be upgraded
+     * @param string                             $newHashedPassword The new hashed password
      */
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {

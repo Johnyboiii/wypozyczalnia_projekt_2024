@@ -1,12 +1,15 @@
 <?php
 
+/**
+ * TagServiceInterface
+ */
+
 namespace App\Service;
 
 use App\Entity\Tag;
 
 /**
  * Interface TagServiceInterface
- * @package App\Service
  */
 interface TagServiceInterface
 {

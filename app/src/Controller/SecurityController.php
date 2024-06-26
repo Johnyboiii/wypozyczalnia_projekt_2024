@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SecurityController
+ */
+
 namespace App\Controller;
 
 use LogicException;

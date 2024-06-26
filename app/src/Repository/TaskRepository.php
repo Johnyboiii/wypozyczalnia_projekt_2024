@@ -36,6 +36,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class TaskRepository extends ServiceEntityRepository
 {
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
+
     /**
      * Constructor.
      *
@@ -48,6 +49,8 @@ class TaskRepository extends ServiceEntityRepository
 
     /**
      * Query all records.
+     *
+     * @param TaskListFiltersDto $filters Filters
      *
      * @return QueryBuilder Query builder
      */
@@ -131,21 +134,10 @@ class TaskRepository extends ServiceEntityRepository
     }
 
     /**
-     * Get or create new query builder.
-     *
-     * @param QueryBuilder|null $queryBuilder Query builder
-     *
-     * @return QueryBuilder Query builder
-     */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return $queryBuilder ?? $this->createQueryBuilder('task');
-    }
-
-    /**
      * Query tasks by author.
      *
-     * @param User $user User entity
+     * @param UserInterface|null $user    User entity
+     * @param TaskListFiltersDto $filters Filters
      *
      * @return QueryBuilder Query builder
      */
@@ -154,7 +146,7 @@ class TaskRepository extends ServiceEntityRepository
         $queryBuilder = $this->queryAll($filters);
 
         // Jeśli użytkownik nie jest null i nie jest administratorem, dodaj warunek na autora
-        if ($user !== null && !in_array('ROLE_ADMIN', $user->getRoles())) {
+        if (null !== $user && !in_array('ROLE_ADMIN', $user->getRoles())) {
             $queryBuilder->andWhere('task.author = :author')
                 ->setParameter('author', $user);
         }
@@ -165,7 +157,7 @@ class TaskRepository extends ServiceEntityRepository
     /**
      * Query tasks by author and status.
      *
-     * @param User|null $user User entity
+     * @param User|null $user   User entity
      * @param int|null  $status Task status
      *
      * @return QueryBuilder Query builder
@@ -174,12 +166,12 @@ class TaskRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->queryAll();
 
-        if ($user && !in_array('ROLE_ADMIN', $user->getRoles())) {
+        if (null !== $user && !in_array('ROLE_ADMIN', $user->getRoles())) {
             $queryBuilder->andWhere('task.author = :author')
                 ->setParameter('author', $user);
         }
 
-        if ($status !== null) {
+        if (null !== $status) {
             $queryBuilder->andWhere('task.status = :status')
                 ->setParameter('status', $status);
         }
@@ -209,9 +201,21 @@ class TaskRepository extends ServiceEntityRepository
 
         if ($filters->taskStatus instanceof TaskStatus) {
             $queryBuilder->andWhere('task.status = :status')
-                    ->setParameter('status', $filters->taskStatus->getStatus(), Types::INTEGER);
+                ->setParameter('status', $filters->taskStatus->getStatus(), Types::INTEGER);
         }
 
         return $queryBuilder;
+    }
+
+    /**
+     * Get or create new query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return $queryBuilder ?? $this->createQueryBuilder('task');
     }
 }

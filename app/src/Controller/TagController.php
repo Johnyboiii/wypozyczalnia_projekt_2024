@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * TagController
+ */
+
 namespace App\Controller;
 
 use App\Entity\Tag;
@@ -96,7 +100,7 @@ class TagController extends AbstractController
      * @Route("/{id}/edit", name="tag_edit", methods={"GET", "POST"})
      *
      * @param Request $request
-     * @param Tag $tag
+     * @param Tag     $tag
      *
      * @return Response
      */
@@ -121,7 +125,7 @@ class TagController extends AbstractController
     /**
      * @Route("/{id}/delete", name="tag_confirm_delete", methods={"GET"})
      *
-     * @param Tag $tag
+     * @param Tag     $tag
      * @param Request $request
      *
      * @return Response
@@ -148,7 +152,7 @@ class TagController extends AbstractController
      * @Route("/{id}", name="tag_delete", methods={"POST"})
      *
      * @param Request $request
-     * @param Tag $tag
+     * @param Tag     $tag
      *
      * @return Response
      */

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * TagType
+ */
+
 namespace App\Form\Type;
 
 use App\Entity\Tag;
@@ -17,7 +21,7 @@ class TagType extends AbstractType
      * Build the form.
      *
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      *
      * @return void
      */

@@ -37,7 +37,8 @@ class PublicTaskController extends AbstractController
     /**
      * Constructor.
      *
-     * @param TaskServiceInterface $taskService Task service
+     * @param TaskServiceInterface   $taskService   Task service
+     * @param EntityManagerInterface $entityManager Entity manager
      */
     public function __construct(TaskServiceInterface $taskService, EntityManagerInterface $entityManager)
     {
@@ -49,7 +50,7 @@ class PublicTaskController extends AbstractController
      * Index action.
      *
      * @param Request $request
-     * @param int $page
+     * @param int     $page
      *
      * @return Response HTTP response
      */
@@ -71,7 +72,7 @@ class PublicTaskController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}', name: 'public_task_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET',)]
+    #[Route('/{id}', name: 'public_task_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
     public function show(Task $task): Response
     {
         return $this->render('public_task/show.html.twig', ['task' => $task]);
@@ -81,7 +82,7 @@ class PublicTaskController extends AbstractController
      * Reserve action.
      *
      * @param Request $request
-     * @param Task $task
+     * @param Task    $task
      *
      * @return Response HTTP response
      */

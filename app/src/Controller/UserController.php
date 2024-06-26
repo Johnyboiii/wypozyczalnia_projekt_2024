@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * UserController
+ */
+
 namespace App\Controller;
 
 use App\Entity\User;
@@ -62,9 +66,9 @@ class UserController extends AbstractController
      *
      * @Route('/users/new', name: 'user_new', methods: ['GET', 'POST'])
      *
-     * @param Request $request HTTP request
+     * @param Request                     $request            HTTP request
      * @param UserPasswordHasherInterface $userPasswordHasher Password hasher
-     * @param EntityManagerInterface $entityManager Entity manager
+     * @param EntityManagerInterface      $entityManager      Entity manager
      *
      * @return Response HTTP response
      */
@@ -100,8 +104,9 @@ class UserController extends AbstractController
      *
      * @Route('/users/{id}/edit', name: 'user_edit', methods: ['GET', 'POST'])
      *
-     * @param Request $request HTTP request
-     * @param User    $user    User entity
+     * @param Request                $request       HTTP request
+     * @param User                   $user          User entity
+     * @param EntityManagerInterface $entityManager Entity manager
      *
      * @return Response HTTP response
      */
@@ -129,8 +134,9 @@ class UserController extends AbstractController
      *
      * @Route('/users/{id}/edit-role', name: 'user_edit_role', methods: ['GET', 'POST'])
      *
-     * @param Request $request HTTP request
-     * @param User    $user    User entity
+     * @param Request                $request       HTTP request
+     * @param User                   $user          User entity
+     * @param EntityManagerInterface $entityManager Entity manager
      *
      * @return Response HTTP response
      */

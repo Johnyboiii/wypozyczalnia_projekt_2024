@@ -73,9 +73,9 @@ class ChangePasswordController extends AbstractController
                 $request->getSession()->invalidate();
 
                 return $this->redirectToRoute('app_login');
-            } else {
-                $form->addError(new FormError('Invalid old password.'));
             }
+
+            $form->addError(new FormError('Invalid old password.'));
         }
 
         return $this->render('security/change_password.html.twig', [

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * TagService
+ */
+
 namespace App\Service;
 
 use App\Entity\Tag;
@@ -9,7 +13,6 @@ use Doctrine\ORM\NonUniqueResultException;
 
 /**
  * Class TagService
- * @package App\Service
  */
 class TagService implements TagServiceInterface
 {
@@ -27,7 +30,7 @@ class TagService implements TagServiceInterface
      * TagService constructor.
      *
      * @param EntityManagerInterface $entityManager
-     * @param TagRepository $tagRepository
+     * @param TagRepository          $tagRepository
      */
     public function __construct(EntityManagerInterface $entityManager, TagRepository $tagRepository)
     {
@@ -122,9 +125,9 @@ class TagService implements TagServiceInterface
     {
         if ($tag->getId()) {
             return $this->updateTag($tag);
-        } else {
-            return $this->createTag($tag);
         }
+
+        return $this->createTag($tag);
     }
 
     /**
