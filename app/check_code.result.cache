@@ -36,39 +36,7 @@
   36) src/Service/TaskService.php (no_superfluous_phpdoc_tags, nullable_type_declaration_for_default_null_value, phpdoc_summary, phpdoc_trim, phpdoc_trim_consecutive_blank_line_separation)
   37) src/Service/TaskServiceInterface.php (no_superfluous_phpdoc_tags, nullable_type_declaration_for_default_null_value, phpdoc_align)
 
-Found 37 of 50 files that can be fixed in 1.587 seconds, 18.00 MB memory used
-
-FILE: /home/wwwroot/app/src/Controller/TagController.php
--------------------------------------------------------------------------------------------
-FOUND 11 ERRORS AFFECTING 10 LINES
--------------------------------------------------------------------------------------------
-  28 | ERROR | Member variable "TagService" is not in valid camel caps format
-  37 | ERROR | Variable "TagService" is not in valid camel caps format
-  39 | ERROR | Variable "TagService" is not in valid camel caps format
-  39 | ERROR | Variable "TagService" is not in valid camel caps format
-  51 | ERROR | Variable "TagRepository" is not in valid camel caps format
-  54 | ERROR | Variable "TagRepository" is not in valid camel caps format
-  73 | ERROR | Variable "TagService" is not in valid camel caps format
- 114 | ERROR | Variable "TagService" is not in valid camel caps format
- 128 | ERROR | Doc comment for parameter $tag does not match actual variable name $request
- 129 | ERROR | Doc comment for parameter $request does not match actual variable name $tag
- 173 | ERROR | Variable "TagService" is not in valid camel caps format
--------------------------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Entity/Task.php
------------------------------------------------------------------------------
-FOUND 5 ERRORS AFFECTING 4 LINES
------------------------------------------------------------------------------
-  67 | ERROR | Member variable "ManyToOne" is not in valid camel caps format
- 193 | ERROR | Variable "ManyToOne" is not in valid camel caps format
- 199 | ERROR | Variable "ManyToOne" is not in valid camel caps format
- 201 | ERROR | Variable "ManyToOne" is not in valid camel caps format
- 201 | ERROR | Variable "ManyToOne" is not in valid camel caps format
------------------------------------------------------------------------------
-
-Time: 2.49 secs; Memory: 10MB
-
+Found 37 of 50 files that can be fixed in 1.610 seconds, 18.00 MB memory used
  ----------- ------------ ------------------------------------------------------------------------ ------------------------------------------ 
   State       Domain       Id                                                                       Message Preview (en)                      
  ----------- ------------ ------------------------------------------------------------------------ ------------------------------------------ 
@@ -132,7 +100,7 @@ Time: 2.49 secs; Memory: 10MB
    missing               messages                                                                                                                                                                   
    missing               messages     action.back_to_list                                                      action.back_to_list                        Go Back                                   
    missing   fallback    messages     Go Back                                                                  Go Back                                    Go Back                                   
-   missing   fallback    messages     Nie odnaleziono rekordu                                                  Nie odnaleziono rekordu                    Nie odnaleziono rekordu                   
+   missing               messages     Nie odnaleziono rekordu                                                  Nie odnaleziono rekordu                    Record not found                          
    missing   fallback    messages     message.form_error                                                       message.form_error                         message.form_error                        
    missing   fallback    messages     Assets                                                                   Assets                                     Assets                                    
    missing   fallback    messages     Available Assets                                                         Available Assets                           Available Assets                          
@@ -160,7 +128,7 @@ Time: 2.49 secs; Memory: 10MB
 
 [notice] Migrating up to DoctrineMigrations\Version20240608101043
 [warning] Migration DoctrineMigrations\Version20240529080810 was executed but did not result in any SQL statements.
-[notice] finished in 1098.7ms, used 26M memory, 12 migrations executed, 25 sql queries
+[notice] finished in 1085.5ms, used 26M memory, 12 migrations executed, 25 sql queries
 
  [OK] Successfully migrated to version: DoctrineMigrations\Version20240608101043                                        
 

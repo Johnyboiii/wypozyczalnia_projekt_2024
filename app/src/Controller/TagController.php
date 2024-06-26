@@ -25,33 +25,33 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[IsGranted('ROLE_ADMIN')]
 class TagController extends AbstractController
 {
-    private TagServiceInterface $TagService;
+    private TagServiceInterface $tagService;
     private TranslatorInterface $translator;
 
     /**
      * Constructor.
      *
-     * @param TagServiceInterface $TagService Tag service
+     * @param TagServiceInterface $tagService Tag service
      * @param TranslatorInterface $translator Translator service
      */
-    public function __construct(TagServiceInterface $TagService, TranslatorInterface $translator)
+    public function __construct(TagServiceInterface $tagService, TranslatorInterface $translator)
     {
-        $this->TagService = $TagService;
+        $this->tagService = $tagService;
         $this->translator = $translator;
     }
 
     /**
      * @Route("/", name="tag_index", methods={"GET"})
      *
-     * @param TagRepository $TagRepository
+     * @param TagRepository $tagRepository
      *
      * @return Response
      */
     #[Route('/', name: 'tag_index', methods: ['GET'])]
-    public function index(TagRepository $TagRepository): Response
+    public function index(TagRepository $tagRepository): Response
     {
         return $this->render('tag/index.html.twig', [
-            'tags' => $TagRepository->findAll(),
+            'tags' => $tagRepository->findAll(),
         ]);
     }
 
@@ -70,7 +70,7 @@ class TagController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->TagService->createTag($tag);
+            $this->tagService->createTag($tag);
 
             return $this->redirectToRoute('tag_index');
         }
@@ -111,7 +111,7 @@ class TagController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->TagService->updateTag($tag);
+            $this->tagService->updateTag($tag);
 
             return $this->redirectToRoute('tag_index');
         }
@@ -125,8 +125,8 @@ class TagController extends AbstractController
     /**
      * @Route("/{id}/delete", name="tag_confirm_delete", methods={"GET"})
      *
-     * @param Tag     $tag
      * @param Request $request
+     * @param Tag     $tag
      *
      * @return Response
      */
@@ -170,7 +170,7 @@ class TagController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->TagService->deleteTag($tag);
+            $this->tagService->deleteTag($tag);
 
             $this->addFlash(
                 'success',

@@ -209,7 +209,7 @@
       </trans-unit>
       <trans-unit id="Nie odnaleziono rekordu">
           <source>Nie odnaleziono rekordu</source>
-          <target>Nie odnaleziono rekordu</target>
+          <target>Record not found</target>
       </trans-unit>
       <trans-unit id="message.form_error">
           <source>message.form_error</source>
@@ -291,10 +291,6 @@
           <source>action.delete</source>
           <target>action.delete</target>
       </trans-unit>
-      <trans-unit id="Please enter a comment ">
-          <source>Please enter a comment</source>
-          <target>Please enter a comment</target>
-      </trans-unit>
       <trans-unit id="validation_comment_required">
           <source>Please enter a comment</source>
           <target>Please enter a comment</target>
@@ -326,6 +322,10 @@
       <trans-unit id="validation_comment_max_length">
           <source>Comment cannot be longer than {{ limit }} characters</source>
           <target>Comment cannot be longer than {{ limit }} characters</target>
+      </trans-unit>
+      <trans-unit id="reservationComment">
+              <source>Please enter a comment</source>
+              <target>Please enter a comment</target>
       </trans-unit>
     </body>
   </file>

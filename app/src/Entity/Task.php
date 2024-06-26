@@ -64,7 +64,7 @@ class Task
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $ManyToOne = '';
+    private ?string $manyToOne = '';
 
     /**
      * Category.
@@ -190,15 +190,15 @@ class Task
      */
     public function getManyToOne(): string
     {
-        return $this->ManyToOne;
+        return $this->manyToOne;
     }
 
     /**
-     * @param string $ManyToOne
+     * @param string $manyToOne
      */
-    public function setManyToOne(string $ManyToOne): void
+    public function setManyToOne(string $manyToOne): void
     {
-        $this->ManyToOne = $ManyToOne;
+        $this->manyToOne = $manyToOne;
     }
 
     /**
