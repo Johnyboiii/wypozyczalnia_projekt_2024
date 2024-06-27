@@ -69,8 +69,10 @@ class AdminTaskController extends AbstractController
     #[Route('/{id}/approve', name: 'admin_task_approve', methods: ['POST'])]
     public function approve(Task $task): Response
     {
-        $task->setReservationStatus('Zatwierdzone');
-        $this->entityManager->flush();
+        if ($task->getReservationStatus() === 'Oczekujące' || $task->getReservationStatus() === 'Zarezerwowane') {
+            $task->setReservationStatus('Zatwierdzone');
+            $this->entityManager->flush();
+        }
 
         return $this->redirectToRoute('admin_task_index');
     }
@@ -105,9 +107,11 @@ class AdminTaskController extends AbstractController
     #[Route('/{id}/lend', name: 'admin_task_lend', methods: ['POST'])]
     public function lend(Task $task): Response
     {
-        $task->setReservationStatus('Wypożyczone');
-        $task->setStatus(TaskStatus::STATUS_2);
-        $this->entityManager->flush();
+        if ($task->getReservationStatus() === 'Zatwierdzone' || $task->getReservationStatus() === 'Zarezerwowane' || $task->getReservationStatus() === 'Zwrócone') {
+            $task->setReservationStatus('Wypożyczone');
+            $task->setStatus(TaskStatus::STATUS_2);
+            $this->entityManager->flush();
+        }
 
         return $this->redirectToRoute('admin_task_index');
     }
@@ -124,9 +128,11 @@ class AdminTaskController extends AbstractController
     #[Route('/{id}/return', name: 'admin_task_return', methods: ['POST'])]
     public function return(Task $task): Response
     {
-        $task->setReservationStatus('Zwrócone');
-        $task->setStatus(TaskStatus::STATUS_1);
-        $this->entityManager->flush();
+        if ($task->getReservationStatus() === 'Wypożyczone') {
+            $task->setReservationStatus('Zwrócone');
+            $task->setStatus(TaskStatus::STATUS_1);
+            $this->entityManager->flush();
+        }
 
         return $this->redirectToRoute('admin_task_index');
     }

@@ -27,17 +27,28 @@
                     <a class="btn btn-outline-primary" href="{{ path('admin_task_details', {'id': task.id}) }}">Reservation Details</a>
                 </td>
                 <td>
-                    <form method="post" action="{{ path('admin_task_approve', {'id': task.id}) }}">
-                        <button type="submit" class="btn btn-success">Accept</button>
+                    <form method="post" action="{{ path('admin_task_approve', {'id': task.id}) }}" style="display: inline;">
+                        <button type="submit" class="btn btn-success"
+                                {% if task.reservationStatus == 'Zatwierdzone' %}disabled{% endif %}>
+                            Accept
+                        </button>
                     </form>
-                    <form method="post" action="{{ path('admin_task_reject', {'id': task.id}) }}">
-                        <button type="submit" class="btn btn-danger">Reject</button>
+                    <form method="post" action="{{ path('admin_task_reject', {'id': task.id}) }}" style="display: inline;">
+                        <button type="submit" class="btn btn-danger">
+                            Reject
+                        </button>
                     </form>
-                    <form method="post" action="{{ path('admin_task_lend', {'id': task.id}) }}">
-                        <button type="submit" class="btn btn-primary">Lend</button>
+                    <form method="post" action="{{ path('admin_task_lend', {'id': task.id}) }}" style="display: inline;">
+                        <button type="submit" class="btn btn-secondary"
+                                {% if task.reservationStatus == 'Wypożyczone' %}disabled{% endif %}>
+                            Lend
+                        </button>
                     </form>
-                    <form method="post" action="{{ path('admin_task_return', {'id': task.id}) }}">
-                        <button type="submit" class="btn btn-secondary">Return</button>
+                    <form method="post" action="{{ path('admin_task_return', {'id': task.id}) }}" style="display: inline;">
+                        <button type="submit" class="btn btn-secondary"
+                                {% if task.reservationStatus == 'Zwrócone' %}disabled{% endif %}>
+                            Return
+                        </button>
                     </form>
                 </td>
             </tr>

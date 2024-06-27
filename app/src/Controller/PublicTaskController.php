@@ -31,19 +31,13 @@ class PublicTaskController extends AbstractController
     private TaskServiceInterface $taskService;
 
     /**
-     * @var EntityManagerInterface
-     */
-    private EntityManagerInterface $entityManager;
-    /**
      * Constructor.
      *
      * @param TaskServiceInterface   $taskService   Task service
-     * @param EntityManagerInterface $entityManager Entity manager
      */
-    public function __construct(TaskServiceInterface $taskService, EntityManagerInterface $entityManager)
+    public function __construct(TaskServiceInterface $taskService)
     {
         $this->taskService = $taskService;
-        $this->entityManager = $entityManager;
     }
 
     /**
@@ -103,7 +97,7 @@ class PublicTaskController extends AbstractController
             $task->setNickname($form->get('nickname')->getData());
 
             $task->setReservationComment($form->get('reservationComment')->getData());
-            $this->entityManager->flush();
+            $this->taskService->save($task);
             $this->addFlash('success', 'Reservation has been made successfully.');
 
             return $this->redirectToRoute('public_task_show', ['id' => $task->getId()]);
@@ -125,11 +119,8 @@ class PublicTaskController extends AbstractController
     #[Route('/category/{id}', name: 'public_task_category', methods: ['GET'])]
     public function category(int $id): Response
     {
-        // Pobierz wszystkie zadania dla danej kategorii
-        $tasks = $this->entityManager
-            ->getRepository(Task::class)
-            ->findBy(['category' => $id]);
-        // Wyrenderuj widok z listą zadań
+        $tasks = $this->taskService->getTasksByCategory($id);
+
         return $this->render('public_task/index.html.twig', [
             'tasks' => $tasks,
         ]);
@@ -145,15 +136,8 @@ class PublicTaskController extends AbstractController
     #[Route('/tag/{name}', name: 'public_task_tag', methods: ['GET'])]
     public function tag(string $name): Response
     {
-        // Pobierz tag o danej nazwie
-        $tag = $this->entityManager
-            ->getRepository(Tag::class)
-            ->findOneBy(['name' => $name]);
-        // Pobierz wszystkie zadania dla danego tagu
-        $tasks = $this->entityManager
-            ->getRepository(Task::class)
-            ->findBy(['tags' => $tag]);
-        // Wyrenderuj widok z listą zadań
+        $tasks = $this->taskService->getTasksByTag($name);
+
         return $this->render('public_task/index.html.twig', [
             'tasks' => $tasks,
         ]);

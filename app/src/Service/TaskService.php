@@ -87,13 +87,13 @@ class TaskService implements TaskServiceInterface
     /**
      * Get tasks by category.
      *
-     * @param Category $category The category to filter tasks by
+     * @param Category $categoryId The category to filter tasks by
      *
      * @return array An array of Task objects belonging to the specified category
      */
-    public function getTasksByCategory(Category $category): array
+    public function getTasksByCategory(Category|int $categoryId): array
     {
-        return $this->taskRepository->findByCategory($category);
+        return $this->taskRepository->findByCategory($categoryId);
     }
 
     /**

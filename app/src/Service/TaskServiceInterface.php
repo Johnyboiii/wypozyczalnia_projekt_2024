@@ -7,6 +7,7 @@
 namespace App\Service;
 
 use App\Dto\TaskListInputFiltersDto;
+use App\Entity\Tag;
 use App\Entity\Task;
 use App\Entity\User;
 use Knp\Component\Pager\Pagination\PaginationInterface;
@@ -40,4 +41,8 @@ interface TaskServiceInterface
      * @param Task $task Task entity
      */
     public function delete(Task $task): void;
+
+    public function getTasksByCategory(int $categoryId): array;
+
+    public function getTasksByTag(Tag $tag): array;
 }

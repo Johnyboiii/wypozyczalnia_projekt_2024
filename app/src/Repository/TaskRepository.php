@@ -61,7 +61,7 @@ class TaskRepository extends ServiceEntityRepository
                 'partial task.{id, createdAt, updatedAt, title}',
                 'partial category.{id, title}'
             )
-            ->join('task.category', 'category')
+            ->leftJoin('task.category', 'category')
             ->orderBy('task.updatedAt', 'DESC');
 
         if ($filters->category) {
@@ -70,7 +70,8 @@ class TaskRepository extends ServiceEntityRepository
         }
 
         if ($filters->tag) {
-            $queryBuilder->andWhere(':tag MEMBER OF task.tags')
+            $queryBuilder->leftJoin('task.tags', 'tags')
+                ->andWhere(':tag MEMBER OF task.tags')
                 ->setParameter('tag', $filters->tag);
         }
 
@@ -145,11 +146,12 @@ class TaskRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->queryAll($filters);
 
-        // Jeśli użytkownik nie jest null i nie jest administratorem, dodaj warunek na autora
         if (null !== $user && !in_array('ROLE_ADMIN', $user->getRoles())) {
             $queryBuilder->andWhere('task.author = :author')
                 ->setParameter('author', $user);
         }
+
+        $this->applyFiltersToList($queryBuilder, $filters);
 
         return $queryBuilder;
     }
@@ -217,5 +219,40 @@ class TaskRepository extends ServiceEntityRepository
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('task');
+    }
+
+    /**
+     * Find tasks by category.
+     *
+     * @param Category|int $category
+     *
+     * @return Task[]
+     */
+    public function findByCategory(Category|int $category): array
+    {
+        $qb = $this->createQueryBuilder('t')
+            ->leftJoin('t.category', 'c') // Eager load category
+            ->andWhere('t.category = :category')
+            ->setParameter('category', $category);
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * Find tasks by tag.
+     *
+     * @param Tag $tag
+     *
+     * @return Task[]
+     */
+    public function findByTag(Tag $tag): array
+    {
+        $qb = $this->createQueryBuilder('t')
+            ->leftJoin('t.tags', 'tg')
+            ->andWhere(':tag MEMBER OF t.tags')
+            ->setParameter('tag', $tag)
+            ->select('partial t.{id, createdAt, updatedAt, title}');
+
+        return $qb->getQuery()->getResult();
     }
 }
