@@ -66,7 +66,6 @@
           <source>action.back_to_list</source>
           <target>Go Back</target>
       </trans-unit>
-      <!-- Add these lines to your messages.en.xlf file -->
       <trans-unit id="Please enter a comment">
           <source>Please enter a comment</source>
           <target>Please enter a comment</target>
@@ -326,6 +325,26 @@
       <trans-unit id="reservationComment">
               <source>Please enter a comment</source>
               <target>Please enter a comment</target>
+      </trans-unit>
+      <trans-unit id="Browse Assets">
+              <source>Browse Assets</source>
+              <target>Browse Assets</target>
+      </trans-unit>
+      <trans-unit id="My Reservations">
+              <source>My Reservations</source>
+              <target>My Reservations</target>
+      </trans-unit>
+      <trans-unit id="Admin Reservation Dashboard">
+              <source>Admin Reservation Dashboard</source>
+              <target>Admin Reservation Dashboard</target>
+      </trans-unit>
+      <trans-unit id="Admin User Dashboard">
+              <source>Admin User Dashboard</source>
+              <target>Admin User Dashboard</target>
+      </trans-unit>
+      <trans-unit id="Categories">
+              <source>Categories</source>
+              <target>Categories</target>
       </trans-unit>
     </body>
   </file>

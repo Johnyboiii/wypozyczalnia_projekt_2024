@@ -33,7 +33,7 @@ class PublicTaskController extends AbstractController
     /**
      * Constructor.
      *
-     * @param TaskServiceInterface   $taskService   Task service
+     * @param TaskServiceInterface $taskService Task service
      */
     public function __construct(TaskServiceInterface $taskService)
     {

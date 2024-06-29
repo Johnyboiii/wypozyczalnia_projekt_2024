@@ -42,7 +42,21 @@ interface TaskServiceInterface
      */
     public function delete(Task $task): void;
 
+    /**
+     * Get tasks by category.
+     *
+     * @param int $categoryId Category ID
+     *
+     * @return array Tasks in the specified category
+     */
     public function getTasksByCategory(int $categoryId): array;
 
+    /**
+     * Get tasks by tag.
+     *
+     * @param Tag $tag Tag entity
+     *
+     * @return array Tasks associated with the specified tag
+     */
     public function getTasksByTag(Tag $tag): array;
 }
