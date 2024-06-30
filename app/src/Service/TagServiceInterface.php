@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TagServiceInterface
+ * TagServiceInterface.
  */
 
 namespace App\Service;
@@ -9,50 +9,48 @@ namespace App\Service;
 use App\Entity\Tag;
 
 /**
- * Interface TagServiceInterface
+ * Interface TagServiceInterface.
  */
 interface TagServiceInterface
 {
     /**
      * Create a new tag.
      *
-     * @param Tag $tag
+     * @param  Tag $tag The tag entity
      *
-     * @return Tag
+     * @return Tag      The created tag
      */
     public function createTag(Tag $tag): Tag;
 
     /**
      * Update an existing tag.
      *
-     * @param Tag $tag
+     * @param  Tag $tag The tag entity
      *
-     * @return Tag
+     * @return Tag      The updated tag
      */
     public function updateTag(Tag $tag): Tag;
 
     /**
      * Delete a tag.
      *
-     * @param Tag $tag
-     *
-     * @return void
+     * @param Tag $tag The tag entity
      */
     public function deleteTag(Tag $tag): void;
 
     /**
      * Get a tag by its ID.
      *
-     * @param int $id
+     * @param  int $id  The ID of the tag
      *
-     * @return Tag|null
+     * @return Tag|null The tag entity or null if not found
      */
     public function getTagById(int $id): ?Tag;
 
     /**
      * Get all tags.
      *
-     * @return Tag[]
+     * @return Tag[] An array of tag entities
      */
     public function getAllTags(): array;
 
@@ -67,8 +65,6 @@ interface TagServiceInterface
 
     /**
      * Find tags by title.
-     *
-     * @param Tag $tag
      *
      * @return Tag[]
      */

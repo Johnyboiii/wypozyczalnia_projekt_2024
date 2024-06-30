@@ -184,9 +184,9 @@ class TaskRepository extends ServiceEntityRepository
     /**
      * Find tasks by category.
      *
-     * @param Category|int $category
+     * @param  Category|int $category The category or its ID
      *
-     * @return Task[]
+     * @return Task[]                 An array of Task objects
      */
     public function findByCategory(Category|int $category): array
     {
@@ -201,9 +201,9 @@ class TaskRepository extends ServiceEntityRepository
     /**
      * Find tasks by tag.
      *
-     * @param Tag $tag
+     * @param  Tag $tag The tag entity
      *
-     * @return Task[]
+     * @return Task[]   An array of Task objects
      */
     public function findByTag(Tag $tag): array
     {
@@ -251,7 +251,7 @@ class TaskRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('task');
     }

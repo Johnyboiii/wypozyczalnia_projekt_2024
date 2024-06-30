@@ -1,7 +1,7 @@
 <?php
 
 /**
- * UserRepository
+ * UserRepository.
  */
 
 namespace App\Repository;
@@ -43,6 +43,19 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $user->setPassword($newHashedPassword);
         $this->getEntityManager()->persist($user);
         $this->getEntityManager()->flush();
+    }
+
+    /**
+     * Save a user entity.
+     *
+     * This method persists a user entity and flushes the changes to the database.
+     *
+     * @param User $user The user entity to be saved
+     */
+    public function save(User $user): void
+    {
+        $this->_em->persist($user);
+        $this->_em->flush();
     }
 
     //    /**

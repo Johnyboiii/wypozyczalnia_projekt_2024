@@ -1,39 +1,41 @@
 <?php
 
 /**
- * UserReservationsController
+ * UserReservations Controller.
  */
 
 namespace App\Controller;
 
-use App\Entity\Task;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Service\UserReservationServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * UserReservationsController class.
+ * Controller for managing user reservations.
+ *
+ * This controller handles operations related to user reservations,
+ * such as retrieving and displaying tasks reserved by the current user.
  *
  * @Route("/user/reservations")
  */
 #[Route('/user/reservations')]
 class UserReservationsController extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
+    private UserReservationServiceInterface $reservationService;
 
     /**
      * UserReservationsController constructor.
      *
-     * @param EntityManagerInterface $entityManager
+     * @param UserReservationServiceInterface $reservationService The user reservation service
      */
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(UserReservationServiceInterface $reservationService)
     {
-        $this->entityManager = $entityManager;
+        $this->reservationService = $reservationService;
     }
 
     /**
-     * Index action.
+     * Index action to display user's reservations.
      *
      * @Route('/', name: 'user_reservations_index', methods: ['GET'])
      *
@@ -42,15 +44,9 @@ class UserReservationsController extends AbstractController
     #[Route('/', name: 'user_reservations_index', methods: ['GET'])]
     public function index(): Response
     {
-        // Pobierz aktualnie zalogowanego użytkownika
         $user = $this->getUser();
+        $tasks = $this->reservationService->findTasksReservedByUser($user);
 
-        // Pobierz wszystkie zadania zarezerwowane przez tego użytkownika
-        $tasks = $this->entityManager
-            ->getRepository(Task::class)
-            ->findBy(['reservedBy' => $user]);
-
-        // Wyrenderuj widok z listą zadań
         return $this->render('user_reservations/index.html.twig', [
             'tasks' => $tasks,
         ]);

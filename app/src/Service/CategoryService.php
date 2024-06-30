@@ -91,9 +91,15 @@ class CategoryService implements CategoryServiceInterface
     }
 
     /**
-     * @param Category $category
+     * Checks if a category can be deleted.
      *
-     * @return bool
+     * This method checks if a category can be deleted by counting the number of tasks
+     * associated with the given category. If there are no tasks associated with the category,
+     * it can be deleted.
+     *
+     * @param  Category $category The category to check
+     *
+     * @return bool               True if the category can be deleted, false otherwise
      */
     public function canBeDeleted(Category $category): bool
     {
@@ -101,7 +107,7 @@ class CategoryService implements CategoryServiceInterface
             $result = $this->taskRepository->countByCategory($category);
 
             return !($result > 0);
-        } catch (NoResultException | NonUniqueResultException) {
+        } catch (NoResultException|NonUniqueResultException) {
             return false;
         }
     }

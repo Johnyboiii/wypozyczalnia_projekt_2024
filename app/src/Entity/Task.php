@@ -42,7 +42,7 @@ class Task
     #[ORM\Column(type: 'datetime_immutable')]
     #[Assert\Type(DateTimeImmutable::class)]
     #[Gedmo\Timestampable(on: 'create')]
-    private ?\DateTimeImmutable $createdAt;
+    private ?DateTimeImmutable $createdAt;
 
     /**
      * Updated at.
@@ -52,7 +52,7 @@ class Task
     #[ORM\Column(type: 'datetime_immutable')]
     #[Assert\Type(DateTimeImmutable::class)]
     #[Gedmo\Timestampable(on: 'update')]
-    private ?\DateTimeImmutable $updatedAt;
+    private ?DateTimeImmutable $updatedAt;
 
     /**
      * Title.
@@ -87,14 +87,13 @@ class Task
 
     /**
      * Author.
-     *
-     * @var User|null
      */
     #[ORM\ManyToOne(targetEntity: User::class, fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(nullable: false)]
     #[Assert\NotBlank]
     #[Assert\Type(User::class)]
     private ?User $author;
+
     #[ORM\Column(type: 'integer')]
     #[Assert\Choice(choices: [TaskStatus::STATUS_1, TaskStatus::STATUS_2])]
     #[Assert\NotBlank]
@@ -112,7 +111,7 @@ class Task
     public function __construct()
     {
         $this->tags = new ArrayCollection();
-        $this->status = TaskStatus::STATUS_1;//formularz dodawania task działa
+        $this->status = TaskStatus::STATUS_1; // formularz dodawania task działa
     }
 
     /**
@@ -128,9 +127,9 @@ class Task
     /**
      * Getter for created at.
      *
-     * @return \DateTimeImmutable|null Created at
+     * @return DateTimeImmutable|null Created at
      */
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?DateTimeImmutable
     {
         return $this->createdAt;
     }
@@ -138,9 +137,9 @@ class Task
     /**
      * Setter for created at.
      *
-     * @param \DateTimeImmutable|null $createdAt Created at
+     * @param DateTimeImmutable|null $createdAt Created at
      */
-    public function setCreatedAt(?\DateTimeImmutable $createdAt): void
+    public function setCreatedAt(?DateTimeImmutable $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -148,9 +147,9 @@ class Task
     /**
      * Getter for updated at.
      *
-     * @return \DateTimeImmutable|null Updated at
+     * @return DateTimeImmutable|null Updated at
      */
-    public function getUpdatedAt(): ?\DateTimeImmutable
+    public function getUpdatedAt(): ?DateTimeImmutable
     {
         return $this->updatedAt;
     }
@@ -158,9 +157,9 @@ class Task
     /**
      * Setter for updated at.
      *
-     * @param \DateTimeImmutable|null $updatedAt Updated at
+     * @param DateTimeImmutable|null $updatedAt Updated at
      */
-    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): void
+    public function setUpdatedAt(?DateTimeImmutable $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
@@ -186,14 +185,19 @@ class Task
     }
 
     /**
+     * Getter for ManyToOne.
+     *
      * @return string
      */
+
     public function getManyToOne(): string
     {
         return $this->manyToOne;
     }
 
     /**
+     * Setter for ManyToOne.
+     *
      * @param string $manyToOne
      */
     public function setManyToOne(string $manyToOne): void
@@ -230,7 +234,9 @@ class Task
     }
 
     /**
-     * @param Tag $tag
+     * Add a tag.
+     *
+     * @param  Tag $tag
      *
      * @return $this
      */
@@ -244,7 +250,9 @@ class Task
     }
 
     /**
-     * @param Tag $tag
+     * Remove a tag.
+     *
+     * @param  Tag $tag
      *
      * @return $this
      */
@@ -256,7 +264,9 @@ class Task
     }
 
     /**
-     * @return User|null
+     * Getter for author.
+     *
+     * @return User|null Author
      */
     public function getAuthor(): ?User
     {
@@ -264,7 +274,9 @@ class Task
     }
 
     /**
-     * @param User|null $author
+     * Setter for author.
+     *
+     * @param  User|null $author Author
      *
      * @return $this
      */
@@ -276,7 +288,9 @@ class Task
     }
 
     /**
-     * @return int
+     * Getter for status.
+     *
+     * @return int Status
      */
     public function getStatus(): int
     {
@@ -284,9 +298,13 @@ class Task
     }
 
     /**
-     * @param int $status
+     * Setter for status.
+     *
+     * @param  int $status Status
      *
      * @return $this
+     *
+     * @throws InvalidArgumentException
      */
     public function setStatus(int $status): self
     {
@@ -300,7 +318,9 @@ class Task
     }
 
     /**
-     * @return string|null
+     * Getter for comment.
+     *
+     * @return string|null Comment
      */
     public function getComment(): ?string
     {
@@ -308,7 +328,9 @@ class Task
     }
 
     /**
-     * @param string|null $comment
+     * Setter for comment.
+     *
+     * @param  string|null $comment Comment
      *
      * @return $this
      */
@@ -322,7 +344,7 @@ class Task
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    #[ORM\Column(type: 'string', length: 255, nullable: false, options: ["default" => "Dostępne"])]
+    #[ORM\Column(type: 'string', length: 255, nullable: false, options: ['default' => 'Dostępne'])]
     private ?string $reservationStatus = 'Dostępne';
 
     /**
@@ -344,7 +366,9 @@ class Task
     }
 
     /**
-     * @param string|null $reservationStatus
+     * Setter for reservation status.
+     *
+     * @param  string|null $reservationStatus Reservation status
      *
      * @return $this
      */
@@ -356,7 +380,9 @@ class Task
     }
 
     /**
-     * @return User|null
+     * Getter for reserved by.
+     *
+     * @return User|null Reserved by
      */
     public function getReservedBy(): ?User
     {
@@ -364,7 +390,9 @@ class Task
     }
 
     /**
-     * @param User|null $reservedBy
+     * Setter for reserved by.
+     *
+     * @param  User|null $reservedBy Reserved by
      *
      * @return $this
      */
@@ -382,7 +410,9 @@ class Task
     private ?string $reservedByEmail;
 
     /**
-     * @return string|null
+     * Getter for reserved by email.
+     *
+     * @return string|null Reserved by email
      */
     public function getReservedByEmail(): ?string
     {
@@ -390,7 +420,9 @@ class Task
     }
 
     /**
-     * @param string|null $reservedByEmail
+     * Setter for reserved by email.
+     *
+     * @param  string|null $reservedByEmail Reserved by email
      *
      * @return $this
      */
@@ -410,7 +442,9 @@ class Task
     // ...
 
     /**
-     * @return string|null
+     * Getter for nickname.
+     *
+     * @return string|null Nickname
      */
     public function getNickname(): ?string
     {
@@ -418,7 +452,9 @@ class Task
     }
 
     /**
-     * @param string|null $nickname
+     * Setter for nickname.
+     *
+     * @param  string|null $nickname Nickname
      *
      * @return $this
      */
@@ -440,7 +476,9 @@ class Task
     // ...
 
     /**
-     * @return string|null
+     * Getter for reservation comment.
+     *
+     * @return string|null Reservation comment
      */
     public function getReservationComment(): ?string
     {
@@ -448,7 +486,9 @@ class Task
     }
 
     /**
-     * @param string|null $reservationComment
+     * Setter for reservation comment.
+     *
+     * @param  string|null $reservationComment Reservation comment
      *
      * @return $this
      */

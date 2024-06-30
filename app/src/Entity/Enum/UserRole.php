@@ -13,7 +13,7 @@ enum UserRole: string
 {
     case ROLE_USER = 'ROLE_USER';
     case ROLE_ADMIN = 'ROLE_ADMIN';
-/**
+    /**
      * Get the role label.
      *
      * @return string Role label

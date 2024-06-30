@@ -6,7 +6,6 @@
 
 namespace App\Controller;
 
-use App\Repository;
 use App\Entity\Category;
 use App\Form\Type\CategoryType;
 use App\Service\CategoryServiceInterface;
@@ -26,7 +25,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[IsGranted('ROLE_ADMIN')]
 class CategoryController extends AbstractController
 {
-
     /**
      * Constructor.
      *

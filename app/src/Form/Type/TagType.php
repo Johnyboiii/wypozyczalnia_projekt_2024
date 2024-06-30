@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TagType
+ * TagType.
  */
 
 namespace App\Form\Type;
@@ -20,10 +20,8 @@ class TagType extends AbstractType
     /**
      * Build the form.
      *
-     * @param FormBuilderInterface $builder
-     * @param array                $options
-     *
-     * @return void
+     * @param FormBuilderInterface $builder The form builder
+     * @param array                $options The options
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -37,9 +35,7 @@ class TagType extends AbstractType
     /**
      * Configure the options for this form.
      *
-     * @param OptionsResolver $resolver
-     *
-     * @return void
+     * @param OptionsResolver $resolver The options resolver
      */
     public function configureOptions(OptionsResolver $resolver): void
     {

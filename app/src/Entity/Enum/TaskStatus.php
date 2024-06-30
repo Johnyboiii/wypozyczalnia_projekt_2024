@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TaskStatus
+ * TaskStatus.
  */
 
 namespace App\Entity\Enum;
@@ -13,17 +13,17 @@ use InvalidArgumentException;
  */
 class TaskStatus
 {
-    const STATUS_1 = 1;
-    const STATUS_2 = 2;
+    public const STATUS_1 = 1;
+    public const STATUS_2 = 2;
 
     private int $status;
 
     /**
      * TaskStatus constructor.
      *
-     * @param int $status
+     * @param  int $status              The status value to initialize the TaskStatus object
      *
-     * @throws InvalidArgumentException
+     * @throws InvalidArgumentException If an invalid status is provided
      */
     public function __construct(int $status)
     {
@@ -35,13 +35,12 @@ class TaskStatus
     }
 
     /**
-     * Create a TaskStatus from an integer status.
+     * Create a TaskStatus object from an integer status.
      *
-     * @param int $status
-     *
-     * @return int
+     * @param  int $status The status value to create the TaskStatus object from
+     * @return int         The created TaskStatus object
      */
-    public static function from(int $status): int //dla TaskFixtures, bez tego nie dziala
+    public static function from(int $status): int // dla TaskFixtures, bez tego nie dziala
     {
         if (!in_array($status, [self::STATUS_1, self::STATUS_2])) {
             throw new InvalidArgumentException('Invalid task status');
@@ -51,9 +50,9 @@ class TaskStatus
     }
 
     /**
-     * Get the status.
+     * Get the status value.
      *
-     * @return int
+     * @return int The status value
      */
     public function getStatus(): int
     {

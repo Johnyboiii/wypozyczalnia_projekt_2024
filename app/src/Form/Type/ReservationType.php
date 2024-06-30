@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ReservationType
+ * ReservationType.
  */
 
 namespace App\Form\Type;

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TagService
+ * TagService.
  */
 
 namespace App\Service;
@@ -12,25 +12,19 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 
 /**
- * Class TagService
+ * Class TagService.
  */
 class TagService implements TagServiceInterface
 {
-    /**
-     * @var EntityManagerInterface
-     */
     private EntityManagerInterface $entityManager;
 
-    /**
-     * @var TagRepository
-     */
     private TagRepository $tagRepository;
 
     /**
      * TagService constructor.
      *
-     * @param EntityManagerInterface $entityManager
-     * @param TagRepository          $tagRepository
+     * @param EntityManagerInterface $entityManager Entity manager
+     * @param TagRepository          $tagRepository Tag repository
      */
     public function __construct(EntityManagerInterface $entityManager, TagRepository $tagRepository)
     {
@@ -41,9 +35,9 @@ class TagService implements TagServiceInterface
     /**
      * Create a new tag.
      *
-     * @param Tag $tag
+     * @param  Tag $tag The tag entity
      *
-     * @return Tag
+     * @return Tag      The created tag
      */
     public function createTag(Tag $tag): Tag
     {
@@ -56,9 +50,9 @@ class TagService implements TagServiceInterface
     /**
      * Update an existing tag.
      *
-     * @param Tag $tag
+     * @param  Tag $tag The tag entity
      *
-     * @return Tag
+     * @return Tag      The updated tag
      */
     public function updateTag(Tag $tag): Tag
     {
@@ -70,9 +64,7 @@ class TagService implements TagServiceInterface
     /**
      * Delete a tag.
      *
-     * @param Tag $tag
-     *
-     * @return void
+     * @param Tag $tag The tag entity
      */
     public function deleteTag(Tag $tag): void
     {
@@ -83,9 +75,9 @@ class TagService implements TagServiceInterface
     /**
      * Get a tag by its ID.
      *
-     * @param int $id
+     * @param  int $id  The ID of the tag
      *
-     * @return Tag|null
+     * @return Tag|null The tag entity or null if not found
      */
     public function getTagById(int $id): ?Tag
     {
@@ -95,7 +87,7 @@ class TagService implements TagServiceInterface
     /**
      * Get all tags.
      *
-     * @return Tag[]
+     * @return Tag[] An array of tag entities
      */
     public function getAllTags(): array
     {
@@ -116,10 +108,6 @@ class TagService implements TagServiceInterface
 
     /**
      * Save a tag.
-     *
-     * @param Tag $tag
-     *
-     * @return Tag
      */
     public function save(Tag $tag): Tag
     {

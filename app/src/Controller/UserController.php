@@ -1,7 +1,7 @@
 <?php
 
 /**
- * UserController
+ * User controller.
  */
 
 namespace App\Controller;
@@ -10,11 +10,11 @@ use App\Entity\User;
 use App\Form\Type\User\UserEditType;
 use App\Form\Type\User\UserRoleType;
 use App\Form\Type\UserType;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Service\UserServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
@@ -26,20 +26,16 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 #[IsGranted('ROLE_ADMIN')]
 class UserController extends AbstractController
 {
+    private UserServiceInterface $userService;
 
     /**
-     * Entity manager.
-     */
-    private EntityManagerInterface $entityManager;
-
-    /**
-     * UserController constructor.
+     * UserReservationService constructor.
      *
-     * @param EntityManagerInterface $entityManager
+     * @param UserServiceInterface $userService The user service responsible for user-related operations
      */
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(UserServiceInterface $userService)
     {
-        $this->entityManager = $entityManager;
+        $this->userService = $userService;
     }
 
     /**
@@ -54,7 +50,7 @@ class UserController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
-        $users = $this->entityManager->getRepository(User::class)->findAll();
+        $users = $this->userService->findAllUsers();
 
         return $this->render('user/index.html.twig', [
             'users' => $users,
@@ -68,12 +64,11 @@ class UserController extends AbstractController
      *
      * @param Request                     $request            HTTP request
      * @param UserPasswordHasherInterface $userPasswordHasher Password hasher
-     * @param EntityManagerInterface      $entityManager      Entity manager
      *
      * @return Response HTTP response
      */
     #[Route('/users/new', name: 'user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, UserPasswordHasherInterface $userPasswordHasher): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
@@ -82,14 +77,10 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPassword(
-                $userPasswordHasher->hashPassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $plainPassword = $form->get('plainPassword')->getData();
+            $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
+
+            $this->userService->saveUser($user);
 
             return $this->redirectToRoute('user_index');
         }
@@ -104,14 +95,13 @@ class UserController extends AbstractController
      *
      * @Route('/users/{id}/edit', name: 'user_edit', methods: ['GET', 'POST'])
      *
-     * @param Request                $request       HTTP request
-     * @param User                   $user          User entity
-     * @param EntityManagerInterface $entityManager Entity manager
+     * @param Request $request HTTP request
+     * @param User    $user    User entity
      *
      * @return Response HTTP response
      */
     #[Route('/users/{id}/edit', name: 'user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, User $user): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
@@ -119,7 +109,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+            $this->userService->saveUser($user);
 
             return $this->redirectToRoute('user_index');
         }
@@ -134,14 +124,13 @@ class UserController extends AbstractController
      *
      * @Route('/users/{id}/edit-role', name: 'user_edit_role', methods: ['GET', 'POST'])
      *
-     * @param Request                $request       HTTP request
-     * @param User                   $user          User entity
-     * @param EntityManagerInterface $entityManager Entity manager
+     * @param Request $request HTTP request
+     * @param User    $user    User entity
      *
      * @return Response HTTP response
      */
     #[Route('/users/{id}/edit-role', name: 'user_edit_role', methods: ['GET', 'POST'])]
-    public function editRole(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    public function editRole(Request $request, User $user): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
@@ -149,7 +138,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+            $this->userService->saveUser($user);
 
             return $this->redirectToRoute('user_index');
         }

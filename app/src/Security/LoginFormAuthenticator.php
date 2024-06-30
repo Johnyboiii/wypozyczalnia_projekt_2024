@@ -18,6 +18,7 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordC
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\SecurityRequestAttributes;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
+use Exception;
 
 /**
  * Class LoginFormAuthenticator.
@@ -111,7 +112,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
      *
      * @return RedirectResponse|null HTTP response
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?RedirectResponse
     {

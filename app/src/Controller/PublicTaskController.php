@@ -17,7 +17,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Attribute\Route;
-use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Class PublicTaskController.
@@ -25,9 +24,6 @@ use Doctrine\ORM\EntityManagerInterface;
 #[Route('/public/task')]
 class PublicTaskController extends AbstractController
 {
-    /**
-     * @var TaskServiceInterface
-     */
     private TaskServiceInterface $taskService;
 
     /**
@@ -43,17 +39,17 @@ class PublicTaskController extends AbstractController
     /**
      * Index action.
      *
-     * @param Request $request
-     * @param int     $page
+     * @param  Request $request The request object
+     * @param  int     $page    Page number (optional)
      *
-     * @return Response HTTP response
+     * @return Response         HTTP response
      */
     #[Route(name: 'public_task_index', methods: 'GET')]
     public function index(Request $request, #[MapQueryParameter] int $page = 1): Response
     {
         // Create a new TaskListInputFiltersDto instance and set statusId to TaskStatus::STATUS_1
         $filtersDto = new TaskListInputFiltersDto(categoryId: $request->query->getInt('categoryId'), tagId: $request->query->getInt('tagId'), statusId: TaskStatus::STATUS_1);
-// Pass the TaskListInputFiltersDto instance as the third argument
+        // Pass the TaskListInputFiltersDto instance as the third argument
         $pagination = $this->taskService->getPaginatedList($page, null, $filtersDto);
 
         return $this->render('public_task/index.html.twig', ['pagination' => $pagination]);
@@ -62,9 +58,9 @@ class PublicTaskController extends AbstractController
     /**
      * Show action.
      *
-     * @param Task $task Task entity
+     * @param  Task $task Task entity
      *
-     * @return Response HTTP response
+     * @return Response   HTTP response
      */
     #[Route('/{id}', name: 'public_task_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
     public function show(Task $task): Response
@@ -75,10 +71,10 @@ class PublicTaskController extends AbstractController
     /**
      * Reserve action.
      *
-     * @param Request $request
-     * @param Task    $task
+     * @param  Request $request The request object
+     * @param  Task    $task    Task entity
      *
-     * @return Response HTTP response
+     * @return Response         HTTP response
      */
     #[Route('/{id}/reserve', name: 'public_task_reserve', methods: ['GET', 'POST'])]
     public function reserve(Request $request, Task $task): Response
@@ -86,7 +82,7 @@ class PublicTaskController extends AbstractController
         $form = $this->createForm(ReservationType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-        // Sprawdź, czy użytkownik jest zalogowany
+            // Sprawdź, czy użytkownik jest zalogowany
             if ($this->getUser()) {
                 $task->setReservationStatus('Zarezerwowane');
                 $task->setReservedBy($this->getUser());
@@ -112,7 +108,7 @@ class PublicTaskController extends AbstractController
     /**
      * Category action.
      *
-     * @param int $id
+     * @param  int $id  Category ID
      *
      * @return Response HTTP response
      */
@@ -129,9 +125,9 @@ class PublicTaskController extends AbstractController
     /**
      * Tag action.
      *
-     * @param string $name
+     * @param  string $name Tag name
      *
-     * @return Response HTTP response
+     * @return Response     HTTP response
      */
     #[Route('/tag/{name}', name: 'public_task_tag', methods: ['GET'])]
     public function tag(string $name): Response

@@ -20,13 +20,13 @@ interface TaskServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int                     $page       Page number
-     * @param User|null               $author     Author
-     * @param TaskListInputFiltersDto $filtersDto
+     * @param  int                     $page      Page number
+     * @param  User|null               $author    Author
+     * @param  TaskListInputFiltersDto $filtersDto
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page, User $author = null, TaskListInputFiltersDto $filtersDto): PaginationInterface;
+    public function getPaginatedList(int $page, ?User $author = null, TaskListInputFiltersDto $filtersDto): PaginationInterface;
 
     /**
      * Save entity.
@@ -59,4 +59,41 @@ interface TaskServiceInterface
      * @return array Tasks associated with the specified tag
      */
     public function getTasksByTag(Tag $tag): array;
+
+    /**
+     * Get tasks by tag.
+     *
+     * @param  array $statuses
+     *
+     * @return array Tasks with the given tag
+     */
+    public function getTasksByStatus(array $statuses): array;
+
+    /**
+     * Approve a task.
+     *
+     * @param Task $task Task entity
+     */
+    public function approveTask(Task $task): void;
+
+    /**
+     * Reject a task.
+     *
+     * @param Task $task Task entity
+     */
+    public function rejectTask(Task $task): void;
+
+    /**
+     * Lend a task.
+     *
+     * @param Task $task Task entity
+     */
+    public function lendTask(Task $task): void;
+
+    /**
+     * Return a task.
+     *
+     * @param Task $task Task entity
+     */
+    public function returnTask(Task $task): void;
 }

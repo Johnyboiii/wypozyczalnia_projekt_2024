@@ -1,16 +1,16 @@
 <?php
 
 /**
- * AdminTaskController
+ * AdminTaskController.
  */
+
 namespace App\Controller;
 
-use App\Entity\Enum\TaskStatus;
 use App\Entity\Task;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Service\TaskService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 /**
@@ -24,33 +24,29 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[IsGranted('ROLE_ADMIN')]
 class AdminTaskController extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
+    private TaskService $taskService;
 
     /**
      * AdminTaskController constructor.
      *
-     * @param EntityManagerInterface $entityManager
+     * @param TaskService $taskService The task service instance
      */
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(TaskService $taskService)
     {
-        $this->entityManager = $entityManager;
+        $this->taskService = $taskService;
     }
 
     /**
      * Display the index page.
      *
      * @Route("/", name: "admin_task_index", methods: ["GET"])
-     *
-     * @return Response
      */
     #[Route('/', name: 'admin_task_index', methods: ['GET'])]
     public function index(): Response
     {
         // Pobierz wszystkie zadania z bazy danych
-        $tasks = $this->entityManager
-            ->getRepository(Task::class)
-            //->findBy(['reservationStatus' => 'Oczekujące']);
-            ->findBy(['reservationStatus' => ['Zarezerwowane', 'Oczekujące', 'Zatwierdzone', 'Wypożyczone', 'Zwrócone']]);
+        $tasks = $this->taskService->getTasksByStatus(['Zarezerwowane', 'Oczekujące', 'Zatwierdzone', 'Wypożyczone', 'Zwrócone']);
+
         // Wyrenderuj widok z listą zadań
         return $this->render('admin_task/index.html.twig', [
             'tasks' => $tasks,
@@ -60,19 +56,16 @@ class AdminTaskController extends AbstractController
     /**
      * Approve a task.
      *
-     * @Route("/{id}/approve", name: "admin_task_approve", methods: ["POST"])
+     * @Route("/{id}/approve", name="admin_task_approve", methods={"POST"})
      *
-     * @param Task $task
+     * @param  Task $task The task entity to approve
      *
      * @return Response
      */
     #[Route('/{id}/approve', name: 'admin_task_approve', methods: ['POST'])]
     public function approve(Task $task): Response
     {
-        if ($task->getReservationStatus() === 'Oczekujące' || $task->getReservationStatus() === 'Zarezerwowane') {
-            $task->setReservationStatus('Zatwierdzone');
-            $this->entityManager->flush();
-        }
+        $this->taskService->approveTask($task);
 
         return $this->redirectToRoute('admin_task_index');
     }
@@ -82,15 +75,14 @@ class AdminTaskController extends AbstractController
      *
      * @Route("/{id}/reject", name: "admin_task_reject", methods: ["POST"])
      *
-     * @param Task $task
+     * @param  Task $task The task entity to approve
      *
      * @return Response
      */
     #[Route('/{id}/reject', name: 'admin_task_reject', methods: ['POST'])]
     public function reject(Task $task): Response
     {
-        $task->setReservationStatus('Odrzucone');
-        $this->entityManager->flush();
+        $this->taskService->rejectTask($task);
 
         return $this->redirectToRoute('admin_task_index');
     }
@@ -100,18 +92,14 @@ class AdminTaskController extends AbstractController
      *
      * @Route("/{id}/lend", name: "admin_task_lend", methods: ["POST"])
      *
-     * @param Task $task
+     * @param  Task $task The task entity to approve
      *
      * @return Response
      */
     #[Route('/{id}/lend', name: 'admin_task_lend', methods: ['POST'])]
     public function lend(Task $task): Response
     {
-        if ($task->getReservationStatus() === 'Zatwierdzone' || $task->getReservationStatus() === 'Zarezerwowane' || $task->getReservationStatus() === 'Zwrócone') {
-            $task->setReservationStatus('Wypożyczone');
-            $task->setStatus(TaskStatus::STATUS_2);
-            $this->entityManager->flush();
-        }
+        $this->taskService->lendTask($task);
 
         return $this->redirectToRoute('admin_task_index');
     }
@@ -121,18 +109,14 @@ class AdminTaskController extends AbstractController
      *
      * @Route("/{id}/return", name: "admin_task_return", methods: ["POST"])
      *
-     * @param Task $task
+     * @param  Task $task The task entity to approve
      *
      * @return Response
      */
     #[Route('/{id}/return', name: 'admin_task_return', methods: ['POST'])]
     public function return(Task $task): Response
     {
-        if ($task->getReservationStatus() === 'Wypożyczone') {
-            $task->setReservationStatus('Zwrócone');
-            $task->setStatus(TaskStatus::STATUS_1);
-            $this->entityManager->flush();
-        }
+        $this->taskService->returnTask($task);
 
         return $this->redirectToRoute('admin_task_index');
     }
@@ -142,7 +126,7 @@ class AdminTaskController extends AbstractController
      *
      * @Route("/{id}/details", name: "admin_task_details", methods: ["GET"])
      *
-     * @param Task $task
+     * @param  Task $task The task entity to approve
      *
      * @return Response
      */

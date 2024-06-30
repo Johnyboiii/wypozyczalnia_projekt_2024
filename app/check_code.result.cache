@@ -1,42 +1,283 @@
-   1) src/Controller/AdminTaskController.php (no_superfluous_phpdoc_tags, single_line_comment_spacing, phpdoc_summary, yoda_style, phpdoc_trim, blank_line_before_statement, blank_lines_before_namespace)
-   2) src/Controller/CategoryController.php (class_attributes_separation, no_unused_imports)
-   3) src/Controller/ChangePasswordController.php (class_attributes_separation, no_superfluous_phpdoc_tags, phpdoc_separation, phpdoc_trim, no_unused_imports, blank_lines_before_namespace)
-   4) src/Controller/PublicTaskController.php (no_superfluous_phpdoc_tags, no_empty_phpdoc, statement_indentation, no_unused_imports, phpdoc_trim_consecutive_blank_line_separation, phpdoc_align)
-   5) src/Controller/RegistrationController.php (phpdoc_summary)
-   6) src/Controller/SecurityController.php (global_namespace_import, phpdoc_summary, no_unused_imports)
-   7) src/Controller/TagController.php (no_superfluous_phpdoc_tags, phpdoc_summary, phpdoc_trim)
-   8) src/Controller/UserController.php (no_superfluous_phpdoc_tags, phpdoc_summary, no_blank_lines_after_class_opening, phpdoc_trim)
-   9) src/Controller/UserReservationsController.php (no_superfluous_phpdoc_tags, phpdoc_summary, phpdoc_trim)
-  10) src/DataFixtures/AbstractBaseFixtures.php (global_namespace_import, no_unused_imports)
-  11) src/DataFixtures/AppFixtures.php (phpdoc_summary)
-  12) src/DataFixtures/CategoryFixtures.php (global_namespace_import, no_unused_imports)
-  13) src/DataFixtures/TagFixtures.php (global_namespace_import, no_unused_imports, no_extra_blank_lines)
-  14) src/DataFixtures/TaskFixtures.php (global_namespace_import, no_unused_imports)
-  15) src/DataFixtures/UserFixtures.php (no_extra_blank_lines)
-  16) src/Entity/Category.php (fully_qualified_strict_types, no_superfluous_phpdoc_tags, global_namespace_import, no_unused_imports)
-  17) src/Entity/Enum/TaskStatus.php (visibility_required, no_superfluous_phpdoc_tags, single_line_comment_spacing, global_namespace_import, phpdoc_summary, phpdoc_trim, no_unused_imports, no_extra_blank_lines, phpdoc_trim_consecutive_blank_line_separation)
-  18) src/Entity/Enum/UserRole.php (class_attributes_separation, align_multiline_comment, phpdoc_indent)
-  19) src/Entity/Tag.php (fully_qualified_strict_types, no_superfluous_phpdoc_tags, global_namespace_import, phpdoc_summary, yoda_style, phpdoc_separation, phpdoc_trim, no_unused_imports)
-  20) src/Entity/Task.php (single_quote, fully_qualified_strict_types, no_superfluous_phpdoc_tags, no_empty_phpdoc, single_line_comment_spacing, global_namespace_import, space_after_semicolon, phpdoc_trim, no_unused_imports)
-  21) src/Entity/User.php (no_superfluous_phpdoc_tags, phpdoc_trim)
-  22) src/Form/Type/RegistrationFormType.php (array_indentation, phpdoc_summary)
-  23) src/Form/Type/ReservationType.php (class_attributes_separation, phpdoc_summary)
-  24) src/Form/Type/TagType.php (no_superfluous_phpdoc_tags, phpdoc_summary, phpdoc_trim)
-  25) src/Form/Type/TaskType.php (function_declaration)
-  26) src/Form/Type/User/UserEditType.php (single_line_comment_spacing, phpdoc_summary)
-  27) src/Form/Type/User/UserRoleType.php (phpdoc_summary)
-  28) src/Form/Type/UserType.php (single_line_comment_spacing, blank_lines_before_namespace)
-  29) src/Repository/TagRepository.php (no_superfluous_phpdoc_tags, global_namespace_import, phpdoc_summary, phpdoc_trim, no_unused_imports, phpdoc_trim_consecutive_blank_line_separation)
-  30) src/Repository/TaskRepository.php (no_superfluous_phpdoc_tags, nullable_type_declaration_for_default_null_value, phpdoc_trim_consecutive_blank_line_separation)
-  31) src/Repository/UserRepository.php (no_superfluous_phpdoc_tags, phpdoc_summary, phpdoc_trim)
-  32) src/Security/Voter/TaskVoter.php (single_line_comment_spacing)
-  33) src/Service/CategoryService.php (no_superfluous_phpdoc_tags, no_empty_phpdoc, types_spaces)
-  34) src/Service/TagService.php (no_superfluous_phpdoc_tags, no_empty_phpdoc, phpdoc_summary, phpdoc_trim)
-  35) src/Service/TagServiceInterface.php (no_superfluous_phpdoc_tags, phpdoc_summary, phpdoc_trim, phpdoc_trim_consecutive_blank_line_separation)
-  36) src/Service/TaskService.php (no_superfluous_phpdoc_tags, nullable_type_declaration_for_default_null_value, phpdoc_summary, phpdoc_trim, phpdoc_trim_consecutive_blank_line_separation)
-  37) src/Service/TaskServiceInterface.php (no_superfluous_phpdoc_tags, nullable_type_declaration_for_default_null_value, phpdoc_align)
+   1) src/Controller/ChangePasswordController.php (global_namespace_import, no_unused_imports)
+   2) src/Controller/RegistrationController.php (class_attributes_separation)
+   3) src/Controller/SecurityController.php (global_namespace_import, no_unused_imports)
+   4) src/DataFixtures/AbstractBaseFixtures.php (global_namespace_import, no_unused_imports)
+   5) src/DataFixtures/CategoryFixtures.php (global_namespace_import, no_unused_imports)
+   6) src/DataFixtures/TagFixtures.php (global_namespace_import, no_unused_imports, no_extra_blank_lines)
+   7) src/DataFixtures/TaskFixtures.php (global_namespace_import, no_unused_imports)
+   8) src/DataFixtures/UserFixtures.php (no_extra_blank_lines)
+   9) src/Entity/Category.php (global_namespace_import, no_unused_imports)
+  10) src/Entity/Enum/TaskStatus.php (global_namespace_import, no_unused_imports, no_extra_blank_lines)
+  11) src/Entity/Enum/UserRole.php (class_attributes_separation)
+  12) src/Entity/Tag.php (global_namespace_import, yoda_style, phpdoc_separation, no_unused_imports)
+  13) src/Entity/Task.php (global_namespace_import, no_unused_imports)
+  14) src/Form/Type/ReservationType.php (class_attributes_separation)
+  15) src/Repository/TagRepository.php (global_namespace_import, no_unused_imports)
+  16) src/Security/LoginFormAuthenticator.php (global_namespace_import, no_unused_imports)
+  17) src/Service/TaskService.php (yoda_style)
 
-Found 37 of 50 files that can be fixed in 2.055 seconds, 18.00 MB memory used
+Found 17 of 54 files that can be fixed in 1.446 seconds, 18.00 MB memory used
+
+FILE: /home/wwwroot/app/src/Controller/AdminTaskController.php
+----------------------------------------------------------------------
+FOUND 12 ERRORS AFFECTING 12 LINES
+----------------------------------------------------------------------
+  29 | ERROR | Doc comment for parameter "$taskService" missing
+  41 | ERROR | Missing @return tag in function comment
+  54 | ERROR | Doc comment for parameter "$task" missing
+  58 | ERROR | Missing @return tag in function comment
+  67 | ERROR | Doc comment for parameter "$task" missing
+  71 | ERROR | Missing @return tag in function comment
+  80 | ERROR | Doc comment for parameter "$task" missing
+  84 | ERROR | Missing @return tag in function comment
+  93 | ERROR | Doc comment for parameter "$task" missing
+  97 | ERROR | Missing @return tag in function comment
+ 106 | ERROR | Doc comment for parameter "$task" missing
+ 110 | ERROR | Missing @return tag in function comment
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/ChangePasswordController.php
+----------------------------------------------------------------------
+FOUND 5 ERRORS AFFECTING 3 LINES
+----------------------------------------------------------------------
+ 30 | ERROR | Doc comment for parameter "$tokenStorage" missing
+ 30 | ERROR | Doc comment for parameter "$userService" missing
+ 39 | ERROR | Doc comment for parameter "$request" missing
+ 39 | ERROR | Doc comment for parameter "$passwordHasher" missing
+ 45 | ERROR | Missing @return tag in function comment
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/PublicTaskController.php
+--------------------------------------------------------------------------------------------
+FOUND 6 ERRORS AFFECTING 5 LINES
+--------------------------------------------------------------------------------------------
+  39 | ERROR | Doc comment for parameter "$request" missing
+  42 | ERROR | Doc comment for parameter $page does not match actual variable name $request
+  70 | ERROR | Doc comment for parameter "$request" missing
+  70 | ERROR | Doc comment for parameter "$task" missing
+ 104 | ERROR | Doc comment for parameter "$id" missing
+ 119 | ERROR | Doc comment for parameter "$name" missing
+--------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/TagController.php
+----------------------------------------------------------------------
+FOUND 15 ERRORS AFFECTING 12 LINES
+----------------------------------------------------------------------
+  44 | ERROR | Doc comment for parameter "$tagRepository" missing
+  46 | ERROR | Missing @return tag in function comment
+  55 | ERROR | Doc comment for parameter "$request" missing
+  57 | ERROR | Missing @return tag in function comment
+  77 | ERROR | Doc comment for parameter "$tag" missing
+  79 | ERROR | Missing @return tag in function comment
+  88 | ERROR | Doc comment for parameter "$request" missing
+  88 | ERROR | Doc comment for parameter "$tag" missing
+  90 | ERROR | Missing @return tag in function comment
+ 109 | ERROR | Doc comment for parameter "$request" missing
+ 109 | ERROR | Doc comment for parameter "$tag" missing
+ 111 | ERROR | Missing @return tag in function comment
+ 130 | ERROR | Doc comment for parameter "$request" missing
+ 130 | ERROR | Doc comment for parameter "$tag" missing
+ 132 | ERROR | Missing @return tag in function comment
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/UserController.php
+----------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 45 | ERROR | Missing @return tag in function comment
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/UserReservationsController.php
+----------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 41 | ERROR | Missing @return tag in function comment
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Entity/Enum/TaskStatus.php
+----------------------------------------------------------------------
+FOUND 4 ERRORS AFFECTING 4 LINES
+----------------------------------------------------------------------
+ 21 | ERROR | Doc comment for parameter "$status" missing
+ 35 | ERROR | Doc comment for parameter "$status" missing
+ 37 | ERROR | Missing @return tag in function comment
+ 49 | ERROR | Missing @return tag in function comment
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Entity/Tag.php
+----------------------------------------------------------------------
+FOUND 15 ERRORS AFFECTING 15 LINES
+----------------------------------------------------------------------
+  76 | ERROR | Missing @return tag in function comment
+  84 | ERROR | Missing @return tag in function comment
+  90 | ERROR | Doc comment for parameter "$createdAt" missing
+  92 | ERROR | Missing @return tag in function comment
+ 102 | ERROR | Missing @return tag in function comment
+ 108 | ERROR | Doc comment for parameter "$updatedAt" missing
+ 110 | ERROR | Missing @return tag in function comment
+ 120 | ERROR | Missing @return tag in function comment
+ 126 | ERROR | Doc comment for parameter "$slug" missing
+ 128 | ERROR | Missing @return tag in function comment
+ 138 | ERROR | Missing @return tag in function comment
+ 144 | ERROR | Doc comment for parameter "$title" missing
+ 146 | ERROR | Missing @return tag in function comment
+ 171 | ERROR | Doc comment for parameter "$title" missing
+ 173 | ERROR | Missing @return tag in function comment
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Entity/Task.php
+------------------------------------------------------------------------
+FOUND 19 ERRORS AFFECTING 19 LINES
+------------------------------------------------------------------------
+ 187 | ERROR | Missing doc comment for function getManyToOne()
+ 192 | ERROR | Missing doc comment for function setManyToOne()
+ 225 | ERROR | Doc comment for parameter "$tag" missing
+ 237 | ERROR | Doc comment for parameter "$tag" missing
+ 247 | ERROR | Missing doc comment for function getAuthor()
+ 252 | ERROR | Doc comment for parameter "$author" missing
+ 262 | ERROR | Missing doc comment for function getStatus()
+ 267 | ERROR | Doc comment for parameter "$status" missing
+ 281 | ERROR | Missing doc comment for function getComment()
+ 286 | ERROR | Doc comment for parameter "$comment" missing
+ 320 | ERROR | Doc comment for parameter "$reservationStatus" missing
+ 330 | ERROR | Missing doc comment for function getReservedBy()
+ 335 | ERROR | Doc comment for parameter "$reservedBy" missing
+ 351 | ERROR | Missing doc comment for function getReservedByEmail()
+ 356 | ERROR | Doc comment for parameter "$reservedByEmail" missing
+ 374 | ERROR | You must use "/**" style comments for a function comment
+ 379 | ERROR | Doc comment for parameter "$nickname" missing
+ 399 | ERROR | You must use "/**" style comments for a function comment
+ 404 | ERROR | Doc comment for parameter "$reservationComment" missing
+------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Form/Type/TagType.php
+----------------------------------------------------------------------
+FOUND 3 ERRORS AFFECTING 2 LINES
+----------------------------------------------------------------------
+ 20 | ERROR | Doc comment for parameter "$builder" missing
+ 20 | ERROR | Doc comment for parameter "$options" missing
+ 32 | ERROR | Doc comment for parameter "$resolver" missing
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Repository/TagRepository.php
+----------------------------------------------------------------------
+FOUND 7 ERRORS AFFECTING 7 LINES
+----------------------------------------------------------------------
+ 26 | ERROR | Doc comment for parameter "$registry" missing
+ 34 | ERROR | Doc comment for parameter "$title" missing
+ 49 | ERROR | Doc comment for parameter "$date" missing
+ 66 | ERROR | Missing @return tag in function comment
+ 75 | ERROR | Doc comment for parameter "$id" missing
+ 79 | ERROR | Missing @return tag in function comment
+ 91 | ERROR | Missing @return tag in function comment
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Repository/TaskRepository.php
+----------------------------------------------------------------------
+FOUND 2 ERRORS AFFECTING 2 LINES
+----------------------------------------------------------------------
+ 184 | ERROR | Doc comment for parameter "$category" missing
+ 199 | ERROR | Doc comment for parameter "$tag" missing
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Repository/UserRepository.php
+----------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 21 | ERROR | Doc comment for parameter "$registry" missing
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Service/CategoryService.php
+----------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 93 | ERROR | Missing doc comment for function canBeDeleted()
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Service/TagService.php
+----------------------------------------------------------------------
+FOUND 11 ERRORS AFFECTING 10 LINES
+----------------------------------------------------------------------
+ 23 | ERROR | Doc comment for parameter "$entityManager" missing
+ 23 | ERROR | Doc comment for parameter "$tagRepository" missing
+ 32 | ERROR | Doc comment for parameter "$tag" missing
+ 34 | ERROR | Missing @return tag in function comment
+ 43 | ERROR | Doc comment for parameter "$tag" missing
+ 45 | ERROR | Missing @return tag in function comment
+ 53 | ERROR | Doc comment for parameter "$tag" missing
+ 62 | ERROR | Doc comment for parameter "$id" missing
+ 64 | ERROR | Missing @return tag in function comment
+ 92 | ERROR | Doc comment for parameter "$tag" missing
+ 94 | ERROR | Missing @return tag in function comment
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Service/TagServiceInterface.php
+----------------------------------------------------------------------
+FOUND 5 ERRORS AFFECTING 5 LINES
+----------------------------------------------------------------------
+ 16 | ERROR | Doc comment for parameter "$tag" missing
+ 21 | ERROR | Doc comment for parameter "$tag" missing
+ 26 | ERROR | Doc comment for parameter "$tag" missing
+ 31 | ERROR | Doc comment for parameter "$id" missing
+ 52 | ERROR | Doc comment for parameter "$tag" missing
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Service/TaskService.php
+----------------------------------------------------------------------
+FOUND 7 ERRORS AFFECTING 5 LINES
+----------------------------------------------------------------------
+  43 | ERROR | Doc comment for parameter "$page" missing
+  43 | ERROR | Doc comment for parameter "$author" missing
+  43 | ERROR | Doc comment for parameter "$filtersDto" missing
+  97 | ERROR | Doc comment for parameter "$tag" missing
+  99 | ERROR | Missing @return tag in function comment
+ 169 | ERROR | Doc comment for parameter "$filters" missing
+ 171 | ERROR | Missing @return tag in function comment
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Service/TaskServiceInterface.php
+----------------------------------------------------------------------
+FOUND 2 ERRORS AFFECTING 2 LINES
+----------------------------------------------------------------------
+ 20 | ERROR | Doc comment for parameter "$filtersDto" missing
+ 62 | ERROR | Doc comment for parameter "$statuses" missing
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Service/UserReservationService.php
+----------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 13 | ERROR | Missing doc comment for class UserReservationService
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Service/UserServiceInterface.php
+----------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 16 | ERROR | Doc comment for parameter "$user" missing
+----------------------------------------------------------------------
+
+Time: 2.47 secs; Memory: 10MB
+
  ----------- ------------ ------------------------------------------------------------------------ ------------------------------------------ 
   State       Domain       Id                                                                       Message Preview (en)                      
  ----------- ------------ ------------------------------------------------------------------------ ------------------------------------------ 
@@ -67,7 +308,7 @@ Found 37 of 50 files that can be fixed in 2.055 seconds, 18.00 MB memory used
 
 [notice] Migrating up to DoctrineMigrations\Version20240608101043
 [warning] Migration DoctrineMigrations\Version20240529080810 was executed but did not result in any SQL statements.
-[notice] finished in 1153.5ms, used 26M memory, 12 migrations executed, 25 sql queries
+[notice] finished in 1026.1ms, used 26M memory, 12 migrations executed, 25 sql queries
 
  [OK] Successfully migrated to version: DoctrineMigrations\Version20240608101043                                        
 

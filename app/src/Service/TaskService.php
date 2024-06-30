@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TaskService
+ * TaskService.
  */
 
 namespace App\Service;
@@ -14,6 +14,7 @@ use App\Entity\Tag;
 use App\Entity\Task;
 use App\Entity\User;
 use App\Repository\TaskRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
@@ -33,21 +34,22 @@ class TaskService implements TaskServiceInterface
      * @param PaginatorInterface       $paginator       Paginator
      * @param TagServiceInterface      $tagService      Tag service
      * @param TaskRepository           $taskRepository  Task repository
+     * @param EntityManagerInterface   $entityManager   Entity manager
      */
-    public function __construct(private readonly CategoryServiceInterface $categoryService, private readonly PaginatorInterface $paginator, private readonly TagServiceInterface $tagService, private readonly TaskRepository $taskRepository)
+    public function __construct(private readonly CategoryServiceInterface $categoryService, private readonly PaginatorInterface $paginator, private readonly TagServiceInterface $tagService, private readonly TaskRepository $taskRepository, private readonly EntityManagerInterface $entityManager)
     {
     }
 
     /**
      * Find all tasks.
      *
-     * @param int                     $page
-     * @param User|null               $author
-     * @param TaskListInputFiltersDto $filtersDto
+     * @param  int                     $page       The page number
+     * @param  User|null               $author     The author of the tasks
+     * @param  TaskListInputFiltersDto $filtersDto Filters for the task list
      *
-     * @return PaginationInterface Task entities
+     * @return PaginationInterface                 Task entities
      */
-    public function getPaginatedList(int $page, User $author = null, TaskListInputFiltersDto $filtersDto): PaginationInterface
+    public function getPaginatedList(int $page, ?User $author = null, TaskListInputFiltersDto $filtersDto): PaginationInterface
     {
         $filters = $this->prepareFilters($filtersDto);
 
@@ -87,7 +89,7 @@ class TaskService implements TaskServiceInterface
     /**
      * Get tasks by category.
      *
-     * @param Category $categoryId The category to filter tasks by
+     * @param Category|int $categoryId The category to filter tasks by
      *
      * @return array An array of Task objects belonging to the specified category
      */
@@ -97,11 +99,11 @@ class TaskService implements TaskServiceInterface
     }
 
     /**
-     * Get a task by its ID.
+     * Get tasks by tag.
      *
-     * @param Tag $tag
+     * @param  Tag $tag The tag to filter tasks by
      *
-     * @return array
+     * @return array    An array of Task objects with the specified tag
      */
     public function getTasksByTag(Tag $tag): array
     {
@@ -109,11 +111,75 @@ class TaskService implements TaskServiceInterface
     }
 
     /**
-     * Get the number of tasks.
+     * Get tasks by status.
      *
-     * @param TaskListInputFiltersDto $filters
+     * @param array $statuses Array of statuses
      *
-     * @return TaskListFiltersDto
+     * @return array Tasks with the given statuses
+     */
+    public function getTasksByStatus(array $statuses): array
+    {
+        return $this->taskRepository->findBy(['reservationStatus' => $statuses]);
+    }
+
+    /**
+     * Approve a task.
+     *
+     * @param Task $task Task entity
+     */
+    public function approveTask(Task $task): void
+    {
+        if ($task->getReservationStatus() === 'Oczekujące' || $task->getReservationStatus() === 'Zarezerwowane') {
+            $task->setReservationStatus('Zatwierdzone');
+            $this->entityManager->flush();
+        }
+    }
+
+    /**
+     * Reject a task.
+     *
+     * @param Task $task Task entity
+     */
+    public function rejectTask(Task $task): void
+    {
+        $task->setReservationStatus('Odrzucone');
+        $this->entityManager->flush();
+    }
+
+    /**
+     * Lend a task.
+     *
+     * @param Task $task Task entity
+     */
+    public function lendTask(Task $task): void
+    {
+        if (in_array($task->getReservationStatus(), ['Zatwierdzone', 'Zarezerwowane', 'Zwrócone'])) {
+            $task->setReservationStatus('Wypożyczone');
+            $task->setStatus(TaskStatus::STATUS_2);
+            $this->entityManager->flush();
+        }
+    }
+
+    /**
+     * Return a task.
+     *
+     * @param Task $task Task entity
+     */
+    public function returnTask(Task $task): void
+    {
+        if ($task->getReservationStatus() === 'Wypożyczone') {
+            $task->setReservationStatus('Zwrócone');
+            $task->setStatus(TaskStatus::STATUS_1);
+            $this->entityManager->flush();
+        }
+    }
+
+    /**
+     * Prepare filters for task list.
+     *
+     * @param  TaskListInputFiltersDto $filters The filters to prepare
+     *
+     * @return TaskListFiltersDto               The prepared filters
      */
     private function prepareFilters(TaskListInputFiltersDto $filters): TaskListFiltersDto
     {

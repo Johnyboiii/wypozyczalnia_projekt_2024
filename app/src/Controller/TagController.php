@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TagController
+ * TagController.
  */
 
 namespace App\Controller;
@@ -26,6 +26,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class TagController extends AbstractController
 {
     private TagServiceInterface $tagService;
+
     private TranslatorInterface $translator;
 
     /**
@@ -41,11 +42,11 @@ class TagController extends AbstractController
     }
 
     /**
-     * @Route("/", name="tag_index", methods={"GET"})
+     * Index action.
      *
-     * @param TagRepository $tagRepository
+     * @param  TagRepository $tagRepository Tag repository
      *
-     * @return Response
+     * @return Response                     HTTP response
      */
     #[Route('/', name: 'tag_index', methods: ['GET'])]
     public function index(TagRepository $tagRepository): Response
@@ -56,11 +57,11 @@ class TagController extends AbstractController
     }
 
     /**
-     * @Route("/create", name="tag_create", methods={"GET", "POST"})
+     * Create action.
      *
-     * @param Request $request
+     * @param  Request $request Request object
      *
-     * @return Response
+     * @return Response         HTTP response
      */
     #[Route('/create', name: 'tag_create', methods: ['GET', 'POST'])]
     public function create(Request $request): Response
@@ -82,11 +83,11 @@ class TagController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="tag_show", methods={"GET"})
+     * Show action.
      *
-     * @param Tag $tag
+     * @param  Tag $tag Tag entity
      *
-     * @return Response
+     * @return Response HTTP response
      */
     #[Route('/{id}', name: 'tag_show', methods: ['GET'])]
     public function show(Tag $tag): Response
@@ -97,12 +98,12 @@ class TagController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="tag_edit", methods={"GET", "POST"})
+     * Edit action.
      *
-     * @param Request $request
-     * @param Tag     $tag
+     * @param  Request $request Request object
+     * @param  Tag     $tag     Tag entity
      *
-     * @return Response
+     * @return Response         HTTP response
      */
     #[Route('/{id}/edit', name: 'tag_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Tag $tag): Response
@@ -123,12 +124,12 @@ class TagController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/delete", name="tag_confirm_delete", methods={"GET"})
+     * Confirm delete action.
      *
-     * @param Request $request
-     * @param Tag     $tag
+     * @param  Request $request Request object
+     * @param  Tag     $tag     Tag entity
      *
-     * @return Response
+     * @return Response         HTTP response
      */
     #[Route('/{id}/delete', name: 'tag_confirm_delete', requirements: ['id' => '[1-9]\d*'], methods: ['GET'])]
     public function confirmDelete(Request $request, Tag $tag): Response
@@ -149,12 +150,12 @@ class TagController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="tag_delete", methods={"POST"})
+     * Delete action.
      *
-     * @param Request $request
-     * @param Tag     $tag
+     * @param  Request $request Request object
+     * @param  Tag     $tag     Tag entity
      *
-     * @return Response
+     * @return Response         HTTP response
      */
     #[Route('/{id}/delete', name: 'tag_delete', requirements: ['id' => '[1-9]\d*'], methods: ['DELETE'])]
     public function delete(Request $request, Tag $tag): Response

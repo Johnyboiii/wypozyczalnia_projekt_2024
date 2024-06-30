@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TagRepository
+ * TagRepository.
  */
 
 namespace App\Repository;
@@ -14,7 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
 
 /**
- * Class TagRepository
+ * Class TagRepository.
  *
  * @method Tag|null find($id, $lockMode = null, $lockVersion = null)
  * @method Tag|null findOneBy(array $criteria, array $orderBy = null)
@@ -26,7 +26,7 @@ class TagRepository extends ServiceEntityRepository
     /**
      * TagRepository constructor.
      *
-     * @param ManagerRegistry $registry
+     * @param ManagerRegistry $registry The manager registry
      */
     public function __construct(ManagerRegistry $registry)
     {
@@ -36,10 +36,11 @@ class TagRepository extends ServiceEntityRepository
     /**
      * Find tags by title.
      *
-     * @param string $title
+     * @param  string $title The title to search for
      *
-     * @return Tag[]
+     * @return Tag[]         An array of Tag objects
      */
+
     public function findByTitle(string $title): array
     {
         return $this->createQueryBuilder('t')
@@ -53,9 +54,9 @@ class TagRepository extends ServiceEntityRepository
     /**
      * Find tags created after a specific date.
      *
-     * @param DateTime $date
+     * @param  DateTime $date The date to search from
      *
-     * @return Tag[]
+     * @return Tag[]          An array of Tag objects
      */
     public function findByCreatedAfter(DateTime $date): array
     {
@@ -70,7 +71,7 @@ class TagRepository extends ServiceEntityRepository
     /**
      * Get the number of tags.
      *
-     * @return int
+     * @return int The number of tags
      */
     public function countTags(): int
     {
@@ -83,9 +84,9 @@ class TagRepository extends ServiceEntityRepository
     /**
      * Find one by id.
      *
-     * @param int $id
+     * @param  int $id  The ID of the tag
      *
-     * @return Tag|null
+     * @return Tag|null The found Tag or null
      *
      * @throws NonUniqueResultException
      */
@@ -101,7 +102,7 @@ class TagRepository extends ServiceEntityRepository
     /**
      * Base query builder for reusable queries.
      *
-     * @return QueryBuilder
+     * @return QueryBuilder The base query builder
      */
     private function baseQueryBuilder(): QueryBuilder
     {

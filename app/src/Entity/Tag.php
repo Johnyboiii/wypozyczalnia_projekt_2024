@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Tag
+ * Tag.
  */
 
 namespace App\Entity;
@@ -38,8 +38,6 @@ class Tag
     private $id;
 
     /**
-     * @var DateTimeInterface
-     *
      * @ORM\Column(type="datetime")
      */
     #[ORM\Column(type: 'datetime_immutable')]
@@ -48,8 +46,6 @@ class Tag
     private DateTimeInterface $createdAt;
 
     /**
-     * @var DateTimeInterface
-     *
      * @ORM\Column(type="datetime")
      */
     #[ORM\Column(type: 'datetime_immutable')]
@@ -58,8 +54,6 @@ class Tag
     private DateTimeInterface $updatedAt;
 
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", length=64)
      */
     #[ORM\Column(type: 'string', length: 64)]
@@ -69,8 +63,6 @@ class Tag
     private string $slug;
 
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", length=64)
      */
     #[ORM\Column(type: 'string', length: 255)]
@@ -80,7 +72,7 @@ class Tag
     private string $title;
 
     /**
-     * Get the value of id
+     * Get the value of id.
      *
      * @return int|null
      */
@@ -90,7 +82,7 @@ class Tag
     }
 
     /**
-     * Get the value of createdAt
+     * Get the value of createdAt.
      *
      * @return DateTimeInterface|null
      */
@@ -100,9 +92,9 @@ class Tag
     }
 
     /**
-     * Set the value of createdAt
+     * Set the value of createdAt.
      *
-     * @param DateTimeInterface $createdAt
+     * @param  DateTimeInterface $createdAt
      *
      * @return self
      */
@@ -114,7 +106,7 @@ class Tag
     }
 
     /**
-     * Get the value of updatedAt
+     * Get the value of updatedAt.
      *
      * @return DateTimeInterface|null
      */
@@ -124,9 +116,9 @@ class Tag
     }
 
     /**
-     * Set the value of updatedAt
+     * Set the value of updatedAt.
      *
-     * @param DateTimeInterface $updatedAt
+     * @param  DateTimeInterface $updatedAt
      *
      * @return self
      */
@@ -138,7 +130,7 @@ class Tag
     }
 
     /**
-     * Get the value of slug
+     * Get the value of slug.
      *
      * @return string|null
      */
@@ -148,9 +140,9 @@ class Tag
     }
 
     /**
-     * Set the value of slug
+     * Set the value of slug.
      *
-     * @param string $slug
+     * @param  string $slug
      *
      * @return self
      */
@@ -162,7 +154,7 @@ class Tag
     }
 
     /**
-     * Get the value of title
+     * Get the value of title.
      *
      * @return string|null
      */
@@ -172,9 +164,9 @@ class Tag
     }
 
     /**
-     * Set the value of title
+     * Set the value of title.
      *
-     * @param string $title
+     * @param  string $title
      *
      * @return self
      */
@@ -186,7 +178,7 @@ class Tag
     }
 
     /**
-     * Updates timestamps before persisting or updating the entity
+     * Updates timestamps before persisting or updating the entity.
      *
      * @ORM\PrePersist
      * @ORM\PreUpdate
@@ -194,18 +186,18 @@ class Tag
     public function updateTimestamps(): void
     {
         if ($this->getCreatedAt() === null) {
-            $this->setCreatedAt(new \DateTimeImmutable());
+            $this->setCreatedAt(new DateTimeImmutable());
         }
-        $this->setUpdatedAt(new \DateTimeImmutable());
+        $this->setUpdatedAt(new DateTimeImmutable());
 
         // Generate slug based on title
         $this->setSlug($this->generateSlug($this->getTitle()));
     }
 
     /**
-     * Generate slug from title
+     * Generate slug from title.
      *
-     * @param string $title
+     * @param  string $title
      *
      * @return string
      */

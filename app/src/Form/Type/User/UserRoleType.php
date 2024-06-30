@@ -1,7 +1,7 @@
 <?php
 
 /**
- * UserRoleType
+ * UserRoleType.
  */
 
 namespace App\Form\Type\User;
