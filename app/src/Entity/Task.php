@@ -189,7 +189,6 @@ class Task
      *
      * @return string
      */
-
     public function getManyToOne(): string
     {
         return $this->manyToOne;

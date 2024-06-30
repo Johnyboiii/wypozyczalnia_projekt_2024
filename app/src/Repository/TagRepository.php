@@ -40,7 +40,6 @@ class TagRepository extends ServiceEntityRepository
      *
      * @return Tag[]         An array of Tag objects
      */
-
     public function findByTitle(string $title): array
     {
         return $this->createQueryBuilder('t')
@@ -84,7 +83,7 @@ class TagRepository extends ServiceEntityRepository
     /**
      * Find one by id.
      *
-     * @param  int $id  The ID of the tag
+     * @param  int $id The ID of the tag
      *
      * @return Tag|null The found Tag or null
      *

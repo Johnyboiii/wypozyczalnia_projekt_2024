@@ -21,7 +21,7 @@ class TaskStatus
     /**
      * TaskStatus constructor.
      *
-     * @param  int $status              The status value to initialize the TaskStatus object
+     * @param  int $status The status value to initialize the TaskStatus object
      *
      * @throws InvalidArgumentException If an invalid status is provided
      */
@@ -38,7 +38,8 @@ class TaskStatus
      * Create a TaskStatus object from an integer status.
      *
      * @param  int $status The status value to create the TaskStatus object from
-     * @return int         The created TaskStatus object
+     *
+     * @return int The created TaskStatus object
      */
     public static function from(int $status): int // dla TaskFixtures, bez tego nie dziala
     {

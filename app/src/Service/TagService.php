@@ -75,7 +75,7 @@ class TagService implements TagServiceInterface
     /**
      * Get a tag by its ID.
      *
-     * @param  int $id  The ID of the tag
+     * @param  int $id The ID of the tag
      *
      * @return Tag|null The tag entity or null if not found
      */
@@ -108,6 +108,10 @@ class TagService implements TagServiceInterface
 
     /**
      * Save a tag.
+     *
+     * @param  Tag $tag
+     *
+     * @return Tag
      */
     public function save(Tag $tag): Tag
     {

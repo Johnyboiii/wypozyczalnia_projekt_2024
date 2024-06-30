@@ -108,7 +108,7 @@ class PublicTaskController extends AbstractController
     /**
      * Category action.
      *
-     * @param  int $id  Category ID
+     * @param  int $id Category ID
      *
      * @return Response HTTP response
      */

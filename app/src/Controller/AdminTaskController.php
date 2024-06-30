@@ -40,6 +40,8 @@ class AdminTaskController extends AbstractController
      * Display the index page.
      *
      * @Route("/", name: "admin_task_index", methods: ["GET"])
+     *
+     * @return Response
      */
     #[Route('/', name: 'admin_task_index', methods: ['GET'])]
     public function index(): Response

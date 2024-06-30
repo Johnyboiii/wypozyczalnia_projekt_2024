@@ -41,7 +41,7 @@ interface TagServiceInterface
     /**
      * Get a tag by its ID.
      *
-     * @param  int $id  The ID of the tag
+     * @param  int $id The ID of the tag
      *
      * @return Tag|null The tag entity or null if not found
      */
@@ -65,6 +65,8 @@ interface TagServiceInterface
 
     /**
      * Find tags by title.
+     *
+     * @param  Tag $tag
      *
      * @return Tag[]
      */

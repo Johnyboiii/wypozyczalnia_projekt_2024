@@ -35,6 +35,9 @@ class ChangePasswordController extends AbstractController
 
     /**
      * ChangePasswordController constructor.
+     *
+     * @param TokenStorageInterface $tokenStorage
+     * @param UserService           $userService
      */
     public function __construct(TokenStorageInterface $tokenStorage, UserService $userService)
     {
