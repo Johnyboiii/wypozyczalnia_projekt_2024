@@ -8,13 +8,11 @@ namespace App\Entity;
 
 use App\Entity\Enum\TaskStatus;
 use App\Repository\TaskRepository;
-use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -40,9 +38,9 @@ class Task
      * @psalm-suppress PropertyNotSetInConstructor
      */
     #[ORM\Column(type: 'datetime_immutable')]
-    #[Assert\Type(DateTimeImmutable::class)]
+    #[Assert\Type(\DateTimeImmutable::class)]
     #[Gedmo\Timestampable(on: 'create')]
-    private ?DateTimeImmutable $createdAt;
+    private ?\DateTimeImmutable $createdAt;
 
     /**
      * Updated at.
@@ -50,9 +48,9 @@ class Task
      * @psalm-suppress PropertyNotSetInConstructor
      */
     #[ORM\Column(type: 'datetime_immutable')]
-    #[Assert\Type(DateTimeImmutable::class)]
+    #[Assert\Type(\DateTimeImmutable::class)]
     #[Gedmo\Timestampable(on: 'update')]
-    private ?DateTimeImmutable $updatedAt;
+    private ?\DateTimeImmutable $updatedAt;
 
     /**
      * Title.
@@ -127,9 +125,9 @@ class Task
     /**
      * Getter for created at.
      *
-     * @return DateTimeImmutable|null Created at
+     * @return \DateTimeImmutable|null Created at
      */
-    public function getCreatedAt(): ?DateTimeImmutable
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
     }
@@ -137,9 +135,9 @@ class Task
     /**
      * Setter for created at.
      *
-     * @param DateTimeImmutable|null $createdAt Created at
+     * @param \DateTimeImmutable|null $createdAt Created at
      */
-    public function setCreatedAt(?DateTimeImmutable $createdAt): void
+    public function setCreatedAt(?\DateTimeImmutable $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -147,9 +145,9 @@ class Task
     /**
      * Getter for updated at.
      *
-     * @return DateTimeImmutable|null Updated at
+     * @return \DateTimeImmutable|null Updated at
      */
-    public function getUpdatedAt(): ?DateTimeImmutable
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
     }
@@ -157,9 +155,9 @@ class Task
     /**
      * Setter for updated at.
      *
-     * @param DateTimeImmutable|null $updatedAt Updated at
+     * @param \DateTimeImmutable|null $updatedAt Updated at
      */
-    public function setUpdatedAt(?DateTimeImmutable $updatedAt): void
+    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
@@ -187,7 +185,7 @@ class Task
     /**
      * Getter for ManyToOne.
      *
-     * @return string
+     * @return string ManyToOne
      */
     public function getManyToOne(): string
     {
@@ -197,7 +195,7 @@ class Task
     /**
      * Setter for ManyToOne.
      *
-     * @param string $manyToOne
+     * @param string $manyToOne ManyToOne
      */
     public function setManyToOne(string $manyToOne): void
     {
@@ -235,7 +233,7 @@ class Task
     /**
      * Add a tag.
      *
-     * @param  Tag $tag
+     * @param Tag $tag The tag to add
      *
      * @return $this
      */
@@ -251,7 +249,7 @@ class Task
     /**
      * Remove a tag.
      *
-     * @param  Tag $tag
+     * @param Tag $tag The tag to remove
      *
      * @return $this
      */
@@ -275,7 +273,7 @@ class Task
     /**
      * Setter for author.
      *
-     * @param  User|null $author Author
+     * @param User|null $author Author
      *
      * @return $this
      */
@@ -299,16 +297,16 @@ class Task
     /**
      * Setter for status.
      *
-     * @param  int $status Status
+     * @param int $status Status
      *
      * @return $this
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function setStatus(int $status): self
     {
         if (!in_array($status, [TaskStatus::STATUS_1, TaskStatus::STATUS_2])) {
-            throw new InvalidArgumentException('Invalid task status');
+            throw new \InvalidArgumentException('Invalid task status');
         }
 
         $this->status = $status;
@@ -329,7 +327,7 @@ class Task
     /**
      * Setter for comment.
      *
-     * @param  string|null $comment Comment
+     * @param string|null $comment Comment
      *
      * @return $this
      */
@@ -355,7 +353,7 @@ class Task
     // ...
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * Getter for reservation status.
      *
      * @return string|null Reservation status
      */
@@ -367,7 +365,7 @@ class Task
     /**
      * Setter for reservation status.
      *
-     * @param  string|null $reservationStatus Reservation status
+     * @param string|null $reservationStatus Reservation status
      *
      * @return $this
      */
@@ -391,7 +389,7 @@ class Task
     /**
      * Setter for reserved by.
      *
-     * @param  User|null $reservedBy Reserved by
+     * @param User|null $reservedBy Reserved by
      *
      * @return $this
      */
@@ -421,7 +419,7 @@ class Task
     /**
      * Setter for reserved by email.
      *
-     * @param  string|null $reservedByEmail Reserved by email
+     * @param string|null $reservedByEmail Reserved by email
      *
      * @return $this
      */
@@ -453,7 +451,7 @@ class Task
     /**
      * Setter for nickname.
      *
-     * @param  string|null $nickname Nickname
+     * @param string|null $nickname Nickname
      *
      * @return $this
      */
@@ -487,7 +485,7 @@ class Task
     /**
      * Setter for reservation comment.
      *
-     * @param  string|null $reservationComment Reservation comment
+     * @param string|null $reservationComment Reservation comment
      *
      * @return $this
      */

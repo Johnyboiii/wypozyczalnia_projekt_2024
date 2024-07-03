@@ -184,9 +184,9 @@ class TaskRepository extends ServiceEntityRepository
     /**
      * Find tasks by category.
      *
-     * @param  Category|int $category The category or its ID
+     * @param Category|int $category The category or its ID
      *
-     * @return Task[]                 An array of Task objects
+     * @return Task[] An array of Task objects
      */
     public function findByCategory(Category|int $category): array
     {
@@ -201,9 +201,9 @@ class TaskRepository extends ServiceEntityRepository
     /**
      * Find tasks by tag.
      *
-     * @param  Tag $tag The tag entity
+     * @param Tag $tag The tag entity
      *
-     * @return Task[]   An array of Task objects
+     * @return Task[] An array of Task objects
      */
     public function findByTag(Tag $tag): array
     {

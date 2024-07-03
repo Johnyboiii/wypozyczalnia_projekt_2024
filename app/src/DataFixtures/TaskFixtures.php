@@ -11,7 +11,6 @@ use App\Entity\Enum\TaskStatus;
 use App\Entity\Tag;
 use App\Entity\Task;
 use App\Entity\User;
-use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Generator;
@@ -38,12 +37,12 @@ class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             $task = new Task();
             $task->setTitle($this->faker->sentence);
             $task->setCreatedAt(
-                DateTimeImmutable::createFromMutable(
+                \DateTimeImmutable::createFromMutable(
                     $this->faker->dateTimeBetween('-100 days', '-1 days')
                 )
             );
             $task->setUpdatedAt(
-                DateTimeImmutable::createFromMutable(
+                \DateTimeImmutable::createFromMutable(
                     $this->faker->dateTimeBetween('-100 days', '-1 days')
                 )
             );

@@ -35,9 +35,9 @@ class TagService implements TagServiceInterface
     /**
      * Create a new tag.
      *
-     * @param  Tag $tag The tag entity
+     * @param Tag $tag The tag entity
      *
-     * @return Tag      The created tag
+     * @return Tag The created tag
      */
     public function createTag(Tag $tag): Tag
     {
@@ -50,9 +50,9 @@ class TagService implements TagServiceInterface
     /**
      * Update an existing tag.
      *
-     * @param  Tag $tag The tag entity
+     * @param Tag $tag The tag entity
      *
-     * @return Tag      The updated tag
+     * @return Tag The updated tag
      */
     public function updateTag(Tag $tag): Tag
     {
@@ -75,7 +75,7 @@ class TagService implements TagServiceInterface
     /**
      * Get a tag by its ID.
      *
-     * @param  int $id The ID of the tag
+     * @param int $id The ID of the tag
      *
      * @return Tag|null The tag entity or null if not found
      */
@@ -109,9 +109,9 @@ class TagService implements TagServiceInterface
     /**
      * Save a tag.
      *
-     * @param  Tag $tag
+     * @param Tag $tag Tag Param
      *
-     * @return Tag
+     * @return Tag Return Tag
      */
     public function save(Tag $tag): Tag
     {

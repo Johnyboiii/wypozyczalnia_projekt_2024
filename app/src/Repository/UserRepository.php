@@ -21,7 +21,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     /**
      * UserRepository constructor.
      *
-     * @param ManagerRegistry $registry
+     * @param ManagerRegistry $registry Registry parameter
      */
     public function __construct(ManagerRegistry $registry)
     {

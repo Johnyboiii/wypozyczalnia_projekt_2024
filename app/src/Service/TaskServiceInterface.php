@@ -20,9 +20,9 @@ interface TaskServiceInterface
     /**
      * Get paginated list.
      *
-     * @param  int                     $page       Page number
-     * @param  User|null               $author     Author
-     * @param  TaskListInputFiltersDto $filtersDto
+     * @param int                     $page       Page number
+     * @param User|null               $author     Author
+     * @param TaskListInputFiltersDto $filtersDto Filters
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
@@ -63,7 +63,7 @@ interface TaskServiceInterface
     /**
      * Get tasks by tag.
      *
-     * @param  array $statuses
+     * @param array $statuses Status Param
      *
      * @return array Tasks with the given tag
      */

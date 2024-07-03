@@ -33,6 +33,7 @@ class RegistrationController extends AbstractController
     {
         $this->userService = $userService;
     }
+
     /**
      * Handles user registration.
      *

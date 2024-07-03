@@ -1,65 +1,20 @@
-   1) src/Controller/AdminTaskController.php (no_superfluous_phpdoc_tags, phpdoc_trim, phpdoc_align)
-   2) src/Controller/ChangePasswordController.php (no_superfluous_phpdoc_tags, no_empty_phpdoc, global_namespace_import, phpdoc_separation, phpdoc_trim, no_unused_imports, phpdoc_align)
-   3) src/Controller/PublicTaskController.php (phpdoc_align)
-   4) src/Controller/RegistrationController.php (class_attributes_separation)
-   5) src/Controller/SecurityController.php (global_namespace_import, no_unused_imports)
-   6) src/Controller/TagController.php (phpdoc_align)
-   7) src/Controller/UserController.php (no_superfluous_phpdoc_tags, phpdoc_trim)
-   8) src/Controller/UserReservationsController.php (no_superfluous_phpdoc_tags, phpdoc_trim)
-   9) src/DataFixtures/AbstractBaseFixtures.php (global_namespace_import, no_unused_imports)
-  10) src/DataFixtures/CategoryFixtures.php (global_namespace_import, no_unused_imports)
-  11) src/DataFixtures/TagFixtures.php (global_namespace_import, no_unused_imports, no_extra_blank_lines)
-  12) src/DataFixtures/TaskFixtures.php (global_namespace_import, no_unused_imports)
-  13) src/DataFixtures/UserFixtures.php (no_extra_blank_lines)
-  14) src/Entity/Category.php (global_namespace_import, no_unused_imports)
-  15) src/Entity/Enum/TaskStatus.php (global_namespace_import, no_unused_imports, no_extra_blank_lines, phpdoc_align)
-  16) src/Entity/Enum/UserRole.php (class_attributes_separation)
-  17) src/Entity/Tag.php (no_superfluous_phpdoc_tags, global_namespace_import, yoda_style, phpdoc_separation, phpdoc_trim, no_unused_imports)
-  18) src/Entity/Task.php (no_superfluous_phpdoc_tags, global_namespace_import, phpdoc_trim, no_unused_imports, phpdoc_trim_consecutive_blank_line_separation, phpdoc_align)
-  19) src/Form/Type/ReservationType.php (class_attributes_separation)
-  20) src/Repository/TagRepository.php (global_namespace_import, no_unused_imports, phpdoc_align)
-  21) src/Repository/TaskRepository.php (phpdoc_align)
-  22) src/Repository/UserRepository.php (no_superfluous_phpdoc_tags, phpdoc_trim)
-  23) src/Security/LoginFormAuthenticator.php (global_namespace_import, no_unused_imports)
-  24) src/Service/CategoryService.php (phpdoc_align)
-  25) src/Service/TagService.php (no_superfluous_phpdoc_tags, phpdoc_trim, phpdoc_align)
-  26) src/Service/TagServiceInterface.php (no_superfluous_phpdoc_tags, phpdoc_trim_consecutive_blank_line_separation, phpdoc_align)
-  27) src/Service/TaskService.php (yoda_style, phpdoc_align)
-  28) src/Service/TaskServiceInterface.php (no_superfluous_phpdoc_tags, phpdoc_trim_consecutive_blank_line_separation, phpdoc_align)
-  29) src/Service/UserServiceInterface.php (no_superfluous_phpdoc_tags, phpdoc_trim)
 
-Found 29 of 54 files that can be fixed in 1.774 seconds, 18.00 MB memory used
- ----------- ------------ ------------------------------------------------------------------------ ------------------------------------------ 
-  State       Domain       Id                                                                       Message Preview (en)                      
- ----------- ------------ ------------------------------------------------------------------------ ------------------------------------------ 
-   missing    validators   Please enter a comment                                                   Please enter a comment                    
-   missing    validators   This value is too long. It should have {{ limit }} characters or less.   This value is too long. It should hav...  
-   missing    validators   There is already an account with this email                              There is already an account with this...  
-   missing    validators   You should agree to our terms.                                           You should agree to our terms.            
-   missing    validators   Please enter a password                                                  Please enter a password                   
-   missing    validators   Your password should be at least {{ limit }} characters                  Your password should be at least {{ l...  
-   missing    validators   Comment should not be blank.                                             Comment should not be blank.              
-   missing    validators   Comment cannot be longer than {{ limit }} characters                     Comment cannot be longer than {{ limi...  
-   missing    messages                                                                                                                        
- ----------- ------------ ------------------------------------------------------------------------ ------------------------------------------ 
+Found 0 of 54 files that can be fixed in 1.451 seconds, 18.00 MB memory used
+ ----------- ---------- ---- ---------------------- 
+  State       Domain     Id   Message Preview (en)  
+ ----------- ---------- ---- ---------------------- 
+   missing    messages                              
+ ----------- ---------- ---- ---------------------- 
 
- ----------- ------------ ------------------------------------------------------------------------ ------------------------------------------ ------------------------------------------ 
-  State       Domain       Id                                                                       Message Preview (pl)                       Fallback Message Preview (en)             
- ----------- ------------ ------------------------------------------------------------------------ ------------------------------------------ ------------------------------------------ 
-   missing    validators   Please enter a comment                                                   Please enter a comment                     Please enter a comment                    
-   missing    validators   This value is too long. It should have {{ limit }} characters or less.   This value is too long. It should hav...   This value is too long. It should hav...  
-   missing    validators   There is already an account with this email                              There is already an account with this...   There is already an account with this...  
-   missing    validators   You should agree to our terms.                                           You should agree to our terms.             You should agree to our terms.            
-   missing    validators   Please enter a password                                                  Please enter a password                    Please enter a password                   
-   missing    validators   Your password should be at least {{ limit }} characters                  Your password should be at least {{ l...   Your password should be at least {{ l...  
-   missing    validators   Comment should not be blank.                                             Comment should not be blank.               Comment should not be blank.              
-   missing    validators   Comment cannot be longer than {{ limit }} characters                     Comment cannot be longer than {{ limi...   Comment cannot be longer than {{ limi...  
-   missing    messages                                                                                                                                                                   
- ----------- ------------ ------------------------------------------------------------------------ ------------------------------------------ ------------------------------------------ 
+ ----------- ---------- ---- ---------------------- ------------------------------- 
+  State       Domain     Id   Message Preview (pl)   Fallback Message Preview (en)  
+ ----------- ---------- ---- ---------------------- ------------------------------- 
+   missing    messages                                                              
+ ----------- ---------- ---- ---------------------- ------------------------------- 
 
 [notice] Migrating up to DoctrineMigrations\Version20240608101043
 [warning] Migration DoctrineMigrations\Version20240529080810 was executed but did not result in any SQL statements.
-[notice] finished in 1124.2ms, used 26M memory, 12 migrations executed, 25 sql queries
+[notice] finished in 1045.9ms, used 26M memory, 12 migrations executed, 25 sql queries
 
  [OK] Successfully migrated to version: DoctrineMigrations\Version20240608101043                                        
 

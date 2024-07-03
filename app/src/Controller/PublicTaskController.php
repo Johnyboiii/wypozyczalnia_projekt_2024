@@ -39,10 +39,10 @@ class PublicTaskController extends AbstractController
     /**
      * Index action.
      *
-     * @param  Request $request The request object
-     * @param  int     $page    Page number (optional)
+     * @param Request $request The request object
+     * @param int     $page    Page number (optional)
      *
-     * @return Response         HTTP response
+     * @return Response HTTP response
      */
     #[Route(name: 'public_task_index', methods: 'GET')]
     public function index(Request $request, #[MapQueryParameter] int $page = 1): Response
@@ -58,9 +58,9 @@ class PublicTaskController extends AbstractController
     /**
      * Show action.
      *
-     * @param  Task $task Task entity
+     * @param Task $task Task entity
      *
-     * @return Response   HTTP response
+     * @return Response HTTP response
      */
     #[Route('/{id}', name: 'public_task_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
     public function show(Task $task): Response
@@ -71,10 +71,10 @@ class PublicTaskController extends AbstractController
     /**
      * Reserve action.
      *
-     * @param  Request $request The request object
-     * @param  Task    $task    Task entity
+     * @param Request $request The request object
+     * @param Task    $task    Task entity
      *
-     * @return Response         HTTP response
+     * @return Response HTTP response
      */
     #[Route('/{id}/reserve', name: 'public_task_reserve', methods: ['GET', 'POST'])]
     public function reserve(Request $request, Task $task): Response
@@ -108,7 +108,7 @@ class PublicTaskController extends AbstractController
     /**
      * Category action.
      *
-     * @param  int $id Category ID
+     * @param int $id Category ID
      *
      * @return Response HTTP response
      */
@@ -125,9 +125,9 @@ class PublicTaskController extends AbstractController
     /**
      * Tag action.
      *
-     * @param  string $name Tag name
+     * @param string $name Tag name
      *
-     * @return Response     HTTP response
+     * @return Response HTTP response
      */
     #[Route('/tag/{name}', name: 'public_task_tag', methods: ['GET'])]
     public function tag(string $name): Response

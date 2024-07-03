@@ -97,9 +97,9 @@ class CategoryService implements CategoryServiceInterface
      * associated with the given category. If there are no tasks associated with the category,
      * it can be deleted.
      *
-     * @param  Category $category The category to check
+     * @param Category $category The category to check
      *
-     * @return bool               True if the category can be deleted, false otherwise
+     * @return bool True if the category can be deleted, false otherwise
      */
     public function canBeDeleted(Category $category): bool
     {

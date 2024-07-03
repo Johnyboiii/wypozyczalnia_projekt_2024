@@ -16,18 +16,18 @@ interface TagServiceInterface
     /**
      * Create a new tag.
      *
-     * @param  Tag $tag The tag entity
+     * @param Tag $tag The tag entity
      *
-     * @return Tag      The created tag
+     * @return Tag The created tag
      */
     public function createTag(Tag $tag): Tag;
 
     /**
      * Update an existing tag.
      *
-     * @param  Tag $tag The tag entity
+     * @param Tag $tag The tag entity
      *
-     * @return Tag      The updated tag
+     * @return Tag The updated tag
      */
     public function updateTag(Tag $tag): Tag;
 
@@ -41,7 +41,7 @@ interface TagServiceInterface
     /**
      * Get a tag by its ID.
      *
-     * @param  int $id The ID of the tag
+     * @param int $id The ID of the tag
      *
      * @return Tag|null The tag entity or null if not found
      */
@@ -66,7 +66,7 @@ interface TagServiceInterface
     /**
      * Find tags by title.
      *
-     * @param  Tag $tag
+     * @param Tag $tag Tag Param
      *
      * @return Tag[]
      */

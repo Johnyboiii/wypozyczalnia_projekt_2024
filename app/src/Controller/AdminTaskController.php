@@ -18,7 +18,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
  *
  * @Route("/admin/task")
  *
- * @IsGranted('ROLE_ADMIN')
+ * @IsGranted("ROLE_ADMIN")
  */
 #[Route('/admin/task')]
 #[IsGranted('ROLE_ADMIN')]
@@ -39,17 +39,15 @@ class AdminTaskController extends AbstractController
     /**
      * Display the index page.
      *
-     * @Route("/", name: "admin_task_index", methods: ["GET"])
+     * @Route("/", name="admin_task_index", methods={"GET"})
      *
-     * @return Response
+     * @return Response The response object
      */
     #[Route('/', name: 'admin_task_index', methods: ['GET'])]
     public function index(): Response
     {
-        // Pobierz wszystkie zadania z bazy danych
         $tasks = $this->taskService->getTasksByStatus(['Zarezerwowane', 'Oczekujące', 'Zatwierdzone', 'Wypożyczone', 'Zwrócone']);
 
-        // Wyrenderuj widok z listą zadań
         return $this->render('admin_task/index.html.twig', [
             'tasks' => $tasks,
         ]);
@@ -60,9 +58,9 @@ class AdminTaskController extends AbstractController
      *
      * @Route("/{id}/approve", name="admin_task_approve", methods={"POST"})
      *
-     * @param  Task $task The task entity to approve
+     * @param Task $task The task entity to approve
      *
-     * @return Response
+     * @return Response The response object
      */
     #[Route('/{id}/approve', name: 'admin_task_approve', methods: ['POST'])]
     public function approve(Task $task): Response
@@ -75,11 +73,11 @@ class AdminTaskController extends AbstractController
     /**
      * Reject a task.
      *
-     * @Route("/{id}/reject", name: "admin_task_reject", methods: ["POST"])
+     * @Route("/{id}/reject", name="admin_task_reject", methods={"POST"})
      *
-     * @param  Task $task The task entity to approve
+     * @param Task $task The task entity to reject
      *
-     * @return Response
+     * @return Response The response object
      */
     #[Route('/{id}/reject', name: 'admin_task_reject', methods: ['POST'])]
     public function reject(Task $task): Response
@@ -92,11 +90,11 @@ class AdminTaskController extends AbstractController
     /**
      * Lend a task.
      *
-     * @Route("/{id}/lend", name: "admin_task_lend", methods: ["POST"])
+     * @Route("/{id}/lend", name="admin_task_lend", methods={"POST"})
      *
-     * @param  Task $task The task entity to approve
+     * @param Task $task The task entity to lend
      *
-     * @return Response
+     * @return Response The response object
      */
     #[Route('/{id}/lend', name: 'admin_task_lend', methods: ['POST'])]
     public function lend(Task $task): Response
@@ -109,11 +107,11 @@ class AdminTaskController extends AbstractController
     /**
      * Return a task.
      *
-     * @Route("/{id}/return", name: "admin_task_return", methods: ["POST"])
+     * @Route("/{id}/return", name="admin_task_return", methods={"POST"})
      *
-     * @param  Task $task The task entity to approve
+     * @param Task $task The task entity to return
      *
-     * @return Response
+     * @return Response The response object
      */
     #[Route('/{id}/return', name: 'admin_task_return', methods: ['POST'])]
     public function return(Task $task): Response
@@ -126,11 +124,11 @@ class AdminTaskController extends AbstractController
     /**
      * Display task details.
      *
-     * @Route("/{id}/details", name: "admin_task_details", methods: ["GET"])
+     * @Route("/{id}/details", name="admin_task_details", methods={"GET"})
      *
-     * @param  Task $task The task entity to approve
+     * @param Task $task The task entity to display details of
      *
-     * @return Response
+     * @return Response The response object
      */
     #[Route('/{id}/details', name: 'admin_task_details', methods: ['GET'])]
     public function details(Task $task): Response

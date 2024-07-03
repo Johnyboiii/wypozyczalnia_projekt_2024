@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" target-language="pl" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="Please enter a comment">
+        <source>Please enter a comment</source>
+        <target>Proszę wprowadzić komentarz</target>
+      </trans-unit>
+      <trans-unit id="This value is too long. It should have {{ limit }} characters or less.">
+        <source>This value is too long. It should have {{ limit }} characters or less.</source>
+        <target>Ta wartość jest zbyt długa. Powinna mieć {{ limit }} znaków lub mniej.</target>
+      </trans-unit>
+      <trans-unit id="There is already an account with this email">
+        <source>There is already an account with this email</source>
+        <target>Istnieje już konto z tym adresem e-mail</target>
+      </trans-unit>
+      <trans-unit id="You should agree to our terms.">
+        <source>You should agree to our terms.</source>
+        <target>Powinieneś zgodzić się z naszymi warunkami.</target>
+      </trans-unit>
+      <trans-unit id="Please enter a password">
+        <source>Please enter a password</source>
+        <target>Proszę wprowadzić hasło</target>
+      </trans-unit>
+      <trans-unit id="Your password should be at least {{ limit }} characters">
+        <source>Your password should be at least {{ limit }} characters</source>
+        <target>Twoje hasło powinno mieć co najmniej {{ limit }} znaków</target>
+      </trans-unit>
+      <trans-unit id="Comment should not be blank.">
+        <source>Comment should not be blank.</source>
+        <target>Komentarz nie powinien być pusty.</target>
+      </trans-unit>
+      <trans-unit id="Comment cannot be longer than {{ limit }} characters">
+        <source>Comment cannot be longer than {{ limit }} characters</source>
+        <target>Komentarz nie może być dłuższy niż {{ limit }} znaków</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

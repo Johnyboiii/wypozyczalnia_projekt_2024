@@ -43,11 +43,11 @@ class TaskService implements TaskServiceInterface
     /**
      * Find all tasks.
      *
-     * @param  int                     $page       The page number
-     * @param  User|null               $author     The author of the tasks
-     * @param  TaskListInputFiltersDto $filtersDto Filters for the task list
+     * @param int                     $page       The page number
+     * @param User|null               $author     The author of the tasks
+     * @param TaskListInputFiltersDto $filtersDto Filters for the task list
      *
-     * @return PaginationInterface                 Task entities
+     * @return PaginationInterface Task entities
      */
     public function getPaginatedList(int $page, ?User $author = null, TaskListInputFiltersDto $filtersDto): PaginationInterface
     {
@@ -101,9 +101,9 @@ class TaskService implements TaskServiceInterface
     /**
      * Get tasks by tag.
      *
-     * @param  Tag $tag The tag to filter tasks by
+     * @param Tag $tag The tag to filter tasks by
      *
-     * @return array    An array of Task objects with the specified tag
+     * @return array An array of Task objects with the specified tag
      */
     public function getTasksByTag(Tag $tag): array
     {
@@ -129,7 +129,7 @@ class TaskService implements TaskServiceInterface
      */
     public function approveTask(Task $task): void
     {
-        if ($task->getReservationStatus() === 'Oczekujące' || $task->getReservationStatus() === 'Zarezerwowane') {
+        if ('Oczekujące' === $task->getReservationStatus() || 'Zarezerwowane' === $task->getReservationStatus()) {
             $task->setReservationStatus('Zatwierdzone');
             $this->entityManager->flush();
         }
@@ -167,7 +167,7 @@ class TaskService implements TaskServiceInterface
      */
     public function returnTask(Task $task): void
     {
-        if ($task->getReservationStatus() === 'Wypożyczone') {
+        if ('Wypożyczone' === $task->getReservationStatus()) {
             $task->setReservationStatus('Zwrócone');
             $task->setStatus(TaskStatus::STATUS_1);
             $this->entityManager->flush();
@@ -177,9 +177,9 @@ class TaskService implements TaskServiceInterface
     /**
      * Prepare filters for task list.
      *
-     * @param  TaskListInputFiltersDto $filters The filters to prepare
+     * @param TaskListInputFiltersDto $filters The filters to prepare
      *
-     * @return TaskListFiltersDto               The prepared filters
+     * @return TaskListFiltersDto The prepared filters
      */
     private function prepareFilters(TaskListInputFiltersDto $filters): TaskListFiltersDto
     {

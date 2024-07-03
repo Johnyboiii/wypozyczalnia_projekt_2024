@@ -44,9 +44,9 @@ class TagController extends AbstractController
     /**
      * Index action.
      *
-     * @param  TagRepository $tagRepository Tag repository
+     * @param TagRepository $tagRepository Tag repository
      *
-     * @return Response                     HTTP response
+     * @return Response HTTP response
      */
     #[Route('/', name: 'tag_index', methods: ['GET'])]
     public function index(TagRepository $tagRepository): Response
@@ -59,9 +59,9 @@ class TagController extends AbstractController
     /**
      * Create action.
      *
-     * @param  Request $request Request object
+     * @param Request $request Request object
      *
-     * @return Response         HTTP response
+     * @return Response HTTP response
      */
     #[Route('/create', name: 'tag_create', methods: ['GET', 'POST'])]
     public function create(Request $request): Response
@@ -85,7 +85,7 @@ class TagController extends AbstractController
     /**
      * Show action.
      *
-     * @param  Tag $tag Tag entity
+     * @param Tag $tag Tag entity
      *
      * @return Response HTTP response
      */
@@ -100,10 +100,10 @@ class TagController extends AbstractController
     /**
      * Edit action.
      *
-     * @param  Request $request Request object
-     * @param  Tag     $tag     Tag entity
+     * @param Request $request Request object
+     * @param Tag     $tag     Tag entity
      *
-     * @return Response         HTTP response
+     * @return Response HTTP response
      */
     #[Route('/{id}/edit', name: 'tag_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Tag $tag): Response
@@ -126,10 +126,10 @@ class TagController extends AbstractController
     /**
      * Confirm delete action.
      *
-     * @param  Request $request Request object
-     * @param  Tag     $tag     Tag entity
+     * @param Request $request Request object
+     * @param Tag     $tag     Tag entity
      *
-     * @return Response         HTTP response
+     * @return Response HTTP response
      */
     #[Route('/{id}/delete', name: 'tag_confirm_delete', requirements: ['id' => '[1-9]\d*'], methods: ['GET'])]
     public function confirmDelete(Request $request, Tag $tag): Response
@@ -152,10 +152,10 @@ class TagController extends AbstractController
     /**
      * Delete action.
      *
-     * @param  Request $request Request object
-     * @param  Tag     $tag     Tag entity
+     * @param Request $request Request object
+     * @param Tag     $tag     Tag entity
      *
-     * @return Response         HTTP response
+     * @return Response HTTP response
      */
     #[Route('/{id}/delete', name: 'tag_delete', requirements: ['id' => '[1-9]\d*'], methods: ['DELETE'])]
     public function delete(Request $request, Tag $tag): Response

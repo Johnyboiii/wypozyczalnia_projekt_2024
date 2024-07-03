@@ -43,7 +43,7 @@ class UserController extends AbstractController
      *
      * @Route('/users', name: 'user_index', methods: ['GET'])
      *
-     * @return Response
+     * @return Response The Response Object
      */
     #[Route('/users', name: 'user_index', methods: ['GET'])]
     public function index(): Response

@@ -8,7 +8,6 @@ namespace App\Controller;
 
 use App\Form\Type\ChangePasswordType;
 use App\Service\UserService;
-use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,21 +22,15 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
  */
 class ChangePasswordController extends AbstractController
 {
-    /**
-     * @var TokenStorageInterface
-     */
     private TokenStorageInterface $tokenStorage;
 
-    /**
-     * @var UserService
-     */
     private UserService $userService;
 
     /**
      * ChangePasswordController constructor.
      *
-     * @param TokenStorageInterface $tokenStorage
-     * @param UserService           $userService
+     * @param TokenStorageInterface $tokenStorage The token storage service
+     * @param UserService           $userService  The user service
      */
     public function __construct(TokenStorageInterface $tokenStorage, UserService $userService)
     {
@@ -50,12 +43,12 @@ class ChangePasswordController extends AbstractController
      *
      * @Route("/change-password", name="app_change_password")
      *
-     * @param  Request                     $request        The request object
-     * @param  UserPasswordHasherInterface $passwordHasher The password hasher service
+     * @param Request                     $request        The request object
+     * @param UserPasswordHasherInterface $passwordHasher The password hasher service
      *
-     * @return Response
+     * @return Response The response object
      *
-     * @throws Exception
+     * @throws \Exception
      */
     #[Route('/change-password', name: 'app_change_password')]
     public function changePassword(Request $request, UserPasswordHasherInterface $passwordHasher): Response
@@ -66,11 +59,11 @@ class ChangePasswordController extends AbstractController
             $user = $this->getUser();
 
             if (!$user instanceof PasswordAuthenticatedUserInterface) {
-                throw new Exception('The user is not authenticated.');
+                throw new \Exception('The user is not authenticated.');
             }
 
             if (!$user instanceof \App\Entity\User) {
-                throw new Exception('The user is not of the correct class.');
+                throw new \Exception('The user is not of the correct class.');
             }
 
             $oldPassword = $form->get('oldPassword')->getData();

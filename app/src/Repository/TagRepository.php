@@ -7,7 +7,6 @@
 namespace App\Repository;
 
 use App\Entity\Tag;
-use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
@@ -36,9 +35,9 @@ class TagRepository extends ServiceEntityRepository
     /**
      * Find tags by title.
      *
-     * @param  string $title The title to search for
+     * @param string $title The title to search for
      *
-     * @return Tag[]         An array of Tag objects
+     * @return Tag[] An array of Tag objects
      */
     public function findByTitle(string $title): array
     {
@@ -53,11 +52,11 @@ class TagRepository extends ServiceEntityRepository
     /**
      * Find tags created after a specific date.
      *
-     * @param  DateTime $date The date to search from
+     * @param \DateTime $date The date to search from
      *
-     * @return Tag[]          An array of Tag objects
+     * @return Tag[] An array of Tag objects
      */
-    public function findByCreatedAfter(DateTime $date): array
+    public function findByCreatedAfter(\DateTime $date): array
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.createdAt > :date')
@@ -83,7 +82,7 @@ class TagRepository extends ServiceEntityRepository
     /**
      * Find one by id.
      *
-     * @param  int $id The ID of the tag
+     * @param int $id The ID of the tag
      *
      * @return Tag|null The found Tag or null
      *
